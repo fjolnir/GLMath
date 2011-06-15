@@ -11,23 +11,22 @@
 
 @implementation GLMathTests
 
-- (void)setUp
-{
-    [super setUp];
-    
-    // Set-up code here.
-}
+- (void)setUp {
+  [super setUp];
+  v2[0] = 5.0f;
+  v2[1] = 6.0f;
+  
+  v3[0] = 5.0f;
+  v3[1] = 6.0f;
+  v3[2] = 7.0f;
 
-- (void)tearDown
-{
-    // Tear-down code here.
-    
+  v4[0] = 5.0f;
+  v4[1] = 6.0f;
+  v4[2] = 7.0f;
+  v4[3] = 8.0f;
+}
+- (void)tearDown {    
     [super tearDown];
-}
-
-- (void)testExample
-{
-    STFail(@"Unit tests are not implemented yet in GLMathTests");
 }
 
 @end

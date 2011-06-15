@@ -7,11 +7,17 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "GLMath.h"
 
 @interface GLMathTests : SenTestCase {
 @private
-    
+  vec2_t v2;
+  vec3_t v3;
+  vec4_t v4;
+  
+  mat4_t m4;
+
+  quat_t q;
 }
 
 @end

@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C7FCC96A13A86EC9001CB8A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FCC96913A86EC9001CB8A7 /* Foundation.framework */; };
+		C7FCC97513A86EC9001CB8A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FCC97413A86EC9001CB8A7 /* UIKit.framework */; };
+		C7FCC97613A86EC9001CB8A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FCC96913A86EC9001CB8A7 /* Foundation.framework */; };
+		C7FCC97813A86EC9001CB8A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FCC97713A86EC9001CB8A7 /* CoreGraphics.framework */; };
+		C7FCC97B13A86EC9001CB8A7 /* libGLMath.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FCC96613A86EC9001CB8A7 /* libGLMath.a */; };
+		C7FCC98113A86EC9001CB8A7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7FCC97F13A86EC9001CB8A7 /* InfoPlist.strings */; };
+		C7FCC98413A86EC9001CB8A7 /* GLMathTests.h in Resources */ = {isa = PBXBuildFile; fileRef = C7FCC98313A86EC9001CB8A7 /* GLMathTests.h */; };
+		C7FCC98613A86EC9001CB8A7 /* GLMathTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7FCC98513A86EC9001CB8A7 /* GLMathTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C7FCC97913A86EC9001CB8A7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C7FCC95D13A86EC9001CB8A7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7FCC96513A86EC9001CB8A7;
+			remoteInfo = GLMath;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C7FCC96613A86EC9001CB8A7 /* libGLMath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGLMath.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FCC96913A86EC9001CB8A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C7FCC96D13A86EC9001CB8A7 /* GLMath-Prefix.pch */ = {isa = PBXFileReference; path = "GLMath-Prefix.pch"; sourceTree = "<group>"; };
+		C7FCC97313A86EC9001CB8A7 /* GLMathTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GLMathTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7FCC97413A86EC9001CB8A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C7FCC97713A86EC9001CB8A7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C7FCC97E13A86EC9001CB8A7 /* GLMathTests-Info.plist */ = {isa = PBXFileReference; path = "GLMathTests-Info.plist"; sourceTree = "<group>"; };
+		C7FCC98013A86EC9001CB8A7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C7FCC98213A86EC9001CB8A7 /* GLMathTests-Prefix.pch */ = {isa = PBXFileReference; path = "GLMathTests-Prefix.pch"; sourceTree = "<group>"; };
+		C7FCC98313A86EC9001CB8A7 /* GLMathTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLMathTests.h; sourceTree = "<group>"; };
+		C7FCC98513A86EC9001CB8A7 /* GLMathTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLMathTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C7FCC96313A86EC9001CB8A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FCC96A13A86EC9001CB8A7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FCC96F13A86EC9001CB8A7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FCC97513A86EC9001CB8A7 /* UIKit.framework in Frameworks */,
+				C7FCC97613A86EC9001CB8A7 /* Foundation.framework in Frameworks */,
+				C7FCC97813A86EC9001CB8A7 /* CoreGraphics.framework in Frameworks */,
+				C7FCC97B13A86EC9001CB8A7 /* libGLMath.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C7FCC95B13A86EC9001CB8A7 = {
+			isa = PBXGroup;
+			children = (
+				C7FCC96B13A86EC9001CB8A7 /* GLMath */,
+				C7FCC97C13A86EC9001CB8A7 /* GLMathTests */,
+				C7FCC96813A86EC9001CB8A7 /* Frameworks */,
+				C7FCC96713A86EC9001CB8A7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C7FCC96713A86EC9001CB8A7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC96613A86EC9001CB8A7 /* libGLMath.a */,
+				C7FCC97313A86EC9001CB8A7 /* GLMathTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C7FCC96813A86EC9001CB8A7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC96913A86EC9001CB8A7 /* Foundation.framework */,
+				C7FCC97413A86EC9001CB8A7 /* UIKit.framework */,
+				C7FCC97713A86EC9001CB8A7 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C7FCC96B13A86EC9001CB8A7 /* GLMath */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC96C13A86EC9001CB8A7 /* Supporting Files */,
+			);
+			path = GLMath;
+			sourceTree = "<group>";
+		};
+		C7FCC96C13A86EC9001CB8A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC96D13A86EC9001CB8A7 /* GLMath-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C7FCC97C13A86EC9001CB8A7 /* GLMathTests */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC98313A86EC9001CB8A7 /* GLMathTests.h */,
+				C7FCC98513A86EC9001CB8A7 /* GLMathTests.m */,
+				C7FCC97D13A86EC9001CB8A7 /* Supporting Files */,
+			);
+			path = GLMathTests;
+			sourceTree = "<group>";
+		};
+		C7FCC97D13A86EC9001CB8A7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C7FCC97E13A86EC9001CB8A7 /* GLMathTests-Info.plist */,
+				C7FCC97F13A86EC9001CB8A7 /* InfoPlist.strings */,
+				C7FCC98213A86EC9001CB8A7 /* GLMathTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C7FCC96413A86EC9001CB8A7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C7FCC96513A86EC9001CB8A7 /* GLMath */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FCC98913A86EC9001CB8A7 /* Build configuration list for PBXNativeTarget "GLMath" */;
+			buildPhases = (
+				C7FCC96213A86EC9001CB8A7 /* Sources */,
+				C7FCC96313A86EC9001CB8A7 /* Frameworks */,
+				C7FCC96413A86EC9001CB8A7 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GLMath;
+			productName = GLMath;
+			productReference = C7FCC96613A86EC9001CB8A7 /* libGLMath.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C7FCC97213A86EC9001CB8A7 /* GLMathTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7FCC98C13A86EC9001CB8A7 /* Build configuration list for PBXNativeTarget "GLMathTests" */;
+			buildPhases = (
+				C7FCC96E13A86EC9001CB8A7 /* Sources */,
+				C7FCC96F13A86EC9001CB8A7 /* Frameworks */,
+				C7FCC97013A86EC9001CB8A7 /* Resources */,
+				C7FCC97113A86EC9001CB8A7 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7FCC97A13A86EC9001CB8A7 /* PBXTargetDependency */,
+			);
+			name = GLMathTests;
+			productName = GLMathTests;
+			productReference = C7FCC97313A86EC9001CB8A7 /* GLMathTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C7FCC95D13A86EC9001CB8A7 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C7FCC96013A86EC9001CB8A7 /* Build configuration list for PBXProject "GLMath" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C7FCC95B13A86EC9001CB8A7;
+			productRefGroup = C7FCC96713A86EC9001CB8A7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7FCC96513A86EC9001CB8A7 /* GLMath */,
+				C7FCC97213A86EC9001CB8A7 /* GLMathTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C7FCC97013A86EC9001CB8A7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FCC98113A86EC9001CB8A7 /* InfoPlist.strings in Resources */,
+				C7FCC98413A86EC9001CB8A7 /* GLMathTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C7FCC97113A86EC9001CB8A7 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C7FCC96213A86EC9001CB8A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7FCC96E13A86EC9001CB8A7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7FCC98613A86EC9001CB8A7 /* GLMathTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C7FCC97A13A86EC9001CB8A7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C7FCC96513A86EC9001CB8A7 /* GLMath */;
+			targetProxy = C7FCC97913A86EC9001CB8A7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C7FCC97F13A86EC9001CB8A7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C7FCC98013A86EC9001CB8A7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C7FCC98713A86EC9001CB8A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C7FCC98813A86EC9001CB8A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		C7FCC98A13A86EC9001CB8A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/GLMath.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLMath/GLMath-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C7FCC98B13A86EC9001CB8A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				DSTROOT = /tmp/GLMath.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLMath/GLMath-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C7FCC98D13A86EC9001CB8A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLMathTests/GLMathTests-Prefix.pch";
+				INFOPLIST_FILE = "GLMathTests/GLMathTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C7FCC98E13A86EC9001CB8A7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GLMathTests/GLMathTests-Prefix.pch";
+				INFOPLIST_FILE = "GLMathTests/GLMathTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C7FCC96013A86EC9001CB8A7 /* Build configuration list for PBXProject "GLMath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FCC98713A86EC9001CB8A7 /* Debug */,
+				C7FCC98813A86EC9001CB8A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7FCC98913A86EC9001CB8A7 /* Build configuration list for PBXNativeTarget "GLMath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FCC98A13A86EC9001CB8A7 /* Debug */,
+				C7FCC98B13A86EC9001CB8A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C7FCC98C13A86EC9001CB8A7 /* Build configuration list for PBXNativeTarget "GLMathTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7FCC98D13A86EC9001CB8A7 /* Debug */,
+				C7FCC98E13A86EC9001CB8A7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C7FCC95D13A86EC9001CB8A7 /* Project object */;
+}

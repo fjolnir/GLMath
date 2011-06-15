@@ -319,6 +319,10 @@
 				DSTROOT = /tmp/GLMath.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GLMath/GLMath-Prefix.pch";
+				OTHER_CFLAGS = (
+					"-mfpu=neon",
+					"-mfloat-abi=softfp",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -331,6 +335,10 @@
 				DSTROOT = /tmp/GLMath.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "GLMath/GLMath-Prefix.pch";
+				"OTHER_CFLAGS[arch=*]" = (
+					"-mfpu=neon",
+					"-mfloat-abi=softfp",
+				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

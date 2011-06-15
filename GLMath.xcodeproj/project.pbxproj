@@ -32,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C756606513A8CD1A00D32E6D /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = SOURCE_ROOT; };
 		C7FCC96613A86EC9001CB8A7 /* libGLMath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libGLMath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7FCC96913A86EC9001CB8A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C7FCC96D13A86EC9001CB8A7 /* GLMath-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLMath-Prefix.pch"; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		C7FCC98213A86EC9001CB8A7 /* GLMathTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLMathTests-Prefix.pch"; sourceTree = "<group>"; };
 		C7FCC98313A86EC9001CB8A7 /* GLMathTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GLMathTests.h; sourceTree = "<group>"; };
 		C7FCC98513A86EC9001CB8A7 /* GLMathTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GLMathTests.m; sourceTree = "<group>"; };
-		C7FCC99413A874F5001CB8A7 /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		C7FCC99513A876FB001CB8A7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C7FCC99713A87722001CB8A7 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
 		C7FCC99813A87722001CB8A7 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMath.c; sourceTree = "<group>"; };
@@ -77,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				C7FCC96B13A86EC9001CB8A7 /* GLMath */,
+				C756606513A8CD1A00D32E6D /* Readme.md */,
 				C7FCC97C13A86EC9001CB8A7 /* GLMathTests */,
 				C7FCC96813A86EC9001CB8A7 /* Frameworks */,
 				C7FCC96713A86EC9001CB8A7 /* Products */,
@@ -109,7 +110,6 @@
 				C7FCC99713A87722001CB8A7 /* GLMath.h */,
 				C7FCC99813A87722001CB8A7 /* GLMath.c */,
 				C7FCC96C13A86EC9001CB8A7 /* Supporting Files */,
-				C7FCC99413A874F5001CB8A7 /* Readme.md */,
 			);
 			path = GLMath;
 			sourceTree = "<group>";
@@ -395,6 +395,7 @@
 				C7FCC98B13A86EC9001CB8A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C7FCC98C13A86EC9001CB8A7 /* Build configuration list for PBXNativeTarget "GLMathTests" */ = {
 			isa = XCConfigurationList;
@@ -403,6 +404,7 @@
 				C7FCC98E13A86EC9001CB8A7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

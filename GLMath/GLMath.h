@@ -78,7 +78,7 @@ extern inline float vec4_magSquared(const vec4_t *v);
 extern inline float vec4_mag(const vec4_t *v);
 extern inline float vec4_dist(const vec4_t *v1, const vec4_t *v2);
 extern inline vec4_t *vec4_scalarMul(const vec4_t *v, float s, vec4_t *out);
-inline vec4_t *vec4_scalarDiv(const vec4_t *v, float s, vec4_t *out);
+extern inline vec4_t *vec4_scalarDiv(const vec4_t *v, float s, vec4_t *out);
 
 // Matrix math functions
 extern inline mat4_t *mat4_mul(const mat4_t *m1, const mat4_t *m2, mat4_t *out);
@@ -95,7 +95,7 @@ extern inline float quat_magSquared(const quat_t *q);
 extern inline float quat_mag(const quat_t *q);
 extern quat_t *quat_computeW(quat_t *q);
 extern inline quat_t *quat_normalize(quat_t *q);
-inline quat_t *quat_multQuat(const quat_t *qA, const quat_t *qB, quat_t *out);
+extern inline quat_t *quat_multQuat(const quat_t *qA, const quat_t *qB, quat_t *out);
 extern inline vec4_t *quat_rotatePoint(const quat_t *q, const vec4_t *v, vec4_t *out);
 extern inline quat_t *quat_inverse(const quat_t *q, quat_t *out);
 extern inline float quat_dotProduct(const quat_t *qA, const quat_t *qB);

@@ -5,6 +5,10 @@
 
 #include <stdbool.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+  
 // Vectors
 typedef float vec2_t[2];
 typedef float vec3_t[3];
@@ -15,17 +19,17 @@ typedef float mat4_t[16];
 typedef float quat_t[4];
 
 // Zero vectors
-extern const vec2_t kVec2_zero;
-extern const vec3_t kVec3_zero;
-extern const vec4_t kVec4_zero;
+const vec2_t kVec2_zero;
+const vec3_t kVec3_zero;
+const vec4_t kVec4_zero;
 
 #define MAT4_IDENTITY { 1.0, 0.0, 0.0, 0.0,\
                         0.0, 1.0, 0.0, 0.0,\
                         0.0, 0.0, 1.0, 0.0,\
                         0.0, 0.0, 0.0, 1.0 }
 
-extern const mat4_t kMat4_identity;
-extern const mat4_t kMat4_zero;
+const mat4_t kMat4_identity;
+const mat4_t kMat4_zero;
 
 // Implements a stack of float arrays with an arbitrary size (so it can be used to store both matrices&vectors)
 typedef struct {
@@ -35,7 +39,7 @@ typedef struct {
   unsigned int numberOfItems;
 } float_stack_t;
 
-float_stack_t *float_stack_create(unsigned int numberOfComponents, unsigned int initialCapacity);
+extern float_stack_t *float_stack_create(unsigned int numberOfComponents, unsigned int initialCapacity);
 extern void float_stack_destroy(float_stack_t *stack);
 
 // Pushes the passed item on to the top of the stack
@@ -46,7 +50,7 @@ extern inline void float_stack_push(float_stack_t *stack);
 extern void float_stack_pop(float_stack_t *stack);
 // Returns the topmost item in the stack
 extern inline float *float_stack_current(float_stack_t *stack);
-
+  
 // Vector math functions
 extern inline vec2_t *vec2_add(const vec2_t *v1, const vec2_t *v2, vec2_t *out);
 extern inline vec2_t *vec2_sub(const vec2_t *v1, const vec2_t *v2, vec2_t *out);
@@ -83,6 +87,8 @@ extern inline vec4_t *vec4_scalarDiv(const vec4_t *v, float s, vec4_t *out);
 // Matrix math functions
 extern inline mat4_t *mat4_mul(const mat4_t *m1, const mat4_t *m2, mat4_t *out);
 extern inline vec4_t *vec4_mul_mat4(const vec4_t *v, const mat4_t *m, vec4_t *out);
+extern inline mat4_t *mat4_inverse(const mat4_t *m, mat4_t *out);
+extern inline mat4_t *mat4_transpose(const mat4_t *m, mat4_t *out);
 
 // Quaternion math functions
 extern quat_t *quat_makef(float x, float y, float z, float angle, quat_t *out);
@@ -110,11 +116,15 @@ extern inline mat4_t *mat4_make_scale(float x, float y, float z, mat4_t *out);
 extern inline void mat4_scale(mat4_t *mat, float x, float y, float z);
 
 // Utilities
-void printVec2(vec2_t vec);
-void printVec3(vec3_t vec);
-void printVec4(vec4_t vec);
-void printMat4(mat4_t mat);
-void printQuat(quat_t quat);
+extern mat4_t *mat4_perspective(float fov_radians, float aspect, float zNear, float zFar, mat4_t *out);
+// Generates an orthogonal viewing matrix
+extern mat4_t *mat4_ortho(float left, float right, float bottom, float top, float near, float far, mat4_t *out);
+
+extern void printVec2(vec2_t vec);
+extern void printVec3(vec3_t vec);
+extern void printVec4(vec4_t vec);
+extern void printMat4(mat4_t mat);
+extern void printQuat(quat_t quat);
 
 extern bool floatArr_equals(const float *a1, const float *a2, unsigned int len);
 extern bool vec2_equals(const vec2_t *v1, const vec2_t *v2);
@@ -122,5 +132,7 @@ extern bool vec3_equals(const vec3_t *v1, const vec3_t *v2);
 extern bool vec4_equals(const vec4_t *v1, const vec4_t *v2);
 extern bool mat4_equals(const mat4_t *m1, const mat4_t *m2);
 extern bool quat_equals(const quat_t *q1, const quat_t *q2);
-
+#ifdef __cplusplus
+}
+#endif
 #endif

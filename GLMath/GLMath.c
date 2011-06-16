@@ -27,6 +27,7 @@ const mat4_t kMat4_zero = { 0.0f, 0.0f, 0.0f, 0.0f,
                             0.0f, 0.0f, 0.0f, 0.0f };
 
 #pragma mark Stack
+
 float_stack_t *float_stack_create(unsigned int numberOfComponents, unsigned int initialCapacity) {
   float_stack_t *out;
   out = malloc(sizeof(float_stack_t));
@@ -64,6 +65,8 @@ inline void float_stack_push(float_stack_t *stack) {
 
 // Pops an item off the stack
 void float_stack_pop(float_stack_t *stack) {
+  if(stack->numberOfItems <= 1)
+    return;
   --stack->numberOfItems;
   free(stack->items[stack->numberOfItems]);
   // If the stack is far from full free up some memory
@@ -221,6 +224,24 @@ inline mat4_t *mat4_mul(const mat4_t *m1, const mat4_t *m2, mat4_t *out) {
 }
 inline vec4_t *vec4_mul_mat4(const vec4_t *v, const mat4_t *m, vec4_t *out) {
   vDSP_mmul((float*)*v, 1, (float*)*m, 1, *out, 1, 1, 4, 4);
+  return out;
+}
+inline mat4_t *mat4_inverse(const mat4_t *m, mat4_t *out) {
+  __CLPK_integer colsA, rowsA, colsB, rowsB, status;
+  colsA = rowsA = colsB = rowsB = 4;
+  __CLPK_integer pivotIndices[colsA];
+  memcpy(*out, kMat4_identity, sizeof(mat4_t));
+  sgesv_(&colsA, &colsB, (float*)*m, &rowsA, pivotIndices, *out, &rowsB, &status);
+  if(status != 0) {
+    printf("Could not invert 4x4 matrix!");
+    printMat4((float*)*m);
+    out = NULL;
+    return NULL;
+  }
+  return out;
+}
+inline mat4_t *mat4_transpose(const mat4_t *m, mat4_t *out) {
+  vDSP_mtrans((float*)*m, 1, *out, 1, 4, 4);
   return out;
 }
 
@@ -439,29 +460,37 @@ inline quat_t *quat_slerp(const quat_t *q1, const quat_t *q2, float t, quat_t *o
 #pragma mark Affine transformations
 mat4_t *mat4_make_translation(float x, float y, float z, mat4_t *out) {
   memcpy(*out, kMat4_identity, sizeof(mat4_t));
-  (*out)[3]  = x;
-  (*out)[7]  = y;
-  (*out)[11] = z;
+  (*out)[12]  = x;
+  (*out)[13]  = y;
+  (*out)[14] = z;
   
   return out;
 }
 
 inline void mat4_translate(mat4_t *mat, float x, float y, float z) {
-  (*mat)[3]  += x;
-  (*mat)[7]  += y;
-  (*mat)[11] += z;
+  mat4_t translation, temp;
+  memcpy(temp, *mat, sizeof(mat4_t));
+  mat4_make_translation(x, y, z, &translation);
+  mat4_mul(&translation, mat, &temp);
+  /*(*mat)[12] += x;
+  (*mat)[13] += y;
+  (*mat)[14] += z;*/
 }
 
 mat4_t *mat4_make_rotation(float angle, float x, float y, float z, mat4_t *out) {
+  quat_t quaternion;
+  quat_makef(x, y, z, angle, &quaternion);
+  quat_to_ortho((const quat_t*)&quaternion, out);
+  return out;
   /*
-   |  cycz + sxsysz   czsxsy - cysz   cxsy  0 |
+       |  cycz + sxsysz   czsxsy - cysz   cxsy  0 |
    M = |  cxsz            cxcz           -sx    0 |
-   |  cysxsz - czsy   cyczsx + sysz   cxcy  0 |
-   |  0               0               0     1 |
+       |  cysxsz - czsy   cyczsx + sysz   cxcy  0 |
+       |  0               0               0     1 |
 	 
    where cA = cos(A), sA = sin(A) for A = x,y,z
    */
-  float xSin = sinf(x*angle);
+ /* float xSin = sinf(x*angle);
   float xCos = cosf(x*angle);
   float ySin = sinf(y*angle);
   float yCos = cosf(y*angle);
@@ -481,12 +510,13 @@ mat4_t *mat4_make_rotation(float angle, float x, float y, float z, mat4_t *out) 
   (*out)[9] = (yCos*zCos*xSin) + (ySin*zSin);
   (*out)[10] = (xCos*yCos);
   
-  return out;
+  return out;*/
 }
 
 void mat4_rotate(mat4_t *mat, float angle, float x, float y, float z) {
-  mat4_t rotation;
-  mat4_mul((const mat4_t*)mat4_make_rotation(angle, x, y, z, &rotation), (const mat4_t*)mat, mat);
+  mat4_t rotation, temp;
+  memcpy(&temp, *mat, sizeof(mat4_t));
+  mat4_mul((const mat4_t*)mat4_make_rotation(angle, x, y, z, &rotation), (const mat4_t*)&temp, mat);
 }
 
 mat4_t *mat4_make_scale(float x, float y, float z, mat4_t *out) {
@@ -498,13 +528,75 @@ mat4_t *mat4_make_scale(float x, float y, float z, mat4_t *out) {
   return out;
 }
 inline void mat4_scale(mat4_t *mat, float x, float y, float z) {
-  vec3_t scaleVec = { x, y, z };
-  // Treat the matrix XYZ diagonal as a 3 item vector and multiply it by the scale
-  vDSP_vmul(scaleVec, 1, *mat, 5, *mat, 5, 3);
+  mat4_t temp, scale;
+  memcpy(&temp, *mat, sizeof(mat4_t));
+  mat4_mul(mat4_make_scale(x, y, z, &scale), &temp, mat);
 }
 
 #pragma mark -
 #pragma mark Utilities
+// Generates a perspective viewing matrix
+mat4_t *mat4_perspective(float fovy, float aspect, float zNear, float zFar, mat4_t *out)
+{
+  float f = 1.0f / tanf(fovy/2.0f);
+  
+  (*out)[0] = f / aspect;
+  (*out)[1] = 0.0f;
+  (*out)[2] = 0.0f;
+  (*out)[3] = 0.0f;
+  
+  (*out)[4] = 0.0f;
+  (*out)[5] = f;
+  (*out)[6] = 0.0f;
+  (*out)[7] = 0.0f;
+  
+  (*out)[8] = 0.0f;
+  (*out)[9] = 0.0f;
+  (*out)[10] = (zFar+zNear) / (zNear-zFar);
+  (*out)[11] = -1.0f;
+  
+  (*out)[12] = 0.0f;
+  (*out)[13] = 0.0f;
+  (*out)[14] = 2.0f * zFar * zNear /  (zNear-zFar);
+  (*out)[15] = 0.0f;
+  
+  return out;
+}
+
+// Generates an orthogonal viewing matrix
+mat4_t *mat4_ortho(float left, float right, float bottom, float top, float near, float far, mat4_t *out)
+{
+  float r_l = right - left;
+  float t_b = top - bottom;
+  float f_n = far - near;
+  float tx = - (right + left) / (right - left);
+  float ty = - (top + bottom) / (top - bottom);
+  float tz = - (far + near) / (far - near);
+  
+  (*out)[0] = 2.0f / r_l;
+  (*out)[1] = 0.0f;
+  (*out)[2] = 0.0f;
+  (*out)[3] = 0.0f;
+  
+  (*out)[4] = 0.0f;
+  (*out)[5] = 2.0f / t_b;
+  (*out)[6] = 0.0f;
+  (*out)[7] = 0.0f;
+  
+  (*out)[8] = 0.0f;
+  (*out)[9] = 0.0f;
+  (*out)[10] = -2.0f / f_n;
+  (*out)[11] = 0.0f;
+  
+  (*out)[12] = tx;
+  (*out)[13] = ty;
+  (*out)[14] = tz;
+  (*out)[15] = 1.0f;
+  
+  return out;
+}
+
+
 void printVec2(vec2_t vec) {
   printf("Vec2: [%.2f, %.2f]\n", vec[0], vec[1]);
 }

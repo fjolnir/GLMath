@@ -33,6 +33,14 @@ const vec2_t kVec2_zero = { 0.0f, 0.0f };
 const vec3_t kVec3_zero = { 0.0f, 0.0f, 0.0f };
 const vec4_t kVec4_zero = { 0.0f, 0.0f, 0.0f, 0.0f };
 
+const mat3_t kMat3_identity = { 1.0, 0.0, 0.0,
+                                0.0, 1.0, 0.0,
+                                0.0, 0.0, 1.0 };
+
+const mat3_t kMat3_zero = { 0.0f, 0.0f, 0.0f,
+                            0.0f, 0.0f, 0.0f,
+                            0.0f, 0.0f, 0.0f };
+
 const mat4_t kMat4_identity = { 1.0, 0.0, 0.0, 0.0,
                                 0.0, 1.0, 0.0, 0.0,
                                 0.0, 0.0, 1.0, 0.0,

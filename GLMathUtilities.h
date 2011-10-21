@@ -15,7 +15,10 @@ extern "C" {
 static mat4_t mat4_perspective(float fov_radians, float aspect, float zNear, float zFar);
 // Generates an orthogonal viewing matrix
 static mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far);
-
+// Generates a lookat camera viewing matrix
+static __inline__ mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
+                                     float centerX, float centerY, float centerZ,
+                                     float upX, float upY, float upZ);
 static void printVec2(vec2_t vec);
 static void printVec3(vec3_t vec);
 static void printVec4(vec4_t vec);
@@ -63,9 +66,9 @@ static mat4_t mat4_ortho(float left, float right, float bottom, float top, float
 }
 
 // Generates lookat viewing matrix
-static __inline__ mat4_t GLKMatrix4MakeLookAt(float eyeX, float eyeY, float eyeZ,
-                                              float centerX, float centerY, float centerZ,
-                                              float upX, float upY, float upZ)
+static __inline__ mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
+                                     float centerX, float centerY, float centerZ,
+                                     float upX, float upY, float upZ)
 {
     vec3_t ev = { eyeX, eyeY, eyeZ };
     vec3_t cv = { centerX, centerY, centerZ };

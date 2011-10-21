@@ -33,6 +33,10 @@
 #ifndef GL_MATH_H
 #define GL_MATH_H
 
+#ifdef __APPLE__
+#define USE_ACCELERATE_FRAMEWORK
+#endif
+
 #include "GLMathTypes.h"
 #include "GLMathVector.h"
 #include "GLMathMatrix.h"

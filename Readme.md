@@ -1,4 +1,4 @@
-GLMath - A math toolkit for OpenGL
+# GLMath - A math toolkit for OpenGL
 
 This is a basic math toolkit which includes support for vectors(2,3&4 element), matrices(3x3&4x4) & quaternions as well as affine transforms and a matrix stack.
 

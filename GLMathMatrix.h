@@ -42,17 +42,17 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 	return out;
 #else
 	mat3_t out;
-	out.f[0] = m1.f[0] * m2.f[0] + m1.f[3] * m2.f[1] + m1.f[6] * m2.f[2];
-	out.f[3] = m1.f[0] * m2.f[3] + m1.f[3] * m2.f[4] + m1.f[6] * m2.f[5];
-	out.f[6] = m1.f[0] * m2.f[6] + m1.f[3] * m2.f[7] + m1.f[6] * m2.f[8];
+	out.f[0] = m1.m00 * m2.m00 + m1.m10 * m2.m01 + m1.m20 * m2.m02;
+	out.f[3] = m1.m00 * m2.m10 + m1.m10 * m2.m11 + m1.m20 * m2.m12;
+	out.f[6] = m1.m00 * m2.m20 + m1.m10 * m2.m21 + m1.m20 * m2.m22;
 
-	out.f[1] = m1.f[1] * m2.f[0] + m1.f[4] * m2.f[1] + m1.f[7] * m2.f[2];
-	out.f[4] = m1.f[1] * m2.f[3] + m1.f[4] * m2.f[4] + m1.f[7] * m2.f[5];
-	out.f[7] = m1.f[1] * m2.f[6] + m1.f[4] * m2.f[7] + m1.f[7] * m2.f[8];
+	out.f[1] = m1.m01 * m2.m00 + m1.m11 * m2.m01 + m1.m21 * m2.m02;
+	out.f[4] = m1.m01 * m2.m10 + m1.m11 * m2.m11 + m1.m21 * m2.m12;
+	out.f[7] = m1.m01 * m2.m20 + m1.m11 * m2.m21 + m1.m21 * m2.m22;
 
-	out.f[2] = m1.f[2] * m2.f[0] + m1.f[5] * m2.f[1] + m1.f[8] * m2.f[2];
-	out.f[5] = m1.f[2] * m2.f[3] + m1.f[5] * m2.f[4] + m1.f[8] * m2.f[5];
-	out.f[8] = m1.f[2] * m2.f[6] + m1.f[5] * m2.f[7] + m1.f[8] * m2.f[8];
+	out.f[2] = m1.m02 * m2.m00 + m1.m12 * m2.m01 + m1.m22 * m2.m02;
+	out.f[5] = m1.m02 * m2.m10 + m1.m12 * m2.m11 + m1.m22 * m2.m12;
+	out.f[8] = m1.m02 * m2.m20 + m1.m12 * m2.m21 + m1.m22 * m2.m22;
 	return out;
 #endif
 }
@@ -63,9 +63,9 @@ static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 	return out;
 #else
 	return (vec3_t){
-		m.f[0] * v.f[0] + m.f[3] * v.f[1] + m.f[6] * v.f[2],
-		m.f[1] * v.f[0] + m.f[4] * v.f[1] + m.f[7] * v.f[2],
-		m.f[2] * v.f[0] + m.f[5] * v.f[1] + m.f[8] * v.f[2] };
+		m.m00 * v.f[0] + m.m10 * v.f[1] + m.m20 * v.f[2],
+		m.m01 * v.f[0] + m.m11 * v.f[1] + m.m21 * v.f[2],
+		m.m02 * v.f[0] + m.m12 * v.f[1] + m.m22 * v.f[2] };
 #endif
 }
 static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
@@ -89,15 +89,15 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 		if(success_out != NULL) *success_out = false;
 		return kMat3_zero;
 	}
-	out.f[0] =    m.f[4]*m.f[8] - m.f[5]*m.f[7]   / det;
-	out.f[1] = -( m.f[1]*m.f[8] - m.f[7]*m.f[2] ) / det;
-	out.f[2] =    m.f[1]*m.f[5] - m.f[4]*m.f[2]   / det;
-	out.f[3] = -( m.f[3]*m.f[8] - m.f[5]*m.f[6] ) / det;
-	out.f[4] =    m.f[0]*m.f[8] - m.f[6]*m.f[2]   / det;
-	out.f[5] = -( m.f[0]*m.f[5] - m.f[3]*m.f[2] ) / det;
-	out.f[6] =    m.f[3]*m.f[7] - m.f[6]*m.f[4]   / det;
-	out.f[7] = -( m.f[0]*m.f[7] - m.f[6]*m.f[1] ) / det;
-	out.f[8] =    m.f[0]*m.f[4] - m.f[1]*m.f[3]   / det;
+	out.f[0] =    m.m11*m.m22 - m.m12*m.m21   / det;
+	out.f[1] = -( m.m01*m.m22 - m.m21*m.m02 ) / det;
+	out.f[2] =    m.m01*m.m12 - m.m11*m.m02   / det;
+	out.f[3] = -( m.m10*m.m22 - m.m12*m.m20 ) / det;
+	out.f[4] =    m.m00*m.m22 - m.m20*m.m02   / det;
+	out.f[5] = -( m.m00*m.m12 - m.m10*m.m02 ) / det;
+	out.f[6] =    m.m10*m.m21 - m.m20*m.m11   / det;
+	out.f[7] = -( m.m00*m.m21 - m.m20*m.m01 ) / det;
+	out.f[8] =    m.m00*m.m11 - m.m01*m.m10   / det;
 
 	return out;
 #endif
@@ -108,9 +108,9 @@ static __inline__ mat3_t mat3_transpose(const mat3_t m) {
 	vDSP_mtrans((float*)m.f, 1, out.f, 1, 3, 3);
 	return out;
 #else
-	return (mat3_t) { m.f[0], m.f[3], m.f[6],
-	                  m.f[1], m.f[4], m.f[7],
-	                  m.f[2], m.f[5], m.f[8] };
+	return (mat3_t) { m.m00, m.m10, m.m20,
+	                  m.m01, m.m11, m.m21,
+	                  m.m02, m.m12, m.m22 };
 #endif
 }
 
@@ -122,9 +122,9 @@ static __inline__ mat3_t mat4_extract_mat3(const mat4_t m) {
 }
 
 static __inline__ float mat3_det(const mat3_t m) {
-	return m.f[0]   * ( m.f[4]*m.f[8] - m.f[7]*m.f[5] )
-	       - m.f[1] * ( m.f[3]*m.f[8] - m.f[6]*m.f[5] )
-	       + m.f[2] * ( m.f[3]*m.f[7] - m.f[6]*m.f[4] );
+	return m.m00   * ( m.m11*m.m22 - m.m21*m.m12 )
+	       - m.m01 * ( m.m10*m.m22 - m.m20*m.m12 )
+	       + m.m02 * ( m.m10*m.m21 - m.m20*m.m11 );
 }
 
 #pragma mark - 4x4
@@ -136,25 +136,25 @@ static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 	return out;
 #else
 	mat4_t m;
-	m.f[0]  = m1.f[0] * m2.f[0]  + m1.f[4] * m2.f[1]  + m1.f[8] * m2.f[2]   + m1.f[12] * m2.f[3];
-	m.f[4]  = m1.f[0] * m2.f[4]  + m1.f[4] * m2.f[5]  + m1.f[8] * m2.f[6]   + m1.f[12] * m2.f[7];
-	m.f[8]  = m1.f[0] * m2.f[8]  + m1.f[4] * m2.f[9]  + m1.f[8] * m2.f[10]  + m1.f[12] * m2.f[11];
-	m.f[12] = m1.f[0] * m2.f[12] + m1.f[4] * m2.f[13] + m1.f[8] * m2.f[14]  + m1.f[12] * m2.f[15];
+	m.m00  = m1.m00 * m2.m00  + m1.m10 * m2.m01  + m1.m20 * m2.m02   + m1.m30 * m2.m03;
+	m.m10  = m1.m00 * m2.m10  + m1.m10 * m2.m11  + m1.m20 * m2.m12   + m1.m30 * m2.m13;
+	m.m20  = m1.m00 * m2.m20  + m1.m10 * m2.m21  + m1.m20 * m2.m22  + m1.m30 * m2.m23;
+	m.m30 = m1.m00 * m2.m30 + m1.m10 * m2.m31 + m1.m20 * m2.m32  + m1.m30 * m2.m33;
 
-	m.f[1]  = m1.f[1] * m2.f[0]  + m1.f[5] * m2.f[1]  + m1.f[9] * m2.f[2]   + m1.f[13] * m2.f[3];
-	m.f[5]  = m1.f[1] * m2.f[4]  + m1.f[5] * m2.f[5]  + m1.f[9] * m2.f[6]   + m1.f[13] * m2.f[7];
-	m.f[9]  = m1.f[1] * m2.f[8]  + m1.f[5] * m2.f[9]  + m1.f[9] * m2.f[10]  + m1.f[13] * m2.f[11];
-	m.f[13] = m1.f[1] * m2.f[12] + m1.f[5] * m2.f[13] + m1.f[9] * m2.f[14]  + m1.f[13] * m2.f[15];
+	m.m01  = m1.m01 * m2.m00  + m1.m11 * m2.m01  + m1.m21 * m2.m02   + m1.m31 * m2.m03;
+	m.m11  = m1.m01 * m2.m10  + m1.m11 * m2.m11  + m1.m21 * m2.m12   + m1.m31 * m2.m13;
+	m.m21  = m1.m01 * m2.m20  + m1.m11 * m2.m21  + m1.m21 * m2.m22  + m1.m31 * m2.m23;
+	m.m31 = m1.m01 * m2.m30 + m1.m11 * m2.m31 + m1.m21 * m2.m32  + m1.m31 * m2.m33;
 
-	m.f[2]  = m1.f[2] * m2.f[0]  + m1.f[6] * m2.f[1]  + m1.f[10] * m2.f[2]  + m1.f[14] * m2.f[3];
-	m.f[6]  = m1.f[2] * m2.f[4]  + m1.f[6] * m2.f[5]  + m1.f[10] * m2.f[6]  + m1.f[14] * m2.f[7];
-	m.f[10] = m1.f[2] * m2.f[8]  + m1.f[6] * m2.f[9]  + m1.f[10] * m2.f[10] + m1.f[14] * m2.f[11];
-	m.f[14] = m1.f[2] * m2.f[12] + m1.f[6] * m2.f[13] + m1.f[10] * m2.f[14] + m1.f[14] * m2.f[15];
+	m.m02  = m1.m02 * m2.m00  + m1.m12 * m2.m01  + m1.m22 * m2.m02  + m1.m32 * m2.m03;
+	m.m12  = m1.m02 * m2.m10  + m1.m12 * m2.m11  + m1.m22 * m2.m12  + m1.m32 * m2.m13;
+	m.m22 = m1.m02 * m2.m20  + m1.m12 * m2.m21  + m1.m22 * m2.m22 + m1.m32 * m2.m23;
+	m.m32 = m1.m02 * m2.m30 + m1.m12 * m2.m31 + m1.m22 * m2.m32 + m1.m32 * m2.m33;
 
-	m.f[3]  = m1.f[3] * m2.f[0]  + m1.f[7] * m2.f[1]  + m1.f[11] * m2.f[2]  + m1.f[15] * m2.f[3];
-	m.f[7]  = m1.f[3] * m2.f[4]  + m1.f[7] * m2.f[5]  + m1.f[11] * m2.f[6]  + m1.f[15] * m2.f[7];
-	m.f[11] = m1.f[3] * m2.f[8]  + m1.f[7] * m2.f[9]  + m1.f[11] * m2.f[10] + m1.f[15] * m2.f[11];
-	m.f[15] = m1.f[3] * m2.f[12] + m1.f[7] * m2.f[13] + m1.f[11] * m2.f[14] + m1.f[15] * m2.f[15];
+	m.m03  = m1.m03 * m2.m00  + m1.m13 * m2.m01  + m1.m23 * m2.m02  + m1.m33 * m2.m03;
+	m.m13  = m1.m03 * m2.m10  + m1.m13 * m2.m11  + m1.m23 * m2.m12  + m1.m33 * m2.m13;
+	m.m23 = m1.m03 * m2.m20  + m1.m13 * m2.m21  + m1.m23 * m2.m22 + m1.m33 * m2.m23;
+	m.m33 = m1.m03 * m2.m30 + m1.m13 * m2.m31 + m1.m23 * m2.m32 + m1.m33 * m2.m33;
 	return m;
 #endif
 }
@@ -164,10 +164,10 @@ static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 	vDSP_mmul((float*)v.f, 1, (float*)m.f, 1, out.f, 1, 1, 4, 4);
 	return out;
 #else
-	return (vec4_t){ m.f[0]*v.f[0] + m.f[4]*v.f[1] + m.f[8]*v.f[2] + m.f[12]*v.f[3],
-	                 m.f[1]*v.f[0] + m.f[5]*v.f[1] + m.f[9]*v.f[2] + m.f[13]*v.f[3],
-	                 m.f[2]*v.f[0] + m.f[6] * v.f[1] + m.f[10] * v.f[2] + m.f[14]*v.f[3],
-	                 m.f[3]*v.f[0] + m.f[7]*v.f[1] + m.f[11]*v.f[2] + m.f[15]*v.f[3] };
+	return (vec4_t){ m.m00*v.f[0] + m.m10*v.f[1] + m.m20*v.f[2] + m.m30*v.f[3],
+	                 m.m01*v.f[0] + m.m11*v.f[1] + m.m21*v.f[2] + m.m31*v.f[3],
+	                 m.m02*v.f[0] + m.m12 * v.f[1] + m.m22 * v.f[2] + m.m32*v.f[3],
+	                 m.m03*v.f[0] + m.m13*v.f[1] + m.m23*v.f[2] + m.m33*v.f[3] };
 #endif
 }
 static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
@@ -208,10 +208,10 @@ static __inline__ mat4_t mat4_transpose(const mat4_t m) {
 	vDSP_mtrans((float*)m.f, 1, out.f, 1, 4, 4);
 	return out;
 #else
-	return (mat4_t){ m.f[0], m.f[4], m.f[8],  m.f[12],
-	                 m.f[1], m.f[5], m.f[9],  m.f[13],
-	                 m.f[2], m.f[6], m.f[10], m.f[14],
-	                 m.f[3], m.f[7], m.f[11], m.f[15] };
+	return (mat4_t){ m.m00, m.m10, m.m20,  m.m30,
+	                 m.m01, m.m11, m.m21,  m.m31,
+	                 m.m02, m.m12, m.m22, m.m32,
+	                 m.m03, m.m13, m.m23, m.m33 };
 #endif
 }
 

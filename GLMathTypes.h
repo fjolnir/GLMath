@@ -7,34 +7,39 @@ extern "C" {
 #pragma mark - Types
 
 // Vectors
-typedef union {
+union _vec2_t {
 	float f[2];
 	struct { float x; float y; };
 	struct { float w; float h; };
-} vec2_t;
+};
+typedef union _vec2_t vec2_t;
 
-typedef union {
+union _vec3_t {
 	float f[3];
 	struct { float x; float y; float z; };
 	struct { float r; float g; float b; };
-} vec3_t;
-typedef union {
+};
+typedef union _vec3_t vec3_t;
+
+union _vec4_t {
 	float f[4];
 	struct { float x; float y; float z; float w; };
 	struct { float r; float g; float b; float a; };
-} vec4_t;
+};
+typedef union _vec4_t vec4_t;
 
 // Matrices
-typedef union {
+union _mat3_t {
 	float f[9];
 	struct {
 		float m00, m01, m02;
 		float m10, m11, m12;
 		float m20, m21, m22;
 	};
-} mat3_t;
+};
+typedef union _mat3_t mat3_t;
 
-typedef union {
+union _mat4_t {
 	float f[16];
 	struct {
 		float m00, m01, m02, m03;
@@ -42,13 +47,15 @@ typedef union {
 		float m20, m21, m22, m23;
 		float m30, m31, m32, m33;
 	};
-} mat4_t;
+};
+typedef union _mat4_t mat4_t;
 
 // Quaternions
-typedef union {
+union _quat_t {
 	float f[4];
 	struct { float x; float y; float z; float w; };
-} quat_t;
+};
+typedef union _quat_t quat_t;
 
 // Matrix stack
 typedef struct {

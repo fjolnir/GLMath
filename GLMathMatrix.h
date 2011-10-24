@@ -41,7 +41,7 @@ static mat4_t _calc_mat4_inverse(mat4_t m, bool *success_out);
 static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
-	vDSP_mmul((float*)m1.f, 1, (float*)m2.f, 1, out.f, 1, 3, 3, 3);
+	vDSP_mmul((float*)m2.f, 1, (float*)m1.f, 1, out.f, 1, 3, 3, 3);
 	return out;
 #else
 	mat3_t out;
@@ -124,14 +124,10 @@ static __inline__ float mat3_det(const mat3_t m) {
 static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;
-	vDSP_mmul((float*)m1.f, 1, (float*)m2.f, 1, out.f, 1, 4, 4, 4);
+	vDSP_mmul((float*)m2.f, 1, (float*)m1.f, 1, out.f, 1, 4, 4, 4);
 	return out;
 #else
-	// TODO: actually write a flipped multiplication routine
 	mat4_t m;
-	m = m1;
-	m1 = m2;
-	m2 = m;
     m.f[0]  = m1.f[0] * m2.f[0]  + m1.f[4] * m2.f[1]  + m1.f[8] * m2.f[2]   + m1.f[12] * m2.f[3];
 	m.f[4]  = m1.f[0] * m2.f[4]  + m1.f[4] * m2.f[5]  + m1.f[8] * m2.f[6]   + m1.f[12] * m2.f[7];
 	m.f[8]  = m1.f[0] * m2.f[8]  + m1.f[4] * m2.f[9]  + m1.f[8] * m2.f[10]  + m1.f[12] * m2.f[11];

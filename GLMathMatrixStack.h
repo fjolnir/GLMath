@@ -20,9 +20,9 @@ static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item);
 static __inline__ void matrix_stack_push(matrix_stack_t *stack);
 // Pops an item off the stack
 static void matrix_stack_pop(matrix_stack_t *stack);
-// Returns the topmost item in the stack 
+// Returns the topmost item in the stack
 static __inline__ mat4_t matrix_stack_get_mat4(matrix_stack_t *stack);
-// Returns the 3x3 portion of the topmost item in the stack 
+// Returns the 3x3 portion of the topmost item in the stack
 static __inline__ mat3_t matrix_stack_get_mat3(matrix_stack_t *stack);
 
 static __inline__ void matrix_stack_translate(matrix_stack_t *stack, float x, float y, float z);

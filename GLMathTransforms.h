@@ -41,9 +41,9 @@ static mat4_t mat4_rotate(mat4_t mat, float angle, float x, float y, float z) {
 
 static mat4_t mat4_make_scale(float x, float y, float z) {
 	mat4_t out = kMat4_identity;
-	out.f[0]  = x;
-	out.f[5]  = y;
-	out.f[10] = z;
+	out.m00 = x;
+	out.m11 = y;
+	out.m22 = z;
 
 	return out;
 }

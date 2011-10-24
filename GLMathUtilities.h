@@ -43,8 +43,8 @@ static mat4_t mat4_perspective(float fovy, float aspect, float zNear, float zFar
 
 	return (mat4_t){ cotan/aspect, 0.0f,  0.0f,                               0.0f,
 	                 0.0f,         cotan, 0.0f,                               0.0f,
-					 0.0f,         0.0f,  (zFar+zNear) / (zNear-zFar),       -1.0f,
-					 0.0f,         0.0f,  2.0f * zFar * zNear /	(zNear-zFar), 0.0f };
+	                 0.0f,         0.0f,  (zFar+zNear) / (zNear-zFar),       -1.0f,
+	                 0.0f,         0.0f,  2.0f * zFar * zNear / (zNear-zFar), 0.0f };
 
 	return out;
 }
@@ -53,16 +53,16 @@ static mat4_t mat4_perspective(float fovy, float aspect, float zNear, float zFar
 static mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far)
 {
 	float ral = right + left;
-    float rsl = right - left;
-    float tsb = top - bottom;
-    float tab = top + bottom;
-    float fan = far + near;
-    float fsn = far - near;
-    
-    return (mat4_t){ 2.0f * near / rsl, 0.0f,              0.0f,                       0.0f,
-                     0.0f,              2.0f * near / tsb, 0.0f,                       0.0f,
-                     ral / rsl,         tab / tsb,         -fan / fsn,                -1.0f,
-                     0.0f,              0.0f,              (-2.0f * far * near) / fsn, 0.0f };
+	float rsl = right - left;
+	float tsb = top - bottom;
+	float tab = top + bottom;
+	float fan = far + near;
+	float fsn = far - near;
+
+	return (mat4_t){ 2.0f * near / rsl, 0.0f,              0.0f,                       0.0f,
+	                 0.0f,              2.0f * near / tsb, 0.0f,                       0.0f,
+	                 ral / rsl,         tab / tsb,         -fan / fsn,                -1.0f,
+	                 0.0f,              0.0f,              (-2.0f * far * near) / fsn, 0.0f };
 }
 
 // Generates lookat viewing matrix
@@ -70,20 +70,20 @@ static __inline__ mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
                                      float centerX, float centerY, float centerZ,
                                      float upX, float upY, float upZ)
 {
-    vec3_t ev = { eyeX, eyeY, eyeZ };
-    vec3_t cv = { centerX, centerY, centerZ };
-    vec3_t uv = { upX, upY, upZ };
-    vec3_t n = vec3_normalize(vec3_add(ev, vec3_negate(cv)));
-    vec3_t u = vec3_normalize(vec3_cross(uv, n));
-    vec3_t v = vec3_cross(n, u);
-    
-    return (mat4_t){ u.f[0], v.f[0], n.f[0], 0.0f,
-                     u.f[1], v.f[1], n.f[1], 0.0f,
-                     u.f[2], v.f[2], n.f[2], 0.0f,
-                     vec3_dot(vec3_negate(u), ev),
-                     vec3_dot(vec3_negate(v), ev),
-                     vec3_dot(vec3_negate(n), ev),
-                     1.0f };
+	vec3_t ev = { eyeX, eyeY, eyeZ };
+	vec3_t cv = { centerX, centerY, centerZ };
+	vec3_t uv = { upX, upY, upZ };
+	vec3_t n = vec3_normalize(vec3_add(ev, vec3_negate(cv)));
+	vec3_t u = vec3_normalize(vec3_cross(uv, n));
+	vec3_t v = vec3_cross(n, u);
+
+	return (mat4_t){ u.f[0], v.f[0], n.f[0], 0.0f,
+	                 u.f[1], v.f[1], n.f[1], 0.0f,
+	                 u.f[2], v.f[2], n.f[2], 0.0f,
+	                 vec3_dot(vec3_negate(u), ev),
+	                 vec3_dot(vec3_negate(v), ev),
+	                 vec3_dot(vec3_negate(n), ev),
+	                 1.0f };
 }
 
 

@@ -58,7 +58,7 @@ static mat4_t quat_to_mat4(const quat_t q) {
 	//       [1 0 0 0]     [ 0 1 0  0]     [ 0  0 1 0]     [ 0 0  0 1]
 	// q = a*[0 1 0 0] + b*[-1 0 0  0] + c*[ 0  0 0 1] + w*[ 0 0 -1 0]
 	//       [0 0 1 0]     [ 0 0 0 -1]     [-1  0 0 0]     [ 0 1  0 0]
-	//       [0 0 0 1]     [ 0 0 1  0]     [ 0 -1 0 0]    [-1 0  0 0]
+	//       [0 0 0 1]     [ 0 0 1  0]     [ 0 -1 0 0]     [-1 0  0 0]
 	out.f[0] = out.f[5] = out.f[10] = out.f[15] = q.f[0]; // a
 	out.f[1] = out.f[14]                          = q.f[1]; // b
 	out.f[4] = out.f[11]                          = -1.0f*q.f[1]; // b
@@ -81,15 +81,6 @@ static quat_t mat4_to_quat(const mat4_t m) {
 
 // Generates the orthogonal matrix representation(rotation matrix) of a quaternion
 static mat4_t quat_to_ortho(const quat_t q) {
-//			¦				2		 2																			¦
-//			¦ 1 - (2Y	+ 2Z )	 2XY + 2ZW				 2XZ - 2YW			 ¦
-//			¦																										 ¦
-//			¦													2		 2										¦
-//	M = ¦ 2XY - 2ZW				 1 - (2X	+ 2Z )	 2YZ + 2XW			 ¦ (Transposed)
-//			¦																										 ¦
-//			¦																						2		 2	¦
-//			¦ 2XZ + 2YW				 2YZ - 2XW				 1 - (2X	+ 2Y ) ¦
-//			¦																										 ¦
 	float xx = q.f[0]*q.f[0];
 	float xy = q.f[0]*q.f[1];
 	float xz = q.f[0]*q.f[2];
@@ -101,14 +92,14 @@ static mat4_t quat_to_ortho(const quat_t q) {
 	float zw = q.f[2]*q.f[3];
 
 	mat4_t out;
-	out.f[0]	= 1.0f - 2.0f*( yy + zz );
-	out.f[4]	=		 2.0f*( xy - zw );
-	out.f[8]	=		 2.0f*( xz + yw );
-	out.f[1]	=		 2.0f*( xy + zw );
-	out.f[5]	= 1 - 2.0f*( xx + zz );
-	out.f[9]	=		 2.0f*( yz - xw );
-	out.f[2]	=		 2.0f*( xz - yw );
-	out.f[6]	=		 2.0f*( yz + xw );
+	out.f[0]  = 1.0f - 2.0f*( yy + zz );
+	out.f[4]  = 2.0f * ( xy - zw );
+	out.f[8]  = 2.0f * ( xz + yw );
+	out.f[1]  = 2.0f * ( xy + zw );
+	out.f[5]  = 1 - 2.0f * ( xx + zz );
+	out.f[9]  = 2.0f * ( yz - xw );
+	out.f[2]  = 2.0f * ( xz - yw );
+	out.f[6]  = 2.0f * ( yz + xw );
 	out.f[10] = 1.0f - 2.0f*( xx + yy );
 
 	out.f[3] = out.f[7] = out.f[11] = out.f[12] = out.f[13] = out.f[14] = 0.0f;

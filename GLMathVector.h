@@ -122,7 +122,7 @@ static __inline__ vec2_t vec2_scalarMul(const vec2_t v, float s) {
 #else
 	return  (vec2_t){ v.x * s, v.y * s };
 #endif
-	
+
 }
 static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, float s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
@@ -177,8 +177,8 @@ static __inline__ float vec3_dot(const vec3_t v1, const vec3_t v2) {
 	vDSP_dotpr(v1.f, 1, v2.f, 1, &out, 3);
 	return out;
 #else
-    return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
-#endif	
+	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+#endif
 }
 static __inline__ float vec3_magSquared(const vec3_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
@@ -202,7 +202,7 @@ static __inline__ float vec3_dist(const vec3_t v1, const vec3_t v2) {
 	return magnitudes[0] + magnitudes[1] + magnitudes[2];
 #else
 	return vec3_mag(vec3_sub(v2, v1));
-#endif	
+#endif
 }
 static __inline__ vec3_t vec3_scalarMul(const vec3_t v, float s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
@@ -224,9 +224,9 @@ static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, float s) {
 }
 
 static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2) {
-    return (vec3_t){ v1.y * v2.z - v1.z * v2.y,
-                     v1.z * v2.x - v1.x * v2.z,
-                     v1.x * v2.y - v1.y * v2.x };
+	return (vec3_t){ v1.y * v2.z - v1.z * v2.y,
+	                 v1.z * v2.x - v1.x * v2.z,
+	                 v1.x * v2.y - v1.y * v2.x };
 }
 static __inline__ vec3_t vec3_negate(const vec3_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
@@ -318,10 +318,10 @@ static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, float s) {
 #endif
 }
 static __inline__ vec4_t vec4_cross(const vec4_t v1, const vec4_t v2) {
-    return (vec4_t){ v1.y * v2.z - v1.z * v2.y,
-                     v1.z * v2.x - v1.x * v2.z,
-                     v1.x * v2.y - v1.y * v2.x,
-					 0.0 };
+	return (vec4_t){ v1.y * v2.z - v1.z * v2.y,
+	                 v1.z * v2.x - v1.x * v2.z,
+	                 v1.x * v2.y - v1.y * v2.x,
+	                 0.0 };
 }
 static __inline__ vec4_t vec4_negate(const vec4_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK

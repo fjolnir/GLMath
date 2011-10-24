@@ -42,17 +42,18 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 	return out;
 #else
 	mat3_t out;
-	out.f[0] = m1.m00 * m2.m00 + m1.m10 * m2.m01 + m1.m20 * m2.m02;
-	out.f[3] = m1.m00 * m2.m10 + m1.m10 * m2.m11 + m1.m20 * m2.m12;
-	out.f[6] = m1.m00 * m2.m20 + m1.m10 * m2.m21 + m1.m20 * m2.m22;
+	out.m00 = m1.m00 * m2.m00 + m1.m10 * m2.m01 + m1.m20 * m2.m02;
+	out.m10 = m1.m00 * m2.m10 + m1.m10 * m2.m11 + m1.m20 * m2.m12;
+	out.m20 = m1.m00 * m2.m20 + m1.m10 * m2.m21 + m1.m20 * m2.m22;
 
-	out.f[1] = m1.m01 * m2.m00 + m1.m11 * m2.m01 + m1.m21 * m2.m02;
-	out.f[4] = m1.m01 * m2.m10 + m1.m11 * m2.m11 + m1.m21 * m2.m12;
-	out.f[7] = m1.m01 * m2.m20 + m1.m11 * m2.m21 + m1.m21 * m2.m22;
+	out.m01 = m1.m01 * m2.m00 + m1.m11 * m2.m01 + m1.m21 * m2.m02;
+	out.m11 = m1.m01 * m2.m10 + m1.m11 * m2.m11 + m1.m21 * m2.m12;
+	out.m21 = m1.m01 * m2.m20 + m1.m11 * m2.m21 + m1.m21 * m2.m22;
 
-	out.f[2] = m1.m02 * m2.m00 + m1.m12 * m2.m01 + m1.m22 * m2.m02;
-	out.f[5] = m1.m02 * m2.m10 + m1.m12 * m2.m11 + m1.m22 * m2.m12;
-	out.f[8] = m1.m02 * m2.m20 + m1.m12 * m2.m21 + m1.m22 * m2.m22;
+	out.m02 = m1.m02 * m2.m00 + m1.m12 * m2.m01 + m1.m22 * m2.m02;
+	out.m12 = m1.m02 * m2.m10 + m1.m12 * m2.m11 + m1.m22 * m2.m12;
+	out.m22 = m1.m02 * m2.m20 + m1.m12 * m2.m21 + m1.m22 * m2.m22;
+
 	return out;
 #endif
 }
@@ -89,15 +90,15 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 		if(success_out != NULL) *success_out = false;
 		return kMat3_zero;
 	}
-	out.f[0] =    m.m11*m.m22 - m.m12*m.m21   / det;
-	out.f[1] = -( m.m01*m.m22 - m.m21*m.m02 ) / det;
-	out.f[2] =    m.m01*m.m12 - m.m11*m.m02   / det;
-	out.f[3] = -( m.m10*m.m22 - m.m12*m.m20 ) / det;
-	out.f[4] =    m.m00*m.m22 - m.m20*m.m02   / det;
-	out.f[5] = -( m.m00*m.m12 - m.m10*m.m02 ) / det;
-	out.f[6] =    m.m10*m.m21 - m.m20*m.m11   / det;
-	out.f[7] = -( m.m00*m.m21 - m.m20*m.m01 ) / det;
-	out.f[8] =    m.m00*m.m11 - m.m01*m.m10   / det;
+	out.m00 =    m.m11*m.m22 - m.m12*m.m21   / det;
+	out.m01 = -( m.m01*m.m22 - m.m21*m.m02 ) / det;
+	out.m02 =    m.m01*m.m12 - m.m11*m.m02   / det;
+	out.m10 = -( m.m10*m.m22 - m.m12*m.m20 ) / det;
+	out.m11 =    m.m00*m.m22 - m.m20*m.m02   / det;
+	out.m12 = -( m.m00*m.m12 - m.m10*m.m02 ) / det;
+	out.m20 =    m.m10*m.m21 - m.m20*m.m11   / det;
+	out.m21 = -( m.m00*m.m21 - m.m20*m.m01 ) / det;
+	out.m22 =    m.m00*m.m11 - m.m01*m.m10   / det;
 
 	return out;
 #endif

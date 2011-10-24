@@ -63,9 +63,9 @@ static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 	return out;
 #else
 	return (vec3_t){
-		m.m00 * v.f[0] + m.m10 * v.f[1] + m.m20 * v.f[2],
-		m.m01 * v.f[0] + m.m11 * v.f[1] + m.m21 * v.f[2],
-		m.m02 * v.f[0] + m.m12 * v.f[1] + m.m22 * v.f[2] };
+		m.m00 * v.x + m.m10 * v.y + m.m20 * v.z,
+		m.m01 * v.x + m.m11 * v.y + m.m21 * v.z,
+		m.m02 * v.x + m.m12 * v.y + m.m22 * v.z };
 #endif
 }
 static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
@@ -164,10 +164,10 @@ static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 	vDSP_mmul((float*)v.f, 1, (float*)m.f, 1, out.f, 1, 1, 4, 4);
 	return out;
 #else
-	return (vec4_t){ m.m00*v.f[0] + m.m10*v.f[1] + m.m20*v.f[2] + m.m30*v.f[3],
-	                 m.m01*v.f[0] + m.m11*v.f[1] + m.m21*v.f[2] + m.m31*v.f[3],
-	                 m.m02*v.f[0] + m.m12 * v.f[1] + m.m22 * v.f[2] + m.m32*v.f[3],
-	                 m.m03*v.f[0] + m.m13*v.f[1] + m.m23*v.f[2] + m.m33*v.f[3] };
+	return (vec4_t){ m.m00*v.x + m.m10*v.y + m.m20*v.z + m.m30*v.w,
+	                 m.m01*v.x + m.m11*v.y + m.m21*v.z + m.m31*v.w,
+	                 m.m02*v.x + m.m12 * v.y + m.m22 * v.z + m.m32*v.w,
+	                 m.m03*v.x + m.m13*v.y + m.m23*v.z + m.m33*v.w };
 #endif
 }
 static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {

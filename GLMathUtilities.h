@@ -59,10 +59,10 @@ static mat4_t mat4_ortho(float left, float right, float bottom, float top, float
 	float fan = far + near;
 	float fsn = far - near;
 
-	return (mat4_t){ 2.0f * near / rsl, 0.0f,              0.0f,                       0.0f,
-	                 0.0f,              2.0f * near / tsb, 0.0f,                       0.0f,
-	                 ral / rsl,         tab / tsb,         -fan / fsn,                -1.0f,
-	                 0.0f,              0.0f,              (-2.0f * far * near) / fsn, 0.0f };
+	return (mat4_t) { 2.0f / rsl, 0.0f,       0.0f,        0.0f,
+                     0.0f,        2.0f / tsb, 0.0f,        0.0f,
+                     0.0f,        0.0f,       -2.0f / fsn, 0.0f,
+                     -ral / rsl,  -tab / tsb, -fan / fsn,  1.0f };
 }
 
 // Generates lookat viewing matrix

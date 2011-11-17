@@ -137,23 +137,23 @@ static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 	return out;
 #else
 	mat4_t m;
-	m.m00  = m1.m00 * m2.m00  + m1.m10 * m2.m01  + m1.m20 * m2.m02   + m1.m30 * m2.m03;
-	m.m10  = m1.m00 * m2.m10  + m1.m10 * m2.m11  + m1.m20 * m2.m12   + m1.m30 * m2.m13;
-	m.m20  = m1.m00 * m2.m20  + m1.m10 * m2.m21  + m1.m20 * m2.m22  + m1.m30 * m2.m23;
+	m.m00 = m1.m00 * m2.m00  + m1.m10 * m2.m01  + m1.m20 * m2.m02   + m1.m30 * m2.m03;
+	m.m10 = m1.m00 * m2.m10  + m1.m10 * m2.m11  + m1.m20 * m2.m12   + m1.m30 * m2.m13;
+	m.m20 = m1.m00 * m2.m20  + m1.m10 * m2.m21  + m1.m20 * m2.m22  + m1.m30 * m2.m23;
 	m.m30 = m1.m00 * m2.m30 + m1.m10 * m2.m31 + m1.m20 * m2.m32  + m1.m30 * m2.m33;
 
-	m.m01  = m1.m01 * m2.m00  + m1.m11 * m2.m01  + m1.m21 * m2.m02   + m1.m31 * m2.m03;
-	m.m11  = m1.m01 * m2.m10  + m1.m11 * m2.m11  + m1.m21 * m2.m12   + m1.m31 * m2.m13;
-	m.m21  = m1.m01 * m2.m20  + m1.m11 * m2.m21  + m1.m21 * m2.m22  + m1.m31 * m2.m23;
+	m.m01 = m1.m01 * m2.m00  + m1.m11 * m2.m01  + m1.m21 * m2.m02   + m1.m31 * m2.m03;
+	m.m11 = m1.m01 * m2.m10  + m1.m11 * m2.m11  + m1.m21 * m2.m12   + m1.m31 * m2.m13;
+	m.m21 = m1.m01 * m2.m20  + m1.m11 * m2.m21  + m1.m21 * m2.m22  + m1.m31 * m2.m23;
 	m.m31 = m1.m01 * m2.m30 + m1.m11 * m2.m31 + m1.m21 * m2.m32  + m1.m31 * m2.m33;
 
-	m.m02  = m1.m02 * m2.m00  + m1.m12 * m2.m01  + m1.m22 * m2.m02  + m1.m32 * m2.m03;
-	m.m12  = m1.m02 * m2.m10  + m1.m12 * m2.m11  + m1.m22 * m2.m12  + m1.m32 * m2.m13;
+	m.m02 = m1.m02 * m2.m00  + m1.m12 * m2.m01  + m1.m22 * m2.m02  + m1.m32 * m2.m03;
+	m.m12 = m1.m02 * m2.m10  + m1.m12 * m2.m11  + m1.m22 * m2.m12  + m1.m32 * m2.m13;
 	m.m22 = m1.m02 * m2.m20  + m1.m12 * m2.m21  + m1.m22 * m2.m22 + m1.m32 * m2.m23;
 	m.m32 = m1.m02 * m2.m30 + m1.m12 * m2.m31 + m1.m22 * m2.m32 + m1.m32 * m2.m33;
 
-	m.m03  = m1.m03 * m2.m00  + m1.m13 * m2.m01  + m1.m23 * m2.m02  + m1.m33 * m2.m03;
-	m.m13  = m1.m03 * m2.m10  + m1.m13 * m2.m11  + m1.m23 * m2.m12  + m1.m33 * m2.m13;
+	m.m03 = m1.m03 * m2.m00  + m1.m13 * m2.m01  + m1.m23 * m2.m02  + m1.m33 * m2.m03;
+	m.m13 = m1.m03 * m2.m10  + m1.m13 * m2.m11  + m1.m23 * m2.m12  + m1.m33 * m2.m13;
 	m.m23 = m1.m03 * m2.m20  + m1.m13 * m2.m21  + m1.m23 * m2.m22 + m1.m33 * m2.m23;
 	m.m33 = m1.m03 * m2.m30 + m1.m13 * m2.m31 + m1.m23 * m2.m32 + m1.m33 * m2.m33;
 	return m;

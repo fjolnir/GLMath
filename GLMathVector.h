@@ -17,6 +17,7 @@ extern "C" {
 static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2);
 static __inline__ vec2_t vec2_sub(const vec2_t v1, const vec2_t v2);
 static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2);
+static __inline__ vec2_t vec2_div(const vec2_t v1, const vec2_t v2);
 static __inline__ float vec2_dot(const vec2_t v1, const vec2_t v2);
 static __inline__ float vec2_magSquared(const vec2_t v);
 static __inline__ float vec2_mag(const vec2_t v);
@@ -29,6 +30,7 @@ static __inline__ vec2_t vec2_negate(const vec2_t v);
 static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_sub(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_mul(const vec3_t v1, const vec3_t v2);
+static __inline__ vec3_t vec3_div(const vec3_t v1, const vec3_t v2);
 static __inline__ float vec3_dot(const vec3_t v1, const vec3_t v2);
 static __inline__ float vec3_magSquared(const vec3_t v);
 static __inline__ float vec3_mag(const vec3_t v);
@@ -42,6 +44,7 @@ static __inline__ vec3_t vec3_negate(const vec3_t v);
 static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2);
 static __inline__ vec4_t vec4_sub(const vec4_t v1, const vec4_t v2);
 static __inline__ vec4_t vec4_mul(const vec4_t v1, const vec4_t v2);
+static __inline__ vec4_t vec4_div(const vec4_t v1, const vec4_t v2);
 static __inline__ float vec4_dot(const vec4_t v1, const vec4_t v2);
 static __inline__ float vec4_magSquared(const vec4_t v);
 static __inline__ float vec4_mag(const vec4_t v);
@@ -79,6 +82,16 @@ static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2) {
 	return out;
 #else
 	return (vec2_t){ v1.x * v2.x, v1.y * v2.y };
+#endif
+}
+static __inline__ vec2_t vec2_div(const vec2_t v1, const vec2_t v2) {
+	
+#ifdef USE_ACCELERATE_FRAMEWORK
+	vec2_t out;
+	vDSP_vdiv((float *)v2.f, 1, (float *)v1.f, 1, out.f, 1, 2);
+	return out;
+#else
+	return (vec2_t){ v1.x / v2.x, v1.y / v2.y };
 #endif
 }
 static __inline__ float vec2_dot(const vec2_t v1, const vec2_t v2) {
@@ -169,6 +182,15 @@ static __inline__ vec3_t vec3_mul(const vec3_t v1, const vec3_t v2) {
 	return out;
 #else
 	return (vec3_t){ v1.x * v2.x, v1.y * v2.y, v1.z * v2.z };
+#endif
+}
+static __inline__ vec3_t vec3_div(const vec3_t v1, const vec3_t v2) {
+#ifdef USE_ACCELERATE_FRAMEWORK
+	vec3_t out;
+	vDSP_vdiv((float *)v2.f, 1, (float *)v1.f, 1, out.f, 1, 3);
+	return out;
+#else
+	return (vec3_t){ v1.x / v2.x, v1.y / v2.y, v1.z / v2.z };
 #endif
 }
 static __inline__ float vec3_dot(const vec3_t v1, const vec3_t v2) {
@@ -264,6 +286,15 @@ static __inline__ vec4_t vec4_mul(const vec4_t v1, const vec4_t v2) {
 	return out;
 #else
 	return (vec4_t){ v1.x * v2.x, v1.y * v2.y, v1.z * v2.z, v1.w * v2.w };
+#endif
+}
+static __inline__ vec4_t vec4_div(const vec4_t v1, const vec4_t v2) {
+#ifdef USE_ACCELERATE_FRAMEWORK
+	vec4_t out;
+	vDSP_vdiv((float *)v2.f, 1, (float *)v1.f, 1, out.f, 1, 4);
+	return out;
+#else
+	return (vec4_t){ v1.x / v2.x, v1.y / v2.y, v1.z / v2.z, v1.w / v2.w };
 #endif
 }
 static __inline__ float vec4_dot(const vec4_t v1, const vec4_t v2) {

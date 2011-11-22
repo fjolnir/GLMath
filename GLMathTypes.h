@@ -11,6 +11,8 @@ union _vec2_t {
 	float f[2];
 	struct { float x; float y; };
 	struct { float w; float h; };
+	struct { float u; float v; };
+
 };
 typedef union _vec2_t vec2_t;
 

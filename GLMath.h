@@ -41,6 +41,7 @@
 #include "GLMathVector.h"
 #include "GLMathMatrix.h"
 #include "GLMathQuaternion.h"
+#include "GLMathRectangle.h"
 #include "GLMathMatrixStack.h"
 #include "GLMathUtilities.h"
 

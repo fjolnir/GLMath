@@ -59,6 +59,14 @@ union _quat_t {
 };
 typedef union _quat_t quat_t;
 
+// Rectangles (Origin: bottom left)
+union _rect_t {
+	float f[4];
+	struct { vec2_t o; vec2_t s; };
+	struct { vec2_t origin; vec2_t size; };
+};
+typedef union _rect_t rect_t;
+
 // Matrix stack
 typedef struct {
 	mat4_t *items;

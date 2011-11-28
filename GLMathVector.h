@@ -14,6 +14,7 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Vector math functions
+static __inline__ vec2_t vec2_create(float x, float y);
 static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2);
 static __inline__ vec2_t vec2_sub(const vec2_t v1, const vec2_t v2);
 static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2);
@@ -27,6 +28,7 @@ static __inline__ vec2_t vec2_scalarMul(const vec2_t v, float s);
 static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, float s);
 static __inline__ vec2_t vec2_negate(const vec2_t v);
 
+static __inline__ vec3_t vec3_create(float x, float y, float z);
 static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_sub(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_mul(const vec3_t v1, const vec3_t v2);
@@ -41,6 +43,7 @@ static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, float s);
 static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_negate(const vec3_t v);
 
+static __inline__ vec4_t vec4_create(float x, float y, float z, float w);
 static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2);
 static __inline__ vec4_t vec4_sub(const vec4_t v1, const vec4_t v2);
 static __inline__ vec4_t vec4_mul(const vec4_t v1, const vec4_t v2);
@@ -57,6 +60,10 @@ static __inline__ vec4_t vec4_negate(const vec4_t v);
 #pragma mark Implementations
 
 #pragma mark - ~ Vectors(2)
+static __inline__ vec2_t vec2_create(float x, float y) {
+	vec2_t out = { x, y };
+	return out;
+}
 static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
@@ -157,6 +164,10 @@ static __inline__ vec2_t vec2_negate(const vec2_t v) {
 }
 
 #pragma mark - ~ Vectors(3)
+static __inline__ vec3_t vec3_create(float x, float y, float z) {
+	vec3_t out = { x, y, z };
+	return out;
+}
 static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
@@ -261,6 +272,10 @@ static __inline__ vec3_t vec3_negate(const vec3_t v) {
 }
 
 #pragma mark - ~ Vectors(4)
+static __inline__ vec4_t vec4_create(float x, float y, float z, float w) {
+	vec4_t out = { x, y, z, w };
+	return out;
+}
 static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;

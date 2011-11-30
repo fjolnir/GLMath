@@ -27,6 +27,7 @@ static __inline__ float vec2_dist(const vec2_t v1, const vec2_t v2);
 static __inline__ vec2_t vec2_scalarMul(const vec2_t v, float s);
 static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, float s);
 static __inline__ vec2_t vec2_negate(const vec2_t v);
+static __inline__ vec2_t vec2_floor(vec2_t v);
 
 static __inline__ vec3_t vec3_create(float x, float y, float z);
 static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2);
@@ -42,6 +43,7 @@ static __inline__ vec3_t vec3_scalarMul(const vec3_t v, float s);
 static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, float s);
 static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2);
 static __inline__ vec3_t vec3_negate(const vec3_t v);
+static __inline__ vec3_t vec3_floor(vec3_t v);
 
 static __inline__ vec4_t vec4_create(float x, float y, float z, float w);
 static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2);
@@ -56,6 +58,7 @@ static __inline__ vec4_t vec4_scalarMul(const vec4_t v, float s);
 static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, float s);
 static __inline__ vec4_t vec4_cross(const vec4_t v1, const vec4_t v2);
 static __inline__ vec4_t vec4_negate(const vec4_t v);
+static __inline__ vec4_t vec4_floor(vec4_t v);
 
 #pragma mark Implementations
 
@@ -92,7 +95,6 @@ static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2) {
 #endif
 }
 static __inline__ vec2_t vec2_div(const vec2_t v1, const vec2_t v2) {
-	
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
 	vDSP_vdiv((float *)v2.f, 1, (float *)v1.f, 1, out.f, 1, 2);
@@ -161,6 +163,11 @@ static __inline__ vec2_t vec2_negate(const vec2_t v) {
 #else
 	return vec2_scalarMul(v, -1.0f);
 #endif
+}
+static __inline__ vec2_t vec2_floor(vec2_t v)
+{
+	vec2_t out = { floorf(v.x), floorf(v.y) };
+	return out;
 }
 
 #pragma mark - ~ Vectors(3)
@@ -270,6 +277,11 @@ static __inline__ vec3_t vec3_negate(const vec3_t v) {
 	return vec3_scalarMul(v, -1.0f);
 #endif
 }
+static __inline__ vec3_t vec3_floor(vec3_t v)
+{
+	vec3_t out = { floorf(v.x), floorf(v.y), floorf(v.z) };
+	return out;
+}
 
 #pragma mark - ~ Vectors(4)
 static __inline__ vec4_t vec4_create(float x, float y, float z, float w) {
@@ -377,6 +389,11 @@ static __inline__ vec4_t vec4_negate(const vec4_t v) {
 #else
 	return vec4_scalarMul(v, -1.0f);
 #endif
+}
+static __inline__ vec4_t vec4_floor(vec4_t v)
+{
+	vec4_t out = { floorf(v.x), floorf(v.y), floorf(v.z), floorf(v.w) };
+	return out;
 }
 
 #ifdef __cplusplus

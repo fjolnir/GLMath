@@ -33,6 +33,8 @@ static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2);
 static __inline__ float rect_area(const rect_t rect);
 // True if rect intersects with the line segment between a&b
 static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b);
+// Translates rect by the given vector
+static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector);
 
 #pragma mark Implementations
 static __inline__ rect_t rect_create(float left, float bottom, float right, float top)
@@ -91,6 +93,11 @@ static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a,
 		return fabsf(vec2_dot(axis, offset)) < fabsf(axis.x*rect.size.w) + fabsf(axis.y*rect.size.h);
 	}
 	return false;
+}
+static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector)
+{
+	rect_t out = { aRect.o.x + aTranslationVector.x, aRect.o.y + aTranslationVector.y, aRect.s.w, aRect.s.h };
+	return out;
 }
 #ifdef __cplusplus
 }

@@ -79,7 +79,7 @@ static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2) {
 static __inline__ vec2_t vec2_sub(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	vDSP_vsub(v1.f, 1, v2.f, 1, out.f, 1, 2);
+	vDSP_vsub(v2.f, 1, v1.f, 1, out.f, 1, 2);
 	return out;
 #else
 	return (vec2_t){ v1.x - v2.x, v1.y - v2.y };
@@ -300,7 +300,7 @@ static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_sub(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	vDSP_vsub(v1.f, 1, v2.f, 1, out.f, 1, 4);
+	vDSP_vsub(v2.f, 1, v1.f, 1, out.f, 1, 4);
 	return out;
 #else
 	return (vec4_t){ v1.x - v2.x, v1.y - v2.y, v1.z - v2.z, v1.w - v2.w };

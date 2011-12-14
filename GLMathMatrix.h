@@ -7,12 +7,12 @@ extern "C" {
 
 #include "GLMathTypes.h"
 #ifdef USE_ACCELERATE_FRAMEWORK
-#import <Accelerate/Accelerate.h>
+#include <Accelerate/Accelerate.h>
 #endif
-#import <string.h>
-#import <stdio.h>
-#import <stdlib.h>
-#import <stdbool.h>
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 
 #pragma mark - Prototypes
 

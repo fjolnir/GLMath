@@ -49,22 +49,6 @@ static mat4_t mat4_perspective(float fovy, float aspect, float zNear, float zFar
 	return out;
 }
 
-// Generates an orthogonal viewing matrix
-static mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far)
-{
-	float ral = right + left;
-	float rsl = right - left;
-	float tsb = top - bottom;
-	float tab = top + bottom;
-	float fan = far + near;
-	float fsn = far - near;
-
-	return (mat4_t) { 2.0f / rsl, 0.0f,       0.0f,        0.0f,
-                     0.0f,        2.0f / tsb, 0.0f,        0.0f,
-                     0.0f,        0.0f,       -2.0f / fsn, 0.0f,
-                     -ral / rsl,  -tab / tsb, -fan / fsn,  1.0f };
-}
-
 // Generates lookat viewing matrix
 static __inline__ mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
                                      float centerX, float centerY, float centerZ,
@@ -84,6 +68,22 @@ static __inline__ mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
 	                 vec3_dot(vec3_negate(v), ev),
 	                 vec3_dot(vec3_negate(n), ev),
 	                 1.0f };
+}
+
+// Generates an orthogonal viewing matrix
+static mat4_t mat4_ortho(float left, float right, float bottom, float top, float nearZ, float farZ)
+{
+	float ral = right + left;
+	float rsl = right - left;
+	float tsb = top - bottom;
+	float tab = top + bottom;
+	float fan = farZ + nearZ;
+	float fsn = farZ - nearZ;
+
+	return (mat4_t) { 2.0f / rsl, 0.0f,       0.0f,        0.0f,
+                     0.0f,        2.0f / tsb, 0.0f,        0.0f,
+                     0.0f,        0.0f,       -2.0f / fsn, 0.0f,
+                     -ral / rsl,  -tab / tsb, -fan / fsn,  1.0f };
 }
 
 

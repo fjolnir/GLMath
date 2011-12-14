@@ -2,7 +2,6 @@
 #define GL_MATH_QUAT_H
 
 #include "GLMathTypes.h"
-#import <Accelerate/Accelerate.h>
 #include <assert.h>
 
 #define GLM_EPSILON (1.0E-8)

@@ -29,6 +29,8 @@ static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2);
 static __inline__ bool rect_contains(const rect_t r1, const rect_t r2);
 // Returns a rectangle containing both rectangles
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2);
+// Scales the rectangle, maintaining the center point
+static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale);
 // Returns the area of rect
 static __inline__ float rect_area(const rect_t rect);
 // True if rect intersects with the line segment between a&b
@@ -75,10 +77,21 @@ static __inline__ bool rect_contains(const rect_t r1, const rect_t r2)
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)
 {
 	return rect_create(
-			GLM_MIN(rect_minX(r1),          rect_minX(r2)),
-			GLM_MIN(rect_minY(r1),          rect_minY(r2)),
-			GLM_MAX(rect_maxX(r1) - r1.o.x, rect_maxX(r2) - r2.o.x),
-			GLM_MAX(rect_maxY(r1) - r1.o.y, rect_maxY(r2) - r2.o.y));
+			GLM_MIN(rect_minX(r1), rect_minX(r2)),
+			GLM_MIN(rect_minY(r1), rect_minY(r2)),
+			GLM_MAX(rect_maxX(r1), rect_maxX(r2)),
+			GLM_MAX(rect_maxY(r1), rect_maxY(r2)));
+}
+static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale)
+{
+	vec2_t newSize = vec2_mul(rect.size, scale);
+	vec2_t originOffset = vec2_scalarDiv(vec2_sub(rect.size, newSize), 2.0f);
+	vec2_t newOrigin = vec2_add(rect.origin, originOffset);
+
+	rect_t out;
+	out.o = newOrigin;
+	out.s = newSize;
+	return out;
 }
 static __inline__ float rect_area(const rect_t rect)
 {

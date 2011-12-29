@@ -116,7 +116,7 @@ static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaxi
 	max.y = GLM_MAX(start.y, end.y);
 	max.z = GLM_MAX(start.z, end.z);
 	vec3_t temp;
-	for(int axis = 0; axis < 2; ++axis) {
+	for(int axis = 0; axis < 3; ++axis) {
 		vec2_t roots = bezier_firstDerivativeRoots(curve, axis);
 		for(int i = 0; i < 2; ++i) {
 			if(roots.f[i] > 0.0f && roots.f[i] < 1.0f) {

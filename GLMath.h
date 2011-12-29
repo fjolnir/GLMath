@@ -42,6 +42,7 @@
 #include "GLMathMatrix.h"
 #include "GLMathQuaternion.h"
 #include "GLMathRectangle.h"
+#include "GLMathBezierCurve.h"
 #include "GLMathMatrixStack.h"
 #include "GLMathUtilities.h"
 

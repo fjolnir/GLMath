@@ -67,12 +67,21 @@ union _rect_t {
 };
 typedef union _rect_t rect_t;
 
-// Matrix stack
-typedef struct {
+// Matrix stacks
+struct _matrix_stack_t {
 	mat4_t *items;
 	unsigned int capacity;
 	unsigned int count;
-} matrix_stack_t;
+};
+typedef struct _matrix_stack_t matrix_stack_t;
+
+// Bezier curves
+union _bezier_t {
+	float f[12];
+	vec3_t controlPoints[4];
+	vec3_t cp[4];
+};
+typedef union _bezier_t bezier_t;
 
 #pragma mark - Constants
 

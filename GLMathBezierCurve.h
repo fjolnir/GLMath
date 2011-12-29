@@ -65,11 +65,13 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
 {
 	vec3_t out;
 	
+	// Create the derivative curve
 	vec3_t derivControlPoints[3];
 	derivControlPoints[0] = vec3_sub(curve.controlPoints[1], curve.controlPoints[0]);
 	derivControlPoints[1] = vec3_sub(curve.controlPoints[2], curve.controlPoints[1]);
 	derivControlPoints[2] = vec3_sub(curve.controlPoints[3], curve.controlPoints[2]);
 	
+	// Evaluate the point on the derivative
 	float mt = 1.0f - t;
 	float coef0 = powf(mt, 2.0f);
 	float coef1 = 2.0f * mt * t;

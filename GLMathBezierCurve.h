@@ -28,7 +28,7 @@ extern "C" {
 
 static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
 static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
-static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
+static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis);
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 

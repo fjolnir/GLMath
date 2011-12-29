@@ -87,6 +87,7 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis)
 {
 	vec2_t out = { -1.0f , -1.0f };
+	
 	float a = curve.controlPoints[0].f[axis];
 	float b = curve.controlPoints[1].f[axis];
 	float c = curve.controlPoints[2].f[axis];
@@ -104,7 +105,8 @@ static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis)
 
 // Returns the extremes for a curve (minX, minY, minZ) & (maxX, maxY, maxZ)
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums)
-{	vec3_t start = bezier_getPoint(curve, 0.0f);
+{
+	vec3_t start = bezier_getPoint(curve, 0.0f);
 	vec3_t end   = bezier_getPoint(curve, 1.0f);
 	vec3_t min, max;
 	min.x = GLM_MIN(start.x, end.x);

@@ -1,0 +1,247 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */ = {isa = PBXBuildFile; fileRef = C70EA30F14AC97BD009D29C6 /* GLMath.c */; };
+		C70EA31B14AC97BD009D29C6 /* GLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31014AC97BD009D29C6 /* GLMath.h */; };
+		C70EA31C14AC97BD009D29C6 /* GLMathBezierCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */; };
+		C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */; };
+		C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */; };
+		C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */; };
+		C70EA32014AC97BD009D29C6 /* GLMathRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */; };
+		C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */; };
+		C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; };
+		C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; };
+		C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMath.c; sourceTree = "<group>"; };
+		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
+		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathBezierCurve.h; sourceTree = "<group>"; };
+		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrix.h; sourceTree = "<group>"; };
+		C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrixStack.h; sourceTree = "<group>"; };
+		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathQuaternion.h; sourceTree = "<group>"; };
+		C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathRectangle.h; sourceTree = "<group>"; };
+		C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTransforms.h; sourceTree = "<group>"; };
+		C70EA31714AC97BD009D29C6 /* GLMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTypes.h; sourceTree = "<group>"; };
+		C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathUtilities.h; sourceTree = "<group>"; };
+		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathVector.h; sourceTree = "<group>"; };
+		C70EA32514AC97D5009D29C6 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C70EA30014AC9780009D29C6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C70EA2F814AC9780009D29C6 = {
+			isa = PBXGroup;
+			children = (
+				C70EA30D14AC97B7009D29C6 /* Source */,
+				C70EA30414AC9780009D29C6 /* Products */,
+				C70EA32514AC97D5009D29C6 /* Readme.md */,
+			);
+			sourceTree = "<group>";
+		};
+		C70EA30414AC9780009D29C6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C70EA30314AC9780009D29C6 /* libglmath.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C70EA30D14AC97B7009D29C6 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C70EA31014AC97BD009D29C6 /* GLMath.h */,
+				C70EA30F14AC97BD009D29C6 /* GLMath.c */,
+				C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */,
+				C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */,
+				C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */,
+				C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */,
+				C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */,
+				C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */,
+				C70EA31714AC97BD009D29C6 /* GLMathTypes.h */,
+				C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */,
+				C70EA31914AC97BD009D29C6 /* GLMathVector.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		C70EA30114AC9780009D29C6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C70EA31B14AC97BD009D29C6 /* GLMath.h in Headers */,
+				C70EA31C14AC97BD009D29C6 /* GLMathBezierCurve.h in Headers */,
+				C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */,
+				C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */,
+				C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */,
+				C70EA32014AC97BD009D29C6 /* GLMathRectangle.h in Headers */,
+				C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */,
+				C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */,
+				C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */,
+				C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		C70EA30214AC9780009D29C6 /* glmath */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70EA30714AC9780009D29C6 /* Build configuration list for PBXNativeTarget "glmath" */;
+			buildPhases = (
+				C70EA2FF14AC9780009D29C6 /* Sources */,
+				C70EA30014AC9780009D29C6 /* Frameworks */,
+				C70EA30114AC9780009D29C6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = glmath;
+			productName = glmath;
+			productReference = C70EA30314AC9780009D29C6 /* libglmath.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C70EA2FA14AC9780009D29C6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C70EA2FD14AC9780009D29C6 /* Build configuration list for PBXProject "GLMath" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C70EA2F814AC9780009D29C6;
+			productRefGroup = C70EA30414AC9780009D29C6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C70EA30214AC9780009D29C6 /* glmath */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C70EA2FF14AC9780009D29C6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		C70EA30514AC9780009D29C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C70EA30614AC9780009D29C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C70EA30814AC9780009D29C6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C70EA30914AC9780009D29C6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C70EA2FD14AC9780009D29C6 /* Build configuration list for PBXProject "GLMath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70EA30514AC9780009D29C6 /* Debug */,
+				C70EA30614AC9780009D29C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70EA30714AC9780009D29C6 /* Build configuration list for PBXNativeTarget "glmath" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C70EA30814AC9780009D29C6 /* Debug */,
+				C70EA30914AC9780009D29C6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C70EA2FA14AC9780009D29C6 /* Project object */;
+}

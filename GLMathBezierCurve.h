@@ -27,7 +27,7 @@ extern "C" {
 #pragma mark - Prototypes
 
 static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
-static vec3_t bezier_getPoint(bezier_t curve, float t);
+static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
 static vec2_t bezier_calculateFirstDerivativeRoots(bezier_t curve, int axis);
 static void bezier_getExtremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 
@@ -39,20 +39,24 @@ static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c
 	return out;
 }
 
-static vec3_t bezier_getPoint(bezier_t curve, float t)
+static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t)
 {
 	vec3_t out;
+	
 	// Evaluate the bezier curve equation
 	float mt = 1.0f-t;
 	float coef0 = powf(mt, 3.0f);
 	float coef1 = 3.0f * powf(mt, 2.0f) * t;
 	float coef2 = 3.0f * mt * powf(t, 2.0f);
 	float coef3 = powf(t, 3.0f);
+
 	vec3_t p0 = vec3_scalarMul(curve.controlPoints[0], coef0);
 	vec3_t p1 = vec3_scalarMul(curve.controlPoints[1], coef1);
 	vec3_t p2 = vec3_scalarMul(curve.controlPoints[2], coef2);
 	vec3_t p3 = vec3_scalarMul(curve.controlPoints[3], coef3);
+
 	out = vec3_add(p0, vec3_add(p1, vec3_add(p2, p3)));
+
 	return out;
 }
 

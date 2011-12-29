@@ -24,6 +24,7 @@ static __inline__ mat3_t mat3_transpose(const mat3_t m);
 static __inline__ float mat3_det(const mat3_t m);
 
 static __inline__ mat4_t mat4_mul(const mat4_t m1, const mat4_t m2);
+static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint);
 static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m);
 static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out);
 static __inline__ mat4_t mat4_transpose(const mat4_t m);
@@ -158,6 +159,11 @@ static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 	m.m33 = m1.m03 * m2.m30 + m1.m13 * m2.m31 + m1.m23 * m2.m32 + m1.m33 * m2.m33;
 	return m;
 #endif
+}
+static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint) {
+	vec4_t temp = { v.x, v.y, v.z, isPoint ? 1.0f : 0.0f };
+	vec4_t result = vec4_mul_mat4(temp, m);
+	return vec3_create(result.x, result.y, result.z);
 }
 static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK

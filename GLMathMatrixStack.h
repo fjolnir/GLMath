@@ -60,7 +60,6 @@ static void matrix_stack_destroy(matrix_stack_t *stack) {
 	free(stack);
 }
 
-
 // Pushes the passed item on to the top of the stack
 static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item) {
 	if((stack->count + 1) == stack->capacity) {
@@ -102,6 +101,7 @@ static __inline__ mat3_t matrix_stack_get_mat3(matrix_stack_t *stack) {
 	                 m->m10, m->m11, m->m12,
 					 m->m20, m->m21, m->m22 };
 }
+
 
 #pragma mark - Transformation helpers
 

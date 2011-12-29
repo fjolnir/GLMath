@@ -50,6 +50,7 @@ static quat_t quat_makef(float x, float y, float z, float angle) {
 	vec3_t vec = { x, y, z };
 	return quat_makev(vec, angle);
 }
+
 static quat_t quat_makev(vec3_t axis, float angle) {
 	quat_t out;
 	vec3_t normalized;
@@ -63,6 +64,7 @@ static quat_t quat_makev(vec3_t axis, float angle) {
 
 	return out;
 }
+
 // Generates the standard matrix representation of a quaternion
 static mat4_t quat_to_mat4(const quat_t q) {
 	mat4_t out;
@@ -84,6 +86,7 @@ static mat4_t quat_to_mat4(const quat_t q) {
 	out.m30 = out.m31 = out.m32 = 0.0f;
 	return out;
 }
+
 // Converts the standard matrix representation of a quaternion back to it's source
 static quat_t mat4_to_quat(const mat4_t m) {
 	// To convert back to a quat we just need to copy the first 3 items
@@ -160,9 +163,11 @@ static quat_t ortho_to_quat(const mat4_t m) {
 static __inline__ float quat_magSquared(const quat_t q) {
 	return vec4_magSquared(*(const vec4_t *)&q);
 }
+
 static __inline__ float quat_mag(const quat_t q) {
 	return vec4_mag(*(const vec4_t *)&q);
 }
+
 static quat_t quat_computeW(quat_t q) {
 	quat_t out;
 	memcpy(out.f, q.f, sizeof(quat_t));
@@ -176,6 +181,7 @@ static quat_t quat_computeW(quat_t q) {
 
 	return out;
 }
+
 static __inline__ quat_t quat_normalize(quat_t q) {
 	vec4_t out;
 	memcpy(out.f, q.f, sizeof(quat_t));
@@ -188,6 +194,7 @@ static __inline__ quat_t quat_normalize(quat_t q) {
 	out = vec4_scalarMul(out, normalizedMag);
 	return *(quat_t *)&out;
 }
+
 static __inline__ quat_t quat_multQuat(const quat_t q1, const quat_t q2) {
 	mat4_t q1m, q2m, temp;
 	q1m = quat_to_mat4(q1);
@@ -196,14 +203,17 @@ static __inline__ quat_t quat_multQuat(const quat_t q1, const quat_t q2) {
 
 	return mat4_to_quat(temp);
 }
+
 static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) {
 	mat4_t rotationMatrix;
 	rotationMatrix = quat_to_ortho(q);
 	return vec4_mul_mat4(v, rotationMatrix);
 }
+
 static __inline__ float quat_dotProduct(const quat_t q1, const quat_t q2) {
 	return vec4_dot(*(const vec4_t*)&q1, *(const vec4_t*)&q2);
 }
+
 static __inline__ quat_t quat_inverse(const quat_t q) {
 	// Multiply the vector by -1 and leave the angle alone
 	vec4_t out;

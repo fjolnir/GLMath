@@ -61,6 +61,7 @@ static __inline__ mat4_t mat4_make_scale(float x, float y, float z) {
 
 	return out;
 }
+
 static __inline__ mat4_t mat4_scale(mat4_t mat, float x, float y, float z) {
 	return mat4_mul(mat, mat4_make_scale(x, y, z));
 }

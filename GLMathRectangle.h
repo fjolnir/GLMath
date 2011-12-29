@@ -58,22 +58,27 @@ static __inline__ rect_t rect_create(float left, float bottom, float right, floa
 	rect_t out = { left, bottom, right-left, top-bottom };
 	return out;
 }
+
 static __inline__ float rect_maxX(const rect_t rect)
 {
 	return rect.origin.x + rect.size.w;
 }
+
 static __inline__ float rect_minX(const rect_t rect)
 {
 	return rect.origin.x;
 }
+
 static __inline__ float rect_maxY(const rect_t rect)
 {
 	return rect.origin.y + rect.size.h;
 }
+
 static __inline__ float rect_minY(const rect_t rect)
 {
 	return rect.origin.y;
 }
+
 static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2)
 {
 	return (rect_minX(r1) <= rect_maxX(r2)
@@ -81,6 +86,7 @@ static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2)
 	        && rect_minY(r1) <= rect_maxY(r2)
 	        && rect_minY(r2) <= rect_maxY(r1));
 }
+
 static __inline__ bool rect_contains(const rect_t r1, const rect_t r2)
 {
 	return (rect_minX(r1) <= rect_minX(r2)
@@ -88,6 +94,7 @@ static __inline__ bool rect_contains(const rect_t r1, const rect_t r2)
 	        && rect_minY(r1) <= rect_minY(r2)
 	        && rect_maxY(r2) >= rect_maxY(r1));
 }
+
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)
 {
 	return rect_create(
@@ -96,6 +103,7 @@ static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)
 			GLM_MAX(rect_maxX(r1), rect_maxX(r2)),
 			GLM_MAX(rect_maxY(r1), rect_maxY(r2)));
 }
+
 static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale)
 {
 	vec2_t newSize = vec2_mul(rect.size, scale);
@@ -107,10 +115,12 @@ static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale)
 	out.s = newSize;
 	return out;
 }
+
 static __inline__ float rect_area(const rect_t rect)
 {
 	return rect.size.w * rect.size.h;
 }
+
 static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) {
 	rect_t lineSegRect = rect_create(GLM_MIN(a.x, b.x), GLM_MIN(a.y, b.y), GLM_MAX(a.x, b.x), GLM_MAX(a.y, b.y));
 	if(rect_intersects(rect, lineSegRect)) {
@@ -121,11 +131,13 @@ static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a,
 	}
 	return false;
 }
+
 static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector)
 {
 	rect_t out = { aRect.o.x + aTranslationVector.x, aRect.o.y + aTranslationVector.y, aRect.s.w, aRect.s.h };
 	return out;
 }
+
 #ifdef __cplusplus
 }
 #endif

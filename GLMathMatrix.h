@@ -72,6 +72,7 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 	return out;
 #endif
 }
+
 static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
@@ -84,6 +85,7 @@ static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 		m.m02 * v.x + m.m12 * v.y + m.m22 * v.z };
 #endif
 }
+
 static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	if(success_out != NULL) *success_out = true;
 #ifdef USE_ACCELERATE_FRAMEWORK
@@ -118,6 +120,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	return out;
 #endif
 }
+
 static __inline__ mat3_t mat3_transpose(const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
@@ -143,6 +146,7 @@ static __inline__ float mat3_det(const mat3_t m) {
 	       + m.m02 * ( m.m10*m.m21 - m.m20*m.m11 );
 }
 
+	
 #pragma mark - 4x4
 
 static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
@@ -174,11 +178,13 @@ static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 	return m;
 #endif
 }
+
 static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint) {
 	vec4_t temp = { v.x, v.y, v.z, isPoint ? 1.0f : 0.0f };
 	vec4_t result = vec4_mul_mat4(temp, m);
 	return vec3_create(result.x, result.y, result.z);
 }
+
 static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
@@ -191,6 +197,7 @@ static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 	                 m.m03*v.x + m.m13*v.y + m.m23*v.z + m.m33*v.w };
 #endif
 }
+
 static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 	mat4_t out;
 	if(success_out != NULL) *success_out = true;
@@ -223,6 +230,7 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 #endif
 	return out;
 }
+
 static __inline__ mat4_t mat4_transpose(const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;

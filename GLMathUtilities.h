@@ -18,6 +18,7 @@
 #include "GLMathTypes.h"
 #include <stdio.h>
 #include <stdbool.h>
+#include <math.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,6 +27,9 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Utilities
+static __inline__ float degToRad(float degrees);
+static __inline__ float radToDeg(float radians);
+
 mat4_t mat4_perspective(float fov_radians, float aspect, float zNear, float zFar);
 // Generates an orthogonal viewing matrix
 mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far);
@@ -33,6 +37,7 @@ mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, 
 mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
                    float centerX, float centerY, float centerZ,
                    float upX, float upY, float upZ);
+
 void printVec2(vec2_t vec);
 void printVec3(vec3_t vec);
 void printVec4(vec4_t vec);
@@ -49,6 +54,9 @@ static __inline__ bool quat_equals(const quat_t q1, const quat_t q2);
 
 
 #pragma mark Implementations
+
+static __inline__ float degToRad(float degrees) { return degrees * (M_PI / 180.0f); };
+static __inline__ float radToDeg(float radians) { return radians * (180.0f / M_PI); };
 
 static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {

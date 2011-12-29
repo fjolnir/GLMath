@@ -28,8 +28,9 @@ extern "C" {
 
 static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
 static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
-static vec2_t bezier_calculateFirstDerivativeRoots(bezier_t curve, int axis);
-static void bezier_getExtremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
+static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis);
+static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 
 #pragma mark - Implementations
 
@@ -44,7 +45,7 @@ static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t)
 	vec3_t out;
 	
 	// Evaluate the bezier curve equation
-	float mt = 1.0f-t;
+	float mt = 1.0f - t;
 	float coef0 = powf(mt, 3.0f);
 	float coef1 = 3.0f * powf(mt, 2.0f) * t;
 	float coef2 = 3.0f * mt * powf(t, 2.0f);
@@ -60,7 +61,30 @@ static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t)
 	return out;
 }
 
-static vec2_t bezier_calculateFirstDerivativeRoots(bezier_t curve, int axis)
+static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
+{
+	vec3_t out;
+	
+	vec3_t derivControlPoints[3];
+	derivControlPoints[0] = vec3_sub(curve.controlPoints[1], curve.controlPoints[0]);
+	derivControlPoints[1] = vec3_sub(curve.controlPoints[2], curve.controlPoints[1]);
+	derivControlPoints[2] = vec3_sub(curve.controlPoints[3], curve.controlPoints[2]);
+	
+	float mt = 1.0f - t;
+	float coef0 = powf(mt, 2.0f);
+	float coef1 = 2.0f * mt * t;
+	float coef2 = powf(t, 2.0f);
+	
+	vec3_t p0 = vec3_scalarMul(derivControlPoints[0], coef0);
+	vec3_t p1 = vec3_scalarMul(derivControlPoints[1], coef1);
+	vec3_t p2 = vec3_scalarMul(derivControlPoints[2], coef2);
+	
+	out = vec3_add(p0, vec3_add(p1, p2));
+	
+	return out;
+}
+	
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis)
 {
 	vec2_t out = { -1.0f , -1.0f };
 	float a = curve.controlPoints[0].f[axis];
@@ -79,7 +103,7 @@ static vec2_t bezier_calculateFirstDerivativeRoots(bezier_t curve, int axis)
 }
 
 // Returns the extremes for a curve (minX, minY, minZ) & (maxX, maxY, maxZ)
-static void bezier_getExtremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums)
+static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums)
 {	vec3_t start = bezier_getPoint(curve, 0.0f);
 	vec3_t end   = bezier_getPoint(curve, 1.0f);
 	vec3_t min, max;
@@ -91,7 +115,7 @@ static void bezier_getExtremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outM
 	max.z = GLM_MAX(start.z, end.z);
 	vec3_t temp;
 	for(int axis = 0; axis < 2; ++axis) {
-		vec2_t roots = bezier_calculateFirstDerivativeRoots(curve, axis);
+		vec2_t roots = bezier_firstDerivativeRoots(curve, axis);
 		for(int i = 0; i < 2; ++i) {
 			if(roots.f[i] > 0.0f && roots.f[i] < 1.0f) {
 				temp = bezier_getPoint(curve, roots.f[i]);

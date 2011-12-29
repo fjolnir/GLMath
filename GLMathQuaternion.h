@@ -29,13 +29,13 @@ extern "C" {
 // Quaternion math functions
 static quat_t quat_makef(float x, float y, float z, float angle);
 static quat_t quat_makev(vec3_t axis, float angle);
-static mat4_t quat_to_mat4(const quat_t q);
-static quat_t mat4_to_quat(const mat4_t m);
-static mat4_t quat_to_ortho(const quat_t q);
-static quat_t ortho_to_quat(const mat4_t m);
+static __inline__ mat4_t quat_to_mat4(const quat_t q);
+static __inline__ quat_t mat4_to_quat(const mat4_t m);
+static __inline__ mat4_t quat_to_ortho(const quat_t q);
+static __inline__ quat_t ortho_to_quat(const mat4_t m);
 static __inline__ float quat_magSquared(const quat_t q);
 static __inline__ float quat_mag(const quat_t q);
-static quat_t quat_computeW(quat_t q);
+static __inline__ quat_t quat_computeW(quat_t q);
 static __inline__ quat_t quat_normalize(quat_t q);
 static __inline__ quat_t quat_multQuat(const quat_t qA, const quat_t qB);
 static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v);
@@ -66,7 +66,7 @@ static quat_t quat_makev(vec3_t axis, float angle) {
 }
 
 // Generates the standard matrix representation of a quaternion
-static mat4_t quat_to_mat4(const quat_t q) {
+static __inline__ mat4_t quat_to_mat4(const quat_t q) {
 	mat4_t out;
 	// Matrix representation of a quaternion:
 	// q = [a, b, c, w]
@@ -88,7 +88,7 @@ static mat4_t quat_to_mat4(const quat_t q) {
 }
 
 // Converts the standard matrix representation of a quaternion back to it's source
-static quat_t mat4_to_quat(const mat4_t m) {
+static __inline__ quat_t mat4_to_quat(const mat4_t m) {
 	// To convert back to a quat we just need to copy the first 3 items
 	quat_t out = {0.0f};
 	memcpy(out.f, m.f, sizeof(quat_t));
@@ -96,7 +96,7 @@ static quat_t mat4_to_quat(const mat4_t m) {
 }
 
 // Generates the orthogonal matrix representation(rotation matrix) of a quaternion
-static mat4_t quat_to_ortho(const quat_t q) {
+static __inline__ mat4_t quat_to_ortho(const quat_t q) {
 	float xx = q.f[0]*q.f[0];
 	float xy = q.f[0]*q.f[1];
 	float xz = q.f[0]*q.f[2];
@@ -124,7 +124,7 @@ static mat4_t quat_to_ortho(const quat_t q) {
 	return out;
 }
 
-static quat_t ortho_to_quat(const mat4_t m) {
+static __inline__ quat_t ortho_to_quat(const mat4_t m) {
 	quat_t out;
 	float trace = 1 + m.f[0] + m.f[5] + m.f[10];
 	float s;
@@ -168,7 +168,7 @@ static __inline__ float quat_mag(const quat_t q) {
 	return vec4_mag(*(const vec4_t *)&q);
 }
 
-static quat_t quat_computeW(quat_t q) {
+static __inline__ quat_t quat_computeW(quat_t q) {
 	quat_t out;
 	memcpy(out.f, q.f, sizeof(quat_t));
 

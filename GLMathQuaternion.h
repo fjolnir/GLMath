@@ -29,7 +29,7 @@ static __inline__ quat_t quat_inverse(const quat_t q);
 static __inline__ float quat_dotProduct(const quat_t qA, const quat_t qB);
 static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, float t);
 
-#pragma mark Implementations
+#pragma mark - Implementations
 
 // Generates a unit quaternion
 static quat_t quat_makef(float x, float y, float z, float angle) {

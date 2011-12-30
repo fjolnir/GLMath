@@ -25,12 +25,12 @@
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMath.c; sourceTree = "<group>"; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
-		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathBezierCurve.h; sourceTree = "<group>"; };
+		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathBezierCurve.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrix.h; sourceTree = "<group>"; };
 		C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrixStack.h; sourceTree = "<group>"; };
-		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathQuaternion.h; sourceTree = "<group>"; };
+		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathQuaternion.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathRectangle.h; sourceTree = "<group>"; };
-		C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTransforms.h; sourceTree = "<group>"; };
+		C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathTransforms.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31714AC97BD009D29C6 /* GLMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTypes.h; sourceTree = "<group>"; };
 		C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathUtilities.h; sourceTree = "<group>"; };
 		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathVector.h; sourceTree = "<group>"; };
@@ -213,6 +213,13 @@
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-pedantic",
+					"-Wno-missing-braces",
+					"-Wno-gnu",
+					"-Wno-unused-function",
+				);
 			};
 			name = Debug;
 		};
@@ -221,6 +228,13 @@
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-pedantic",
+					"-Wno-missing-braces",
+					"-Wno-gnu",
+					"-Wno-unused-function",
+				);
 			};
 			name = Release;
 		};

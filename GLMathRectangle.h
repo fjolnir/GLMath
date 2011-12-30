@@ -40,7 +40,9 @@ static __inline__ float rect_minY(const rect_t rect);
 // True if r1&2 intersect
 static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2);
 // True if r1 contains r2
-static __inline__ bool rect_contains(const rect_t r1, const rect_t r2);
+static __inline__ bool rect_containsRect(const rect_t r1, const rect_t r2);
+// True if rect contains point
+static __inline__ bool rect_containsPoint(const rect_t rect, const vec2_t point);
 // Returns a rectangle containing both rectangles
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2);
 // Scales the rectangle, maintaining the center point
@@ -87,12 +89,20 @@ static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2)
 	        && rect_minY(r2) <= rect_maxY(r1));
 }
 
-static __inline__ bool rect_contains(const rect_t r1, const rect_t r2)
+static __inline__ bool rect_containsRect(const rect_t r1, const rect_t r2)
 {
 	return (rect_minX(r1) <= rect_minX(r2)
-	        && rect_maxX(r2) >= rect_maxX(r1)
+	        && rect_maxX(r1) >= rect_maxX(r2)
 	        && rect_minY(r1) <= rect_minY(r2)
-	        && rect_maxY(r2) >= rect_maxY(r1));
+	        && rect_maxY(r1) >= rect_maxY(r2));
+}
+
+static __inline__ bool rect_containsPoint(const rect_t rect, const vec2_t point)
+{
+	return (rect_minX(rect) <= point.x
+			&& rect_maxX(rect) >= point.x
+			&& rect_minY(rect) <= point.y
+			&& rect_maxY(rect) >= point.y);
 }
 
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)

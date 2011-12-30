@@ -32,7 +32,8 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ rect_t rect_create(float left, float bottom, float right, float top);
+static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size);
+static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top);
 static __inline__ float rect_maxX(const rect_t rect);
 static __inline__ float rect_minX(const rect_t rect);
 static __inline__ float rect_maxY(const rect_t rect);
@@ -55,7 +56,14 @@ static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a,
 static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector);
 
 #pragma mark Implementations
-static __inline__ rect_t rect_create(float left, float bottom, float right, float top)
+	
+static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size)
+{
+	rect_t out = { origin.x, origin.y, size.w, size.h };
+	return out;
+}
+
+static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top)
 {
 	rect_t out = { left, bottom, right-left, top-bottom };
 	return out;
@@ -107,7 +115,7 @@ static __inline__ bool rect_containsPoint(const rect_t rect, const vec2_t point)
 
 static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)
 {
-	return rect_create(
+	return rect_createWithCorners(
 			GLM_MIN(rect_minX(r1), rect_minX(r2)),
 			GLM_MIN(rect_minY(r1), rect_minY(r2)),
 			GLM_MAX(rect_maxX(r1), rect_maxX(r2)),
@@ -132,7 +140,7 @@ static __inline__ float rect_area(const rect_t rect)
 }
 
 static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) {
-	rect_t lineSegRect = rect_create(GLM_MIN(a.x, b.x), GLM_MIN(a.y, b.y), GLM_MAX(a.x, b.x), GLM_MAX(a.y, b.y));
+	rect_t lineSegRect = rect_createWithCorners(GLM_MIN(a.x, b.x), GLM_MIN(a.y, b.y), GLM_MAX(a.x, b.x), GLM_MAX(a.y, b.y));
 	if(rect_intersects(rect, lineSegRect)) {
 		vec2_t axis = vec2_create(b.y - a.y, b.x - a.x);
 		vec2_t offset = vec2_add(a, vec2_add(b, rect.size));

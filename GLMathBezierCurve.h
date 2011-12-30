@@ -34,6 +34,8 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset);
+static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength);	
+static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points, float *lengths, float *deltas, float totalLength);
 
 #pragma mark - Implementations
 
@@ -156,6 +158,47 @@ static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3
 	vec3_t normal = { -tangent.y, tangent.x, tangent.z };
 	
 	return vec3_add(bezier_getPoint(curve, t), vec3_mul(vec3_normalize(normal), offset));
+}
+
+// Computes 'count' many points along with their deltas & the distances between them with an even t interval
+static void bezier_getLineSegments(bezier_t curve, int count,
+								   vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength)
+{	
+	float t = 0.0f;
+	float interval = 1.0f/(float)(count-1);
+	for(int i = 0; i < count; ++i) {
+		outPoints[i] = bezier_getPoint(curve, t);
+		outDeltas[i] = t;
+		if(i > 0) {
+			outLengths[i-1] = vec3_dist(outPoints[i], outPoints[i-1]);
+			*outTotalLength += outLengths[i-1];
+		}
+		t += interval;
+	}
+	outLengths[count-1] = 0.0f;
+}
+
+// Computes a point corresponding to the delta 't' using a list of line segments by interpolating the points
+// in the list. This is useful for evaluating a curve at a constant rate when animating (Usually an even delta interval
+// on a curve does not produce an even distance)
+static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points,
+											   float *lengths, float *deltas, float totalLength)
+{
+	float desiredDistance = t * totalLength;
+	assert(desiredDistance >= 0.0f && desiredDistance <= totalLength);
+	float distanceTravelled = 0.0f;
+	for(int i = 0; i < count - 1; ++i) {
+		float nextDistanceTravelled = distanceTravelled + lengths[i];
+		if(desiredDistance < nextDistanceTravelled) {
+			float interpolation = (desiredDistance - distanceTravelled) / lengths[i];
+			vec3_t p1 = points[i];
+			vec3_t p2 = points[i+1];
+			vec3_t movementVector = vec3_scalarMul(vec3_sub(p2, p1), interpolation);
+			return vec3_add(p1, movementVector);
+		}
+		distanceTravelled = nextDistanceTravelled;
+	}
+	return points[count-1];
 }
 
 #ifdef __cplusplus

@@ -24,12 +24,14 @@
 extern "C" {
 #endif
 
+
 #pragma mark - Prototypes
 
 static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
 static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
+static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAxis_t axis);
 static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
-static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis);
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 
 #pragma mark - Implementations
@@ -61,6 +63,21 @@ static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t)
 	return out;
 }
 
+// Calculates only a single component(for the given axis) of a point on the curve
+static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAxis_t axis)
+{
+	// Evaluate the bezier curve equation
+	float mt = 1.0f - t;
+	
+	float p0 = curve.controlPoints[0].f[axis] * powf(mt, 3.0f);
+	float p1 = curve.controlPoints[1].f[axis] * (3.0f * powf(mt, 2.0f) * t);
+	float p2 = curve.controlPoints[2].f[axis] * (3.0f * mt * powf(t, 2.0f));
+	float p3 = curve.controlPoints[3].f[axis] * powf(t, 3.0f);
+	
+	return p0 + p1 + p2 + p3;
+}
+
+
 static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
 {
 	vec3_t out;
@@ -86,7 +103,7 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
 	return out;
 }
 	
-static vec2_t bezier_firstDerivativeRoots(bezier_t curve, int axis)
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis)
 {
 	vec2_t out = { -1.0f , -1.0f };
 	

@@ -97,6 +97,13 @@ union _bezier_t {
 };
 typedef union _bezier_t bezier_t;
 
+enum _bezierAxis {
+	kBezierAxisX = 0,
+	kBezierAxisY,
+	kBezierAxisZ
+};
+typedef enum _bezierAxis bezierAxis_t;
+
 #pragma mark - Constants
 
 // Zero vectors

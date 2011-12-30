@@ -78,7 +78,7 @@ union _rect_t {
 	float f[4];
 	struct { vec2_t o; vec2_t s; };
 	struct { vec2_t origin; vec2_t size; };
-	struct { float x; float y; float w; float h };
+	struct { float x; float y; float w; float h; };
 };
 typedef union _rect_t rect_t;
 

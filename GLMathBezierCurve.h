@@ -33,6 +33,7 @@ static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAx
 static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
+static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset);
 
 #pragma mark - Implementations
 
@@ -147,6 +148,14 @@ static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaxi
 	}
 	if(outMinimums) *outMinimums = min;
 	if(outMaximums) *outMaximums = max;
+}
+	
+static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset)
+{
+	vec3_t tangent = bezier_firstDerivative(curve, t);
+	vec3_t normal = { -tangent.y, tangent.x, tangent.z };
+	
+	return vec3_add(bezier_getPoint(curve, t), vec3_mul(vec3_normalize(normal), offset));
 }
 
 #ifdef __cplusplus

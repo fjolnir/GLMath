@@ -27,7 +27,7 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
+static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
 static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
 static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAxis_t axis);
 static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
@@ -37,7 +37,7 @@ static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3
 
 #pragma mark - Implementations
 
-static __inline__ bezier_t bezier_make(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4)
+static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4)
 {
 	bezier_t out = { .controlPoints={c1, c2, c3, c4} };
 	return out;

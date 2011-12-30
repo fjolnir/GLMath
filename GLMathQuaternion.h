@@ -27,8 +27,8 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Quaternion math functions
-static quat_t quat_makef(float x, float y, float z, float angle);
-static quat_t quat_makev(vec3_t axis, float angle);
+static quat_t quat_createf(float x, float y, float z, float angle);
+static quat_t quat_createv(vec3_t axis, float angle);
 static __inline__ mat4_t quat_to_mat4(const quat_t q);
 static __inline__ quat_t mat4_to_quat(const mat4_t m);
 static __inline__ mat4_t quat_to_ortho(const quat_t q);
@@ -46,12 +46,12 @@ static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, float t);
 #pragma mark - Implementations
 
 // Generates a unit quaternion
-static quat_t quat_makef(float x, float y, float z, float angle) {
+static quat_t quat_createf(float x, float y, float z, float angle) {
 	vec3_t vec = { x, y, z };
-	return quat_makev(vec, angle);
+	return quat_createv(vec, angle);
 }
 
-static quat_t quat_makev(vec3_t axis, float angle) {
+static quat_t quat_createv(vec3_t axis, float angle) {
 	quat_t out;
 	vec3_t normalized;
 	normalized = vec3_normalize(axis);

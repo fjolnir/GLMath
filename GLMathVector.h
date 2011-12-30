@@ -17,7 +17,7 @@
 
 #include "GLMathTypes.h"
 #ifdef USE_ACCELERATE_FRAMEWORK
-#import <Accelerate/Accelerate.h>
+#include <Accelerate/Accelerate.h>
 #endif
 #include <math.h>
 

@@ -151,13 +151,7 @@ static __inline__ vec2_t vec2_normalize(const vec2_t v) {
 }
 
 static __inline__ float vec2_dist(const vec2_t v1, const vec2_t v2) {
-#ifdef USE_ACCELERATE_FRAMEWORK
-	float magnitudes[2];
-	vDSP_vdist((float*)v1.f, 1, (float*)v2.f, 1, magnitudes, 1, 2);
-	return magnitudes[0] + magnitudes[1];
-#else
 	return vec2_mag(vec2_sub(v2, v1));
-#endif
 }
 
 static __inline__ vec2_t vec2_scalarMul(const vec2_t v, float s) {
@@ -273,13 +267,7 @@ static __inline__ vec3_t vec3_normalize(const vec3_t v) {
 }
 
 static __inline__ float vec3_dist(const vec3_t v1, const vec3_t v2) {
-#ifdef USE_ACCELERATE_FRAMEWORK
-	float magnitudes[3];
-	vDSP_vdist((float*)v1.f, 1, (float*)v2.f, 1, magnitudes, 1, 3);
-	return magnitudes[0] + magnitudes[1] + magnitudes[2];
-#else
 	return vec3_mag(vec3_sub(v2, v1));
-#endif
 }
 
 static __inline__ vec3_t vec3_scalarMul(const vec3_t v, float s) {
@@ -400,13 +388,7 @@ static __inline__ vec4_t vec4_normalize(const vec4_t v) {
 }
 
 static __inline__ float vec4_dist(const vec4_t v1, const vec4_t v2) {
-#ifdef USE_ACCELERATE_FRAMEWORK
-	float magnitudes[4];
-	vDSP_vdist((float*)v1.f, 1, (float*)v2.f, 1, magnitudes, 1, 4);
-	return magnitudes[0] + magnitudes[1] + magnitudes[2] + magnitudes[3];
-#else
 	return vec4_mag(vec4_sub(v2, v1));
-#endif
 }
 
 static __inline__ vec4_t vec4_scalarMul(const vec4_t v, float s) {

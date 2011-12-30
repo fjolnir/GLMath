@@ -55,8 +55,8 @@ static __inline__ bool quat_equals(const quat_t q1, const quat_t q2);
 
 #pragma mark Implementations
 
-static __inline__ float degToRad(float degrees) { return degrees * (M_PI / 180.0f); };
-static __inline__ float radToDeg(float radians) { return radians * (180.0f / M_PI); };
+static __inline__ float degToRad(float degrees) { return degrees * (M_PI / 180.0f); }
+static __inline__ float radToDeg(float radians) { return radians * (180.0f / M_PI); }
 
 static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {

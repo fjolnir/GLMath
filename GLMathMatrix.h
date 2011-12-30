@@ -250,7 +250,7 @@ static __inline__ float mat4_det(mat4_t m)
 	mat3_t subMtx;
 	for(int n = 0; n < 4; n++, i *= -1) {
 		subMtx = _mat4_sub_mat3(m, 0, n);
-		det     = mat3_det(subMtx);
+		det    = mat3_det(subMtx);
 		out += m.f[n] * det * i;
 	}
 	return out;

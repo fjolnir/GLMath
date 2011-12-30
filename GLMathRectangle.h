@@ -56,7 +56,6 @@ static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a,
 static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector);
 
 #pragma mark Implementations
-	
 static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size)
 {
 	rect_t out = { origin.x, origin.y, size.w, size.h };

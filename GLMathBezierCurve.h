@@ -34,8 +34,7 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
 static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
 static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset);
-static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength);	
-static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points, float *lengths, float *deltas, float totalLength);
+static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength);static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points, float *lengths, float *deltas, float totalLength);
 
 #pragma mark - Implementations
 
@@ -48,7 +47,6 @@ static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t
 static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t)
 {
 	vec3_t out;
-	
 	// Evaluate the bezier curve equation
 	float mt = 1.0f - t;
 	float coef0 = powf(mt, 3.0f);
@@ -71,12 +69,10 @@ static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAx
 {
 	// Evaluate the bezier curve equation
 	float mt = 1.0f - t;
-	
 	float p0 = curve.controlPoints[0].f[axis] * powf(mt, 3.0f);
 	float p1 = curve.controlPoints[1].f[axis] * (3.0f * powf(mt, 2.0f) * t);
 	float p2 = curve.controlPoints[2].f[axis] * (3.0f * mt * powf(t, 2.0f));
 	float p3 = curve.controlPoints[3].f[axis] * powf(t, 3.0f);
-	
 	return p0 + p1 + p2 + p3;
 }
 
@@ -84,32 +80,25 @@ static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAx
 static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t)
 {
 	vec3_t out;
-	
 	// Create the derivative curve
 	vec3_t derivControlPoints[3];
 	derivControlPoints[0] = vec3_sub(curve.controlPoints[1], curve.controlPoints[0]);
 	derivControlPoints[1] = vec3_sub(curve.controlPoints[2], curve.controlPoints[1]);
 	derivControlPoints[2] = vec3_sub(curve.controlPoints[3], curve.controlPoints[2]);
-	
 	// Evaluate the point on the derivative
 	float mt = 1.0f - t;
 	float coef0 = powf(mt, 2.0f);
 	float coef1 = 2.0f * mt * t;
 	float coef2 = powf(t, 2.0f);
-	
 	vec3_t p0 = vec3_scalarMul(derivControlPoints[0], coef0);
 	vec3_t p1 = vec3_scalarMul(derivControlPoints[1], coef1);
 	vec3_t p2 = vec3_scalarMul(derivControlPoints[2], coef2);
-	
 	out = vec3_add(p0, vec3_add(p1, p2));
-	
 	return out;
 }
-	
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis)
 {
 	vec2_t out = { -1.0f , -1.0f };
-	
 	float a = curve.controlPoints[0].f[axis];
 	float b = curve.controlPoints[1].f[axis];
 	float c = curve.controlPoints[2].f[axis];
@@ -151,20 +140,17 @@ static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaxi
 	if(outMinimums) *outMinimums = min;
 	if(outMaximums) *outMaximums = max;
 }
-	
 static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset)
 {
 	vec3_t tangent = bezier_firstDerivative(curve, t);
 	vec3_t normal = { -tangent.y, tangent.x, tangent.z };
-	
 	return vec3_add(bezier_getPoint(curve, t), vec3_mul(vec3_normalize(normal), offset));
 }
 
 // Computes 'count' many points along with their deltas & the distances between them with an even t interval
 static void bezier_getLineSegments(bezier_t curve, int count,
-								   vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength)
-{	
-	float t = 0.0f;
+                                   vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength)
+{	float t = 0.0f;
 	float interval = 1.0f/(float)(count-1);
 	for(int i = 0; i < count; ++i) {
 		outPoints[i] = bezier_getPoint(curve, t);
@@ -182,7 +168,7 @@ static void bezier_getLineSegments(bezier_t curve, int count,
 // in the list. This is useful for evaluating a curve at a constant rate when animating (Usually an even delta interval
 // on a curve does not produce an even distance)
 static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points,
-											   float *lengths, float *deltas, float totalLength)
+                                               float *lengths, float *deltas, float totalLength)
 {
 	float desiredDistance = t * totalLength;
 	assert(desiredDistance >= 0.0f && desiredDistance <= totalLength);

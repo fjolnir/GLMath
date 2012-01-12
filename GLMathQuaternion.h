@@ -196,12 +196,14 @@ static __inline__ quat_t quat_normalize(quat_t q) {
 }
 
 static __inline__ quat_t quat_multQuat(const quat_t q1, const quat_t q2) {
-	mat4_t q1m, q2m, temp;
-	q1m = quat_to_mat4(q1);
-	q2m = quat_to_mat4(q2);
-	temp = mat4_mul(q1m, q2m);
-
-	return mat4_to_quat(temp);
+	quat_t out;
+	vec3_t va = vec3_cross(q1.vec, q2.vec);
+	vec3_t vb = vec3_scalarMul(q1.vec, q2.w);
+	vec3_t vc = vec3_scalarMul(q2.vec, q1.w);
+	
+	out.w = q1.w * q2.w - vec3_dot(q1.vec, q2.vec);
+	out.vec = vec3_add(va, vec3_add(vb, vc));
+	return quat_normalize(out);
 }
 
 static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) {

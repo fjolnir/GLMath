@@ -32,7 +32,7 @@ extern "C" {
 
 // Matrix math functions
 static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2);
-static __inline__ vec3_t vec3_mul_m(const vec3_t v, const mat3_t m);
+static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m);
 static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out);
 static __inline__ mat3_t mat3_transpose(const mat3_t m);
 static __inline__ float mat3_det(const mat3_t m);

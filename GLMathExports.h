@@ -163,4 +163,3 @@ bool _vec3_equals(const vec3_t v1, const vec3_t v2);
 bool _vec4_equals(const vec4_t v1, const vec4_t v2);
 bool _mat4_equals(const mat4_t m1, const mat4_t m2);
 bool _quat_equals(const quat_t q1, const quat_t q2);
-#endif

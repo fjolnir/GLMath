@@ -143,3 +143,4 @@ bool _vec4_equals(const vec4_t v1, const vec4_t v2) { return vec4_equals(v1, v2)
 bool _mat4_equals(const mat4_t m1, const mat4_t m2) { return mat4_equals(m1, m2); }
 bool _quat_equals(const quat_t q1, const quat_t q2) { return quat_equals(q1, q2); }
 #endif
+

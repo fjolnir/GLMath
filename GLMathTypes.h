@@ -70,6 +70,7 @@ typedef union _mat4_t mat4_t;
 union _quat_t {
 	float f[4];
 	struct { float x; float y; float z; float w; };
+	struct { vec3_t vec; float scalar; };
 };
 typedef union _quat_t quat_t;
 

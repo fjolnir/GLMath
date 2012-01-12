@@ -4,13 +4,29 @@
 // Generates a perspective viewing matrix
 mat4_t mat4_perspective(float fovy, float aspect, float zNear, float zFar)
 {
-	mat4_t out;
 	float cotan = 1.0f / tanf(fovy/2.0f);
-	return (mat4_t){ cotan/aspect, 0.0f,  0.0f,                               0.0f,
+	return (mat4_t) {
+		cotan/aspect, 0.0f,  0.0f,                               0.0f,
 		0.0f,         cotan, 0.0f,                               0.0f,
 		0.0f,         0.0f,  (zFar+zNear) / (zNear-zFar),       -1.0f,
 		0.0f,         0.0f,  2.0f * zFar * zNear / (zNear-zFar), 0.0f };
-	return out;
+}
+
+mat4_t mat4_frustum(float left, float right, float bottom, float top, float near, float far)
+{
+	float a = 2.0f*near/(right-left);
+	float b = 2.0f*near/(top-bottom);
+	float c = (right+left)/(right-left);
+	float d = (top+bottom)/(top-bottom);
+	float e = -(far+near)/(far-near);
+	float f = -2.0f*far*near/(far-near);
+	
+	return (mat4_t) {
+		a,    0.0f,  c,    0.0f, 
+		0.0f, b,     d,    0.0f, 
+		0.0f, 0.0f,  e,    f, 
+		0.0f, 0.0f, -1.0f, 0.0f
+	};
 }
 
 // Generates lookat viewing matrix

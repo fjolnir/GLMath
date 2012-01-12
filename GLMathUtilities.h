@@ -31,6 +31,7 @@ static __inline__ float degToRad(float degrees);
 static __inline__ float radToDeg(float radians);
 
 mat4_t mat4_perspective(float fov_radians, float aspect, float zNear, float zFar);
+mat4_t mat4_frustum(float left, float right, float bottom, float top, float near, float far);
 // Generates an orthogonal viewing matrix
 mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far);
 // Generates a lookat camera viewing matrix

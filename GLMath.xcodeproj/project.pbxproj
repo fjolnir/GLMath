@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C701C3CC14BBC32100DD9C0C /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
+		C701C3CE14BBC87200DD9C0C /* GLMathExports.c in Sources */ = {isa = PBXBuildFile; fileRef = C701C3CD14BBC87200DD9C0C /* GLMathExports.c */; };
 		C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */ = {isa = PBXBuildFile; fileRef = C70EA30F14AC97BD009D29C6 /* GLMath.c */; };
 		C70EA31B14AC97BD009D29C6 /* GLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31014AC97BD009D29C6 /* GLMath.h */; };
 		C70EA31C14AC97BD009D29C6 /* GLMathBezierCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C701C3CB14BBC32100DD9C0C /* GLMathExports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathExports.h; sourceTree = "<group>"; };
+		C701C3CD14BBC87200DD9C0C /* GLMathExports.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathExports.c; sourceTree = "<group>"; };
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMath.c; sourceTree = "<group>"; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
@@ -81,6 +85,8 @@
 				C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */,
 				C73160AD14ACF14800A966CE /* GLMathUtilities.c */,
 				C70EA31914AC97BD009D29C6 /* GLMathVector.h */,
+				C701C3CB14BBC32100DD9C0C /* GLMathExports.h */,
+				C701C3CD14BBC87200DD9C0C /* GLMathExports.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -102,6 +108,7 @@
 				C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */,
 				C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */,
 				C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */,
+				C701C3CC14BBC32100DD9C0C /* GLMathExports.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,6 +164,7 @@
 			files = (
 				C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */,
 				C73160AE14ACF14800A966CE /* GLMathUtilities.c in Sources */,
+				C701C3CE14BBC87200DD9C0C /* GLMathExports.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +220,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				EXPORTED_SYMBOLS_FILE = "";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -227,6 +237,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				EXPORTED_SYMBOLS_FILE = "";
+				OTHER_CFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WARNING_CFLAGS = (
 					"-Wall",

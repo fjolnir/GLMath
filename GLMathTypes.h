@@ -34,6 +34,7 @@ union _vec3_t {
 	float f[3];
 	struct { float x; float y; float z; };
 	struct { float r; float g; float b; };
+	struct { vec2_t xy; float andY; };
 };
 typedef union _vec3_t vec3_t;
 
@@ -41,6 +42,7 @@ union _vec4_t {
 	float f[4];
 	struct { float x; float y; float z; float w; };
 	struct { float r; float g; float b; float a; };
+	struct { vec3_t xyz; float andW; };
 };
 typedef union _vec4_t vec4_t;
 

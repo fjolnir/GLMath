@@ -15,7 +15,7 @@
 #ifndef GL_MATH_QUAT_H
 #define GL_MATH_QUAT_H
 
-#include "GLMathTypes.h"
+#include <GLMath/GLMathTypes.h>
 #include <assert.h>
 
 #define GLM_EPSILON (1.0E-8)
@@ -27,21 +27,21 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Quaternion math functions
-static quat_t quat_createf(float x, float y, float z, float angle);
-static quat_t quat_createv(vec3_t axis, float angle);
-static __inline__ mat4_t quat_to_mat4(const quat_t q);
-static __inline__ quat_t mat4_to_quat(const mat4_t m);
-static __inline__ mat4_t quat_to_ortho(const quat_t q);
-static __inline__ quat_t ortho_to_quat(const mat4_t m);
-static __inline__ float quat_magSquared(const quat_t q);
-static __inline__ float quat_mag(const quat_t q);
-static __inline__ quat_t quat_computeW(quat_t q);
-static __inline__ quat_t quat_normalize(quat_t q);
-static __inline__ quat_t quat_multQuat(const quat_t qA, const quat_t qB);
-static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v);
-static __inline__ quat_t quat_inverse(const quat_t q);
-static __inline__ float quat_dotProduct(const quat_t qA, const quat_t qB);
-static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, float t);
+static quat_t quat_createf(float x, float y, float z, float angle) __asm("__quat_createf");
+static quat_t quat_createv(vec3_t axis, float angle) __asm("__quat_createv");
+static __inline__ mat4_t quat_to_mat4(const quat_t q) __asm("__quat_to_mat4");
+static __inline__ quat_t mat4_to_quat(const mat4_t m) __asm("__mat4_to_quat");
+static __inline__ mat4_t quat_to_ortho(const quat_t q) __asm("__quat_to_ortho");
+static __inline__ quat_t ortho_to_quat(const mat4_t m) __asm("__ortho_to_quat");
+static __inline__ float quat_magSquared(const quat_t q) __asm("__quat_magSquared");
+static __inline__ float quat_mag(const quat_t q) __asm("__quat_mag");
+static __inline__ quat_t quat_computeW(quat_t q) __asm("__quat_computeW");
+static __inline__ quat_t quat_normalize(quat_t q) __asm("__quat_normalize");
+static __inline__ quat_t quat_multQuat(const quat_t qA, const quat_t qB) __asm("__quat_multQuat");
+static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) __asm("__quat_rotatePoint");
+static __inline__ quat_t quat_inverse(const quat_t q) __asm("__quat_inverse");
+static __inline__ float quat_dotProduct(const quat_t qA, const quat_t qB) __asm("__quat_dotProduct");
+static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, float t) __asm("__quat_slerp");
 
 #pragma mark - Implementations
 

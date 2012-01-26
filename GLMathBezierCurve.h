@@ -15,10 +15,10 @@
 #ifndef GL_MATH_BEZIER_H
 #define GL_MATH_BEZIER_H
 
-#include "GLMathTypes.h"
-#include "GLMathVector.h"
-#include "GLMathMatrix.h"
-#include "GLMathTransforms.h"
+#include <GLMath/GLMathTypes.h>
+#include <GLMath/GLMathVector.h>
+#include <GLMath/GLMathMatrix.h>
+#include <GLMath/GLMathTransforms.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -27,14 +27,15 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
-static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t);
-static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAxis_t axis);
-static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t);
-static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
-static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
-static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset);
-static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength);static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points, float *lengths, float *deltas, float totalLength);
+static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4) __asm("__bezier_create");
+static __inline__ vec3_t bezier_getPoint(bezier_t curve, float t) __asm("__bezier_getPoint");
+static __inline__ float bezier_getCoordForAxis(bezier_t curve, float t, bezierAxis_t axis) __asm("__bezier_getCoordForAxis");
+static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, float t) __asm("__bezier_firstDerivative");
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis) __asm("__bezier_firstDerivativeRoots");
+static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums) __asm("__bezier_extremes");
+static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, float t, vec3_t offset) __asm("__bezier_getPointWithOffset");
+static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, float *outLengths, float *outDeltas, float *outTotalLength) __asm("__bezier_getLineSegments");
+static vec3_t bezier_getPointUsingLineSegments(float t, int count, vec3_t *points, float *lengths, float *deltas, float totalLength) __asm("__bezier_getPointUsingLineSegments");
 
 #pragma mark - Implementations
 

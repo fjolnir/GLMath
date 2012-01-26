@@ -19,7 +19,7 @@
 extern "C" {
 #endif
 
-#include "GLMathTypes.h"
+#include <GLMath/GLMathTypes.h>
 #ifdef USE_ACCELERATE_FRAMEWORK
 #include <Accelerate/Accelerate.h>
 #endif
@@ -31,19 +31,19 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Matrix math functions
-static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2);
-static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m);
-static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out);
-static __inline__ mat3_t mat3_transpose(const mat3_t m);
-static __inline__ float mat3_det(const mat3_t m);
+static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) __asm("__mat3_mul");
+static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) __asm("__vec3_mul_mat3");
+static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) __asm("__mat3_inverse");
+static __inline__ mat3_t mat3_transpose(const mat3_t m) __asm("__mat3_transpose");
+static __inline__ float mat3_det(const mat3_t m) __asm("__mat3_det");
 
-static __inline__ mat4_t mat4_mul(const mat4_t m1, const mat4_t m2);
-static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint);
-static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m);
-static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out);
-static __inline__ mat4_t mat4_transpose(const mat4_t m);
-static __inline__ mat3_t mat4_extract_mat3(const mat4_t m);
-static __inline__ float mat4_det(mat4_t m);
+static __inline__ mat4_t mat4_mul(const mat4_t m1, const mat4_t m2) __asm("__mat4_mul");
+static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint) __asm("__vec3_mul_mat4");
+static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) __asm("__vec4_mul_mat4");
+static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) __asm("__mat4_inverse");
+static __inline__ mat4_t mat4_transpose(const mat4_t m) __asm("__mat4_transpose");
+static __inline__ mat3_t mat4_extract_mat3(const mat4_t m) __asm("__mat4_extract_mat3");
+static __inline__ float mat4_det(mat4_t m) __asm("__mat4_det");
 
 static mat3_t _mat4_sub_mat3(mat4_t m, int i, int j);
 

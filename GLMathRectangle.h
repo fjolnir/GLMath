@@ -15,8 +15,8 @@
 #ifndef GL_MATH_RECT_H
 #define GL_MATH_RECT_H
 
-#include "GLMathTypes.h"
-#include "GLMathVector.h"
+#include <GLMath/GLMathTypes.h>
+#include <GLMath/GLMathVector.h>
 #ifdef USE_ACCELERATE_FRAMEWORK
 #include <Accelerate/Accelerate.h>
 #endif
@@ -32,28 +32,28 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size);
-static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top);
-static __inline__ float rect_maxX(const rect_t rect);
-static __inline__ float rect_minX(const rect_t rect);
-static __inline__ float rect_maxY(const rect_t rect);
-static __inline__ float rect_minY(const rect_t rect);
+static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size) __asm("__rect_createWithSize");
+static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top) __asm("__rect_createWithCorners");
+static __inline__ float rect_maxX(const rect_t rect) __asm("__rect_maxX");
+static __inline__ float rect_minX(const rect_t rect) __asm("__rect_minX");
+static __inline__ float rect_maxY(const rect_t rect) __asm("__rect_maxY");
+static __inline__ float rect_minY(const rect_t rect) __asm("__rect_minY");
 // True if r1&2 intersect
-static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2);
+static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2) __asm("__rect_intersects");
 // True if r1 contains r2
-static __inline__ bool rect_containsRect(const rect_t r1, const rect_t r2);
+static __inline__ bool rect_containsRect(const rect_t r1, const rect_t r2) __asm("__rect_containsRect");
 // True if rect contains point
-static __inline__ bool rect_containsPoint(const rect_t rect, const vec2_t point);
+static __inline__ bool rect_containsPoint(const rect_t rect, const vec2_t point) __asm("__rect_containsPoint");
 // Returns a rectangle containing both rectangles
-static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2);
+static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2) __asm("__rect_merge");
 // Scales the rectangle, maintaining the center point
-static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale);
+static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale) __asm("__rect_scale");
 // Returns the area of rect
-static __inline__ float rect_area(const rect_t rect);
+static __inline__ float rect_area(const rect_t rect) __asm("__rect_area");
 // True if rect intersects with the line segment between a&b
-static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b);
+static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) __asm("__rect_intersectsLineSeg");
 // Translates rect by the given vector
-static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector);
+static __inline__ rect_t rect_translate(const rect_t aRect, const vec2_t aTranslationVector) __asm("__rect_translate");
 
 #pragma mark Implementations
 static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size)

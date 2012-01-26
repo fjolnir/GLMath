@@ -15,7 +15,7 @@
 #ifndef GL_MATH_UTILS_H
 #define GL_MATH_UTILS_H
 
-#include "GLMathTypes.h"
+#include <GLMath/GLMathTypes.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
@@ -27,8 +27,8 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Utilities
-static __inline__ float degToRad(float degrees);
-static __inline__ float radToDeg(float radians);
+static __inline__ float degToRad(float degrees) __asm("__degToRad");
+static __inline__ float radToDeg(float radians) __asm("__radToDeg");
 
 mat4_t mat4_perspective(float fov_radians, float aspect, float zNear, float zFar);
 mat4_t mat4_frustum(float left, float right, float bottom, float top, float near, float far);
@@ -46,12 +46,12 @@ void printMat3(mat3_t mat);
 void printMat4(mat4_t mat);
 void printQuat(quat_t quat);
 
-static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len);
-static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2);
-static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2);
-static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2);
-static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2);
-static __inline__ bool quat_equals(const quat_t q1, const quat_t q2);
+static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len) __asm("__floatArr_equals");
+static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) __asm("__vec2_equals");
+static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) __asm("__vec3_equals");
+static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) __asm("__vec4_equals");
+static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) __asm("__mat4_equals");
+static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) __asm("__quat_equals");
 
 
 #pragma mark Implementations

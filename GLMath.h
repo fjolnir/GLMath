@@ -26,14 +26,14 @@
 #define USE_ACCELERATE_FRAMEWORK
 #endif
 
-#include "GLMathTypes.h"
-#include "GLMathVector.h"
-#include "GLMathMatrix.h"
-#include "GLMathQuaternion.h"
-#include "GLMathRectangle.h"
-#include "GLMathBezierCurve.h"
-#include "GLMathMatrixStack.h"
-#include "GLMathUtilities.h"
+#include <GLMath/GLMathTypes.h>
+#include <GLMath/GLMathVector.h>
+#include <GLMath/GLMathMatrix.h>
+#include <GLMath/GLMathQuaternion.h>
+#include <GLMath/GLMathRectangle.h>
+#include <GLMath/GLMathBezierCurve.h>
+#include <GLMath/GLMathMatrixStack.h>
+#include <GLMath/GLMathUtilities.h>
 
 #ifdef __cplusplus
 }

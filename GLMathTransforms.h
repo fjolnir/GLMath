@@ -15,7 +15,7 @@
 #ifndef GL_MATH_TRANSFORMS_H_
 #define GL_MATH_TRANSFORMS_H_
 
-#include "GLMathTypes.h"
+#include <GLMath/GLMathTypes.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,12 +23,12 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ mat4_t mat4_create_translation(float x, float y, float z);
-static __inline__ mat4_t mat4_translate(mat4_t mat, float x, float y, float z);
-static __inline__ mat4_t mat4_create_rotation(float angle, float x, float y, float z);
-static __inline__ mat4_t mat4_rotate(mat4_t mat, float angle, float x, float y, float z);
-static __inline__ mat4_t mat4_create_scale(float x, float y, float z);
-static __inline__ mat4_t mat4_scale(mat4_t mat, float x, float y, float z);
+static __inline__ mat4_t mat4_create_translation(float x, float y, float z) __asm("__mat4_create_translation");
+static __inline__ mat4_t mat4_translate(mat4_t mat, float x, float y, float z) __asm("__mat4_translate");
+static __inline__ mat4_t mat4_create_rotation(float angle, float x, float y, float z) __asm("__mat4_create_rotation");
+static __inline__ mat4_t mat4_rotate(mat4_t mat, float angle, float x, float y, float z) __asm("__mat4_rotate");
+static __inline__ mat4_t mat4_create_scale(float x, float y, float z) __asm("__mat4_create_scale");
+static __inline__ mat4_t mat4_scale(mat4_t mat, float x, float y, float z) __asm("__mat4_scale");
 
 #pragma mark - Implementations
 

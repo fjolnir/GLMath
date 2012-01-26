@@ -15,8 +15,8 @@
 #ifndef GL_MATH_STACK_H
 #define GL_MATH_STACK_H
 
-#include "GLMathTypes.h"
-#include "GLMathTransforms.h"
+#include <GLMath/GLMathTypes.h>
+#include <GLMath/GLMathTransforms.h>
 #include <assert.h>
 
 #ifdef __cplusplus
@@ -25,23 +25,23 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static matrix_stack_t *matrix_stack_create(unsigned int initialCapacity);
-static void matrix_stack_destroy(matrix_stack_t *stack);
+static matrix_stack_t *matrix_stack_create(unsigned int initialCapacity) __asm("__matrix_stack_create");
+static void matrix_stack_destroy(matrix_stack_t *stack) __asm("__matrix_stack_destroy");
 
 // Pushes the passed matrix on to the top of the stack
-static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item);
+static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item) __asm("__matrix_stack_push_item");
 // Pushes an identical copy of the currently topmost matrix onto the stack (or the identity matrix if no item currently exists)
-static __inline__ void matrix_stack_push(matrix_stack_t *stack);
+static __inline__ void matrix_stack_push(matrix_stack_t *stack) __asm("__matrix_stack_push");
 // Pops an item off the stack
-static void matrix_stack_pop(matrix_stack_t *stack);
+static void matrix_stack_pop(matrix_stack_t *stack) __asm("__matrix_stack_pop");
 // Returns the topmost item in the stack
-static __inline__ mat4_t matrix_stack_get_mat4(matrix_stack_t *stack);
+static __inline__ mat4_t matrix_stack_get_mat4(matrix_stack_t *stack) __asm("__matrix_stack_get_mat4");
 // Returns the 3x3 portion of the topmost item in the stack
-static __inline__ mat3_t matrix_stack_get_mat3(matrix_stack_t *stack);
+static __inline__ mat3_t matrix_stack_get_mat3(matrix_stack_t *stack) __asm("__matrix_stack_get_mat3");
 
-static __inline__ void matrix_stack_translate(matrix_stack_t *stack, float x, float y, float z);
-static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, float angle, float x, float y, float z);
-static __inline__ void matrix_stack_scale(matrix_stack_t *stack, float x, float y, float z);
+static __inline__ void matrix_stack_translate(matrix_stack_t *stack, float x, float y, float z) __asm("__matrix_stack_translate");
+static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, float angle, float x, float y, float z) __asm("__matrix_stack_rotate");
+static __inline__ void matrix_stack_scale(matrix_stack_t *stack, float x, float y, float z) __asm("__matrix_stack_scale");
 
 #pragma mark Implementations
 

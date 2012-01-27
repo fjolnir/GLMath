@@ -253,7 +253,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		C7622B2A14D08D090093DDD0 /* Generate BridgeSupport File */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
@@ -261,7 +261,7 @@
 			name = "Generate BridgeSupport File";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "mkdir -p $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/\ngen_bridge_metadata -c '-D__SCRIPTINGBRIDGE__' -f $TARGET_BUILD_DIR/$PROJECT_NAME.framework/ -o $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/$PRODUCT_NAME.bridgesupport";
 			showEnvVarsInLog = 0;

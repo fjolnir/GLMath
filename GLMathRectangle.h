@@ -29,6 +29,7 @@ extern "C" {
 
 #define GLM_MAX(x,y) ( ((x)>(y)) ? (x) : (y) )
 #define GLM_MIN(x,y) ( ((x)<(y)) ? (x) : (y) )
+#define GLM_CLAMP(x, min, max) GLM_MAX(min, GLM_MIN(x, max));
 
 #pragma mark - Prototypes
 

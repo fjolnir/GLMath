@@ -40,6 +40,8 @@ static __inline__ vec2_t vec2_normalize(const vec2_t v) __asm("__vec2_normalize"
 static __inline__ float vec2_dist(const vec2_t v1, const vec2_t v2) __asm("__vec2_dist");
 static __inline__ vec2_t vec2_scalarMul(const vec2_t v, float s) __asm("__vec2_scalarMul");
 static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, float s) __asm("__vec2_scalarDiv");
+static __inline__ vec2_t vec2_scalarAdd(const vec2_t v, float s) __asm("__vec2_scalarAdd");
+static __inline__ vec2_t vec2_scalarSub(const vec2_t v, float s) __asm("__vec2_scalarSub");
 static __inline__ vec2_t vec2_negate(const vec2_t v) __asm("__vec2_negate");
 static __inline__ vec2_t vec2_floor(vec2_t v) __asm("__vec2_floor");
 
@@ -55,6 +57,8 @@ static __inline__ vec3_t vec3_normalize(const vec3_t v) __asm("__vec3_normalize"
 static __inline__ float vec3_dist(const vec3_t v1, const vec3_t v2) __asm("__vec3_dist");
 static __inline__ vec3_t vec3_scalarMul(const vec3_t v, float s) __asm("__vec3_scalarMul");
 static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, float s) __asm("__vec3_scalarDiv");
+static __inline__ vec3_t vec3_scalarAdd(const vec3_t v, float s) __asm("__vec3_scalarAdd");
+static __inline__ vec3_t vec3_scalarSub(const vec3_t v, float s) __asm("__vec3_scalarSub");
 static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2) __asm("__vec3_cross");
 static __inline__ vec3_t vec3_negate(const vec3_t v) __asm("__vec3_negate");
 static __inline__ vec3_t vec3_floor(vec3_t v) __asm("__vec3_floor");
@@ -70,6 +74,8 @@ static __inline__ float vec4_mag(const vec4_t v) __asm("__vec4_mag");
 static __inline__ float vec4_dist(const vec4_t v1, const vec4_t v2) __asm("__vec4_dist");
 static __inline__ vec4_t vec4_scalarMul(const vec4_t v, float s) __asm("__vec4_scalarMul");
 static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, float s) __asm("__vec4_scalarDiv");
+static __inline__ vec4_t vec4_scalarAdd(const vec4_t v, float s) __asm("__vec4_scalarAdd");
+static __inline__ vec4_t vec4_scalarSub(const vec4_t v, float s) __asm("__vec4_scalarSub");
 static __inline__ vec4_t vec4_cross(const vec4_t v1, const vec4_t v2) __asm("__vec4_cross");
 static __inline__ vec4_t vec4_negate(const vec4_t v) __asm("__vec4_negate");
 static __inline__ vec4_t vec4_floor(vec4_t v) __asm("__vec4_floor");
@@ -185,6 +191,16 @@ static __inline__ vec2_t vec2_negate(const vec2_t v) {
 #endif
 }
 
+static __inline__ vec2_t vec2_scalarAdd(const vec2_t v, float s)
+{
+    return vec2_create(v.x+s, v.y+s);
+}
+
+static __inline__ vec2_t vec2_scalarSub(const vec2_t v, float s)
+{
+    return vec2_create(v.x-s, v.y-s);
+}
+
 static __inline__ vec2_t vec2_floor(vec2_t v)
 {
 	vec2_t out = { floorf(v.x), floorf(v.y) };
@@ -288,6 +304,16 @@ static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, float s) {
 #else
 	return (vec3_t){ v.x / s, v.y / s, v.z / s };
 #endif
+}
+
+static __inline__ vec3_t vec3_scalarAdd(const vec3_t v, float s)
+{
+    return vec3_create(v.x+s, v.y+s, v.z+s);
+}
+
+static __inline__ vec3_t vec3_scalarSub(const vec3_t v, float s)
+{
+    return vec3_create(v.x-s, v.y-s, v.z-s);
 }
 
 static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2) {
@@ -409,6 +435,16 @@ static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, float s) {
 #else
 	return (vec4_t){ v.x / s, v.y / s, v.z / s, v.w / s };
 #endif
+}
+
+static __inline__ vec4_t vec4_scalarAdd(const vec4_t v, float s)
+{
+    return vec4_create(v.x+s, v.y+s, v.z+s, v.w+s);
+}
+
+static __inline__ vec4_t vec4_scalarSub(const vec4_t v, float s)
+{
+    return vec4_create(v.x-s, v.y-s, v.z-s, v.w-s);
 }
 
 static __inline__ vec4_t vec4_cross(const vec4_t v1, const vec4_t v2) {

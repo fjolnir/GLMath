@@ -14,6 +14,8 @@ vec2_t _vec2_normalize(const vec2_t v) { return vec2_normalize(v); }
 float _vec2_dist(const vec2_t v1, const vec2_t v2) { return vec2_dist(v1, v2); }
 vec2_t _vec2_scalarMul(const vec2_t v, float s) { return vec2_scalarMul(v,s); }
 vec2_t _vec2_scalarDiv(const vec2_t v, float s) { return vec2_scalarDiv(v, s); }
+vec2_t _vec2_scalarAdd(const vec2_t v, float s) { return vec2_scalarAdd(v, s); }
+vec2_t _vec2_scalarSub(const vec2_t v, float s) { return vec2_scalarSub(v, s); }
 vec2_t _vec2_negate(const vec2_t v) { return vec2_negate(v); }
 vec2_t _vec2_floor(vec2_t v) { return vec2_floor(v); }
 
@@ -29,6 +31,8 @@ vec3_t _vec3_normalize(const vec3_t v) { return vec3_normalize(v); }
 float _vec3_dist(const vec3_t v1, const vec3_t v2) { return vec3_dist(v1, v2); }
 vec3_t _vec3_scalarMul(const vec3_t v, float s) { return vec3_scalarMul(v, s); }
 vec3_t _vec3_scalarDiv(const vec3_t v, float s) { return vec3_scalarDiv(v, s); }
+vec3_t _vec3_scalarAdd(const vec3_t v, float s) { return vec3_scalarAdd(v, s); }
+vec3_t _vec3_scalarSub(const vec3_t v, float s) { return vec3_scalarSub(v, s); }
 vec3_t _vec3_cross(const vec3_t v1, const vec3_t v2) { return vec3_cross(v1, v2); }
 vec3_t _vec3_negate(const vec3_t v) { return vec3_negate(v); }
 vec3_t _vec3_floor(vec3_t v) { return vec3_floor(v); }
@@ -44,6 +48,8 @@ float _vec4_mag(const vec4_t v) { return vec4_mag(v); }
 float _vec4_dist(const vec4_t v1, const vec4_t v2) { return vec4_dist(v1, v2); }
 vec4_t _vec4_scalarMul(const vec4_t v, float s) { return vec4_scalarMul(v, s); }
 vec4_t _vec4_scalarDiv(const vec4_t v, float s) { return vec4_scalarDiv(v, s); }
+vec4_t _vec4_scalarAdd(const vec4_t v, float s) { return vec4_scalarAdd(v, s); }
+vec4_t _vec4_scalarSub(const vec4_t v, float s) { return vec4_scalarSub(v, s); }
 vec4_t _vec4_cross(const vec4_t v1, const vec4_t v2) { return vec4_cross(v1, v2); }
 vec4_t _vec4_negate(const vec4_t v) { return vec4_negate(v); }
 vec4_t _vec4_floor(vec4_t v) { return vec4_floor(v); }

@@ -27,17 +27,17 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Utilities
-static __inline__ float degToRad(float degrees) __asm("__degToRad");
-static __inline__ float radToDeg(float radians) __asm("__radToDeg");
+static __inline__ GLMFloat degToRad(GLMFloat degrees) __asm("__degToRad");
+static __inline__ GLMFloat radToDeg(GLMFloat radians) __asm("__radToDeg");
 
-mat4_t mat4_perspective(float fov_radians, float aspect, float zNear, float zFar);
-mat4_t mat4_frustum(float left, float right, float bottom, float top, float near, float far);
+mat4_t mat4_perspective(GLMFloat fov_radians, GLMFloat aspect, GLMFloat zNear, GLMFloat zFar);
+mat4_t mat4_frustum(GLMFloat left, GLMFloat right, GLMFloat bottom, GLMFloat top, GLMFloat near, GLMFloat far);
 // Generates an orthogonal viewing matrix
-mat4_t mat4_ortho(float left, float right, float bottom, float top, float near, float far);
+mat4_t mat4_ortho(GLMFloat left, GLMFloat right, GLMFloat bottom, GLMFloat top, GLMFloat near, GLMFloat far);
 // Generates a lookat camera viewing matrix
-mat4_t mat4_lookat(float eyeX, float eyeY, float eyeZ,
-                   float centerX, float centerY, float centerZ,
-                   float upX, float upY, float upZ);
+mat4_t mat4_lookat(GLMFloat eyeX, GLMFloat eyeY, GLMFloat eyeZ,
+                   GLMFloat centerX, GLMFloat centerY, GLMFloat centerZ,
+                   GLMFloat upX, GLMFloat upY, GLMFloat upZ);
 
 void printVec2(vec2_t vec);
 void printVec3(vec3_t vec);
@@ -46,7 +46,7 @@ void printMat3(mat3_t mat);
 void printMat4(mat4_t mat);
 void printQuat(quat_t quat);
 
-static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len) __asm("__floatArr_equals");
+static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) __asm("__GLMFloatArr_equals");
 static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) __asm("__vec2_equals");
 static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) __asm("__vec3_equals");
 static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) __asm("__vec4_equals");
@@ -56,10 +56,10 @@ static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) __asm("__qu
 
 #pragma mark Implementations
 
-static __inline__ float degToRad(float degrees) { return degrees * (M_PI / 180.0f); }
-static __inline__ float radToDeg(float radians) { return radians * (180.0f / M_PI); }
+static __inline__ GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI / 180.0); }
+static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 / M_PI); }
 
-static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigned int len) {
+static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {
 		if(a1[i] != a2[i])
 			return false;
@@ -67,19 +67,19 @@ static __inline__ bool floatArr_equals(const float *a1, const float *a2, unsigne
 	return true;
 }
 static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) {
-	return floatArr_equals(v1.f, v2.f, 2);
+	return GLMFloatArr_equals(v1.f, v2.f, 2);
 }
 static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) {
-	return floatArr_equals(v1.f, v2.f, 3);
+	return GLMFloatArr_equals(v1.f, v2.f, 3);
 }
 static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) {
-	return floatArr_equals(v1.f, v2.f, 4);
+	return GLMFloatArr_equals(v1.f, v2.f, 4);
 }
 static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) {
-	return floatArr_equals(m1.f, m2.f, 16);
+	return GLMFloatArr_equals(m1.f, m2.f, 16);
 }
 static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) {
-	return floatArr_equals(q1.f, q2.f, 4);
+	return GLMFloatArr_equals(q1.f, q2.f, 4);
 }
 
 #ifdef __cplusplus

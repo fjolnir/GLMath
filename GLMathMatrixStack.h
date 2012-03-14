@@ -39,9 +39,9 @@ static __inline__ mat4_t matrix_stack_get_mat4(matrix_stack_t *stack) __asm("__m
 // Returns the 3x3 portion of the topmost item in the stack
 static __inline__ mat3_t matrix_stack_get_mat3(matrix_stack_t *stack) __asm("__matrix_stack_get_mat3");
 
-static __inline__ void matrix_stack_translate(matrix_stack_t *stack, float x, float y, float z) __asm("__matrix_stack_translate");
-static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, float angle, float x, float y, float z) __asm("__matrix_stack_rotate");
-static __inline__ void matrix_stack_scale(matrix_stack_t *stack, float x, float y, float z) __asm("__matrix_stack_scale");
+static __inline__ void matrix_stack_translate(matrix_stack_t *stack, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__matrix_stack_translate");
+static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__matrix_stack_rotate");
+static __inline__ void matrix_stack_scale(matrix_stack_t *stack, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__matrix_stack_scale");
 
 #pragma mark Implementations
 
@@ -110,16 +110,16 @@ static __inline__ void matrix_stack_mul_mat4(matrix_stack_t *stack, mat4_t m) {
 	stack->items[stack->count-1] = mat4_mul(stack->items[stack->count-1], m);
 }
 
-static __inline__ void matrix_stack_translate(matrix_stack_t *stack, float x, float y, float z) {
+static __inline__ void matrix_stack_translate(matrix_stack_t *stack, GLMFloat x, GLMFloat y, GLMFloat z) {
 	assert(stack->count > 0);
 	stack->items[stack->count-1] = mat4_translate(stack->items[stack->count-1], x, y, z);
 }
 
-static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, float angle, float x, float y, float z) {
+static __inline__ void matrix_stack_rotate(matrix_stack_t *stack, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) {
 	assert(stack->count > 0);
 	stack->items[stack->count-1] = mat4_rotate(stack->items[stack->count-1], angle, x, y, z);
 }
-static __inline__ void matrix_stack_scale(matrix_stack_t *stack, float x, float y, float z) {
+static __inline__ void matrix_stack_scale(matrix_stack_t *stack, GLMFloat x, GLMFloat y, GLMFloat z) {
 	assert(stack->count > 0);
 	stack->items[stack->count-1] = mat4_scale(stack->items[stack->count-1], x, y, z);
 }

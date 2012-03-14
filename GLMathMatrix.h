@@ -27,6 +27,12 @@ extern "C" {
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+    
+#ifdef GLM_USE_DOUBLE
+#define GLM_gesv(...) dgesv_(__VA_ARGS__)
+#else
+#define GLM_gesv(...) sgesv_(__VA_ARGS__)
+#endif
 
 #pragma mark - Prototypes
 
@@ -35,7 +41,7 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) __asm("__mat
 static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) __asm("__vec3_mul_mat3");
 static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) __asm("__mat3_inverse");
 static __inline__ mat3_t mat3_transpose(const mat3_t m) __asm("__mat3_transpose");
-static __inline__ float mat3_det(const mat3_t m) __asm("__mat3_det");
+static __inline__ GLMFloat mat3_det(const mat3_t m) __asm("__mat3_det");
 
 static __inline__ mat4_t mat4_mul(const mat4_t m1, const mat4_t m2) __asm("__mat4_mul");
 static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint) __asm("__vec3_mul_mat4");
@@ -43,7 +49,7 @@ static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) __asm("__
 static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) __asm("__mat4_inverse");
 static __inline__ mat4_t mat4_transpose(const mat4_t m) __asm("__mat4_transpose");
 static __inline__ mat3_t mat4_extract_mat3(const mat4_t m) __asm("__mat4_extract_mat3");
-static __inline__ float mat4_det(mat4_t m) __asm("__mat4_det");
+static __inline__ GLMFloat mat4_det(mat4_t m) __asm("__mat4_det");
 
 static mat3_t _mat4_sub_mat3(mat4_t m, int i, int j);
 
@@ -53,7 +59,7 @@ static mat3_t _mat4_sub_mat3(mat4_t m, int i, int j);
 static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
-	vDSP_mmul((float*)m2.f, 1, (float*)m1.f, 1, out.f, 1, 3, 3, 3);
+	GLM_vdsp(mmul, (GLMFloat*)m2.f, 1, (GLMFloat*)m1.f, 1, out.f, 1, 3, 3, 3);
 	return out;
 #else
 	mat3_t out;
@@ -76,7 +82,7 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	vDSP_mmul((float*)v.f, 1, (float*)m.f, 1, out.f, 1, 1, 3, 3);
+	GLM_vdsp(mmul, (GLMFloat*)v.f, 1, (GLMFloat*)m.f, 1, out.f, 1, 1, 3, 3);
 	return out;
 #else
 	return (vec3_t){
@@ -94,7 +100,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	colsA = rowsA = colsB = rowsB = 3;
 	__CLPK_integer pivotIndices[colsA];
 	memcpy(out.f, kMat3_identity.f, sizeof(mat3_t));
-	sgesv_(&colsA, &colsB, (float*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
+	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
 		return kMat3_zero;
@@ -102,7 +108,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	return out;
 #else
 	mat3_t out;
-	float det = mat3_det(m);
+	GLMFloat det = mat3_det(m);
 	if(fabs(det) < 0.0005) {
 		if(success_out != NULL) *success_out = false;
 		return kMat3_zero;
@@ -124,7 +130,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 static __inline__ mat3_t mat3_transpose(const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
-	vDSP_mtrans((float*)m.f, 1, out.f, 1, 3, 3);
+	GLM_vdsp(mtrans, (GLMFloat*)m.f, 1, out.f, 1, 3, 3);
 	return out;
 #else
 	return (mat3_t) { m.m00, m.m10, m.m20,
@@ -140,7 +146,7 @@ static __inline__ mat3_t mat4_extract_mat3(const mat4_t m) {
 	return out;
 }
 
-static __inline__ float mat3_det(const mat3_t m) {
+static __inline__ GLMFloat mat3_det(const mat3_t m) {
 	return m.m00   * ( m.m11*m.m22 - m.m21*m.m12 )
 	       - m.m01 * ( m.m10*m.m22 - m.m20*m.m12 )
 	       + m.m02 * ( m.m10*m.m21 - m.m20*m.m11 );
@@ -152,7 +158,7 @@ static __inline__ float mat3_det(const mat3_t m) {
 static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;
-	vDSP_mmul((float*)m2.f, 1, (float*)m1.f, 1, out.f, 1, 4, 4, 4);
+	GLM_vdsp(mmul, (GLMFloat*)m2.f, 1, (GLMFloat*)m1.f, 1, out.f, 1, 4, 4, 4);
 	return out;
 #else
 	mat4_t m;
@@ -180,7 +186,7 @@ static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 }
 
 static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPoint) {
-	vec4_t temp = { v.x, v.y, v.z, isPoint ? 1.0f : 0.0f };
+	vec4_t temp = { v.x, v.y, v.z, isPoint ? 1.0 : 0.0 };
 	vec4_t result = vec4_mul_mat4(temp, m);
 	return vec3_create(result.x, result.y, result.z);
 }
@@ -188,7 +194,7 @@ static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPo
 static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	vDSP_mmul((float*)v.f, 1, (float*)m.f, 1, out.f, 1, 1, 4, 4);
+	GLM_vdsp(mmul, (GLMFloat*)v.f, 1, (GLMFloat*)m.f, 1, out.f, 1, 1, 4, 4);
 	return out;
 #else
 	return (vec4_t){ m.m00*v.x + m.m10*v.y + m.m20*v.z + m.m30*v.w,
@@ -206,14 +212,14 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 	colsA = rowsA = colsB = rowsB = 4;
 	__CLPK_integer pivotIndices[colsA];
 	memcpy(out.f, kMat4_identity.f, sizeof(mat4_t));
-	sgesv_(&colsA, &colsB, (float*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
+	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
 
 		return kMat4_zero;
 	}
 #else
-	float det = mat4_det(m);
+	GLMFloat det = mat4_det(m);
 	mat3_t mtemp;
 	int sign;
 	if(fabs(det) < 0.0005) {
@@ -234,7 +240,7 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 static __inline__ mat4_t mat4_transpose(const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;
-	vDSP_mtrans((float*)m.f, 1, out.f, 1, 4, 4);
+	GLM_vdsp(mtrans, (GLMFloat*)m.f, 1, out.f, 1, 4, 4);
 	return out;
 #else
 	return (mat4_t){ m.m00, m.m10, m.m20,  m.m30,
@@ -244,9 +250,9 @@ static __inline__ mat4_t mat4_transpose(const mat4_t m) {
 #endif
 }
 
-static __inline__ float mat4_det(mat4_t m)
+static __inline__ GLMFloat mat4_det(mat4_t m)
 {
-	float det, out = 0.0f, i = 1;
+	GLMFloat det, out = 0.0, i = 1;
 	mat3_t subMtx;
 	for(int n = 0; n < 4; n++, i *= -1) {
 		subMtx = _mat4_sub_mat3(m, 0, n);

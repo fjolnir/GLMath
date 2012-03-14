@@ -23,16 +23,16 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ mat4_t mat4_create_translation(float x, float y, float z) __asm("__mat4_create_translation");
-static __inline__ mat4_t mat4_translate(mat4_t mat, float x, float y, float z) __asm("__mat4_translate");
-static __inline__ mat4_t mat4_create_rotation(float angle, float x, float y, float z) __asm("__mat4_create_rotation");
-static __inline__ mat4_t mat4_rotate(mat4_t mat, float angle, float x, float y, float z) __asm("__mat4_rotate");
-static __inline__ mat4_t mat4_create_scale(float x, float y, float z) __asm("__mat4_create_scale");
-static __inline__ mat4_t mat4_scale(mat4_t mat, float x, float y, float z) __asm("__mat4_scale");
+static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_translation");
+static __inline__ mat4_t mat4_translate(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_translate");
+static __inline__ mat4_t mat4_create_rotation(GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_rotation");
+static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_rotate");
+static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_scale");
+static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_scale");
 
 #pragma mark - Implementations
 
-static __inline__ mat4_t mat4_create_translation(float x, float y, float z) {
+static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) {
 	mat4_t out = kMat4_identity;
 	out.m30 = x;
 	out.m31 = y;
@@ -41,19 +41,19 @@ static __inline__ mat4_t mat4_create_translation(float x, float y, float z) {
 	return out;
 }
 
-static __inline__ mat4_t mat4_translate(mat4_t mat, float x, float y, float z) {
+static __inline__ mat4_t mat4_translate(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) {
 	return mat4_mul(mat, mat4_create_translation(x, y, z));
 }
 
-static __inline__ mat4_t mat4_create_rotation(float angle, float x, float y, float z) {
+static __inline__ mat4_t mat4_create_rotation(GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) {
 	return quat_to_ortho(quat_createf(x, y, z, angle));
 }
 
-static __inline__ mat4_t mat4_rotate(mat4_t mat, float angle, float x, float y, float z) {
+static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) {
 	return mat4_mul(mat, mat4_create_rotation(angle, x, y, z));
 }
 
-static __inline__ mat4_t mat4_create_scale(float x, float y, float z) {
+static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z) {
 	mat4_t out = kMat4_identity;
 	out.m00 = x;
 	out.m11 = y;
@@ -62,7 +62,7 @@ static __inline__ mat4_t mat4_create_scale(float x, float y, float z) {
 	return out;
 }
 
-static __inline__ mat4_t mat4_scale(mat4_t mat, float x, float y, float z) {
+static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) {
 	return mat4_mul(mat, mat4_create_scale(x, y, z));
 }
 

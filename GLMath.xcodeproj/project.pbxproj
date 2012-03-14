@@ -44,17 +44,17 @@
 		C701C3CB14BBC32100DD9C0C /* GLMathExports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathExports.h; sourceTree = "<group>"; };
 		C701C3CD14BBC87200DD9C0C /* GLMathExports.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathExports.c; sourceTree = "<group>"; };
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMath.c; sourceTree = "<group>"; };
+		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = GLMath.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
 		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathBezierCurve.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrix.h; sourceTree = "<group>"; };
+		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathMatrix.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrixStack.h; sourceTree = "<group>"; };
 		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathQuaternion.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathRectangle.h; sourceTree = "<group>"; };
 		C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathTransforms.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31714AC97BD009D29C6 /* GLMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTypes.h; sourceTree = "<group>"; };
 		C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathUtilities.h; sourceTree = "<group>"; };
-		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathVector.h; sourceTree = "<group>"; };
+		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathVector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA32514AC97D5009D29C6 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		C73160AD14ACF14800A966CE /* GLMathUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathUtilities.c; sourceTree = "<group>"; };
 		C7622AEF14D080850093DDD0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -253,7 +253,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		C7622B2A14D08D090093DDD0 /* Generate BridgeSupport File */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -261,9 +261,9 @@
 			name = "Generate BridgeSupport File";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/\ngen_bridge_metadata -c '-D__SCRIPTINGBRIDGE__' -f $TARGET_BUILD_DIR/$PROJECT_NAME.framework/ -o $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/$PRODUCT_NAME.bridgesupport";
+			shellScript = "mkdir -p $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/\ngen_bridge_metadata -c '-D__SCRIPTINGBRIDGE__ -DGLM_USE_DOUBLE' -f $TARGET_BUILD_DIR/$PROJECT_NAME.framework/ -o $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/$PRODUCT_NAME.bridgesupport";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -393,6 +393,7 @@
 				GCC_PREFIX_HEADER = "Framework Resources/GLMath-Prefix.pch";
 				INFOPLIST_FILE = "Framework Resources/GLMath-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				OTHER_CFLAGS = "-DGLM_USE_DOUBLE";
 				PRODUCT_NAME = GLMath;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -409,6 +410,7 @@
 				GCC_PREFIX_HEADER = "Framework Resources/GLMath-Prefix.pch";
 				INFOPLIST_FILE = "Framework Resources/GLMath-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
+				OTHER_CFLAGS = "-DGLM_USE_DOUBLE";
 				PRODUCT_NAME = GLMath;
 				WRAPPER_EXTENSION = framework;
 			};

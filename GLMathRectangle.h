@@ -34,11 +34,11 @@ extern "C" {
 #pragma mark - Prototypes
 
 static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size) __asm("__rect_createWithSize");
-static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top) __asm("__rect_createWithCorners");
-static __inline__ float rect_maxX(const rect_t rect) __asm("__rect_maxX");
-static __inline__ float rect_minX(const rect_t rect) __asm("__rect_minX");
-static __inline__ float rect_maxY(const rect_t rect) __asm("__rect_maxY");
-static __inline__ float rect_minY(const rect_t rect) __asm("__rect_minY");
+static __inline__ rect_t rect_createWithCorners(GLMFloat left, GLMFloat bottom, GLMFloat right, GLMFloat top) __asm("__rect_createWithCorners");
+static __inline__ GLMFloat rect_maxX(const rect_t rect) __asm("__rect_maxX");
+static __inline__ GLMFloat rect_minX(const rect_t rect) __asm("__rect_minX");
+static __inline__ GLMFloat rect_maxY(const rect_t rect) __asm("__rect_maxY");
+static __inline__ GLMFloat rect_minY(const rect_t rect) __asm("__rect_minY");
 // True if r1&2 intersect
 static __inline__ bool rect_intersects(const rect_t r1, const rect_t r2) __asm("__rect_intersects");
 // True if r1 contains r2
@@ -50,7 +50,7 @@ static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2) __asm("__r
 // Scales the rectangle, maintaining the center point
 static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale) __asm("__rect_scale");
 // Returns the area of rect
-static __inline__ float rect_area(const rect_t rect) __asm("__rect_area");
+static __inline__ GLMFloat rect_area(const rect_t rect) __asm("__rect_area");
 // True if rect intersects with the line segment between a&b
 static __inline__ bool rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) __asm("__rect_intersectsLineSeg");
 // Translates rect by the given vector
@@ -63,28 +63,28 @@ static __inline__ rect_t rect_createWithSize(vec2_t origin, vec2_t size)
 	return out;
 }
 
-static __inline__ rect_t rect_createWithCorners(float left, float bottom, float right, float top)
+static __inline__ rect_t rect_createWithCorners(GLMFloat left, GLMFloat bottom, GLMFloat right, GLMFloat top)
 {
 	rect_t out = { left, bottom, right-left, top-bottom };
 	return out;
 }
 
-static __inline__ float rect_maxX(const rect_t rect)
+static __inline__ GLMFloat rect_maxX(const rect_t rect)
 {
 	return rect.origin.x + rect.size.w;
 }
 
-static __inline__ float rect_minX(const rect_t rect)
+static __inline__ GLMFloat rect_minX(const rect_t rect)
 {
 	return rect.origin.x;
 }
 
-static __inline__ float rect_maxY(const rect_t rect)
+static __inline__ GLMFloat rect_maxY(const rect_t rect)
 {
 	return rect.origin.y + rect.size.h;
 }
 
-static __inline__ float rect_minY(const rect_t rect)
+static __inline__ GLMFloat rect_minY(const rect_t rect)
 {
 	return rect.origin.y;
 }
@@ -125,7 +125,7 @@ static __inline__ rect_t rect_merge(const rect_t r1, const rect_t r2)
 static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale)
 {
 	vec2_t newSize = vec2_mul(rect.size, scale);
-	vec2_t originOffset = vec2_scalarDiv(vec2_sub(rect.size, newSize), 2.0f);
+	vec2_t originOffset = vec2_scalarDiv(vec2_sub(rect.size, newSize), 2.0);
 	vec2_t newOrigin = vec2_add(rect.origin, originOffset);
 
 	rect_t out;
@@ -134,7 +134,7 @@ static __inline__ rect_t rect_scale(const rect_t rect, const vec2_t scale)
 	return out;
 }
 
-static __inline__ float rect_area(const rect_t rect)
+static __inline__ GLMFloat rect_area(const rect_t rect)
 {
 	return rect.size.w * rect.size.h;
 }

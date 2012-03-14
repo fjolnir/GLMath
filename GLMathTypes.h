@@ -14,112 +14,122 @@
 
 #ifndef GL_MATH_TYPES_H
 #define GL_MATH_TYPES_H
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 #pragma mark - Types
 
+// Scalar
+#ifdef GLM_USE_DOUBLE
+    typedef double GLMFloat;
+    #define GLM_vdsp(fun, ...) vDSP_##fun##D(__VA_ARGS__)
+#else
+    typedef float GLMFloat;
+    #define GLM_vdsp(fun, ...) vDSP_##fun##(__VA_ARGS__)
+#endif
+
 // Vectors
 #ifndef __SCRIPTINGBRIDGE__
 union _vec2_t {
-	float f[2];
-	struct { float x; float y; };
-	struct { float w; float h; };
-	struct { float u; float v; };
+	GLMFloat f[2];
+	struct { GLMFloat x; GLMFloat y; };
+	struct { GLMFloat w; GLMFloat h; };
+	struct { GLMFloat u; GLMFloat v; };
 
 };
 typedef union _vec2_t vec2_t;
 #else
-typedef struct _vec2_t { float x; float y; } vec2_t;
+typedef struct _vec2_t { GLMFloat x; GLMFloat y; } vec2_t;
 #endif
 
 #ifndef __SCRIPTINGBRIDGE__
 union _vec3_t {
-	float f[3];
-	struct { float x; float y; float z; };
-	struct { float r; float g; float b; };
-	struct { vec2_t xy; float andY; };
+	GLMFloat f[3];
+	struct { GLMFloat x; GLMFloat y; GLMFloat z; };
+	struct { GLMFloat r; GLMFloat g; GLMFloat b; };
+	struct { vec2_t xy; GLMFloat andY; };
 };
 typedef union _vec3_t vec3_t;
 #else
-typedef struct _vec3_t { float x; float y; float z; } vec3_t;
+typedef struct _vec3_t { GLMFloat x; GLMFloat y; GLMFloat z; } vec3_t;
 #endif
 
 #ifndef __SCRIPTINGBRIDGE__
 union _vec4_t {
-	float f[4];
-	struct { float x; float y; float z; float w; };
-	struct { float r; float g; float b; float a; };
-	struct { vec3_t xyz; float andW; };
+	GLMFloat f[4];
+	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
+	struct { GLMFloat r; GLMFloat g; GLMFloat b; GLMFloat a; };
+	struct { vec3_t xyz; GLMFloat andW; };
 };
 typedef union _vec4_t vec4_t;
 #else
-typedef struct _vec4_t { float x; float y; float z; float w; } vec4_t;
+typedef struct _vec4_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } vec4_t;
 #endif
 
 // Matrices
 #ifndef __SCRIPTINGBRIDGE__
 union _mat3_t {
-	float f[9];
+	GLMFloat f[9];
 	struct {
-		float m00, m01, m02;
-		float m10, m11, m12;
-		float m20, m21, m22;
+		GLMFloat m00, m01, m02;
+		GLMFloat m10, m11, m12;
+		GLMFloat m20, m21, m22;
 	};
 };
 typedef union _mat3_t mat3_t;
 #else
 typedef struct _mat3_t {
-	float m00, m01, m02;
-	float m10, m11, m12;
-	float m20, m21, m22;
+	GLMFloat m00, m01, m02;
+	GLMFloat m10, m11, m12;
+	GLMFloat m20, m21, m22;
 } mat3_t;
 #endif
 
 #ifndef __SCRIPTINGBRIDGE__
 union _mat4_t {
-	float f[16];
+	GLMFloat f[16];
 	struct {
-		float m00, m01, m02, m03;
-		float m10, m11, m12, m13;
-		float m20, m21, m22, m23;
-		float m30, m31, m32, m33;
+		GLMFloat m00, m01, m02, m03;
+		GLMFloat m10, m11, m12, m13;
+		GLMFloat m20, m21, m22, m23;
+		GLMFloat m30, m31, m32, m33;
 	};
 };
 typedef union _mat4_t mat4_t;
 #else
 typedef struct _mat4_t {
-	float m00, m01, m02, m03;
-	float m10, m11, m12, m13;
-	float m20, m21, m22, m23;
-	float m30, m31, m32, m33;
+	GLMFloat m00, m01, m02, m03;
+	GLMFloat m10, m11, m12, m13;
+	GLMFloat m20, m21, m22, m23;
+	GLMFloat m30, m31, m32, m33;
 } mat4_t;
 #endif
 
 // Quaternions
 #ifndef __SCRIPTINGBRIDGE__
 union _quat_t {
-	float f[4];
-	struct { float x; float y; float z; float w; };
-	struct { vec3_t vec; float scalar; };
+	GLMFloat f[4];
+	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
+	struct { vec3_t vec; GLMFloat scalar; };
 };
 typedef union _quat_t quat_t;
 #else
-typedef struct _quat_t { float x; float y; float z; float w; } quat_t;
+typedef struct _quat_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } quat_t;
 #endif
 
 // Rectangles (Origin: bottom left)
 #ifndef __SCRIPTINGBRIDGE__
 union _rect_t {
-	float f[4];
+	GLMFloat f[4];
 	struct { vec2_t o; vec2_t s; };
 	struct { vec2_t origin; vec2_t size; };
-	struct { float x; float y; float w; float h; };
+	struct { GLMFloat x; GLMFloat y; GLMFloat w; GLMFloat h; };
 };
 typedef union _rect_t rect_t;
 #else
-typedef struct _rect_t { float x; float y; float w; float h; } rect_t;
+typedef struct _rect_t { GLMFloat x; GLMFloat y; GLMFloat w; GLMFloat h; } rect_t;
 #endif
 
 // Matrix stacks
@@ -133,7 +143,7 @@ typedef struct _matrix_stack_t matrix_stack_t;
 // Bezier curves
 #ifndef __SCRIPTINGBRIDGE__
 union _bezier_t {
-	float f[12];
+	GLMFloat f[12];
 	vec3_t controlPoints[4];
 	vec3_t cp[4];
 };

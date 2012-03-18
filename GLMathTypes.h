@@ -27,7 +27,7 @@ extern "C" {
     #define GLM_vdsp(fun, ...) vDSP_##fun##D(__VA_ARGS__)
 #else
     typedef float GLMFloat;
-    #define GLM_vdsp(fun, ...) vDSP_##fun##(__VA_ARGS__)
+    #define GLM_vdsp(fun, ...) vDSP_##fun(__VA_ARGS__)
 #endif
 
 // Vectors

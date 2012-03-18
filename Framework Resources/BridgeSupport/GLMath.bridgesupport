@@ -1,0 +1,695 @@
+<?xml version='1.0'?>
+<!DOCTYPE signatures SYSTEM "file://localhost/System/Library/DTDs/BridgeSupport.dtd">
+<signatures version='1.0'>
+<depends_on path='/System/Library/Frameworks/Accelerate.framework'/>
+<struct name='bezier_t' type='{_bezier_t=&quot;controlPoints&quot;[4{_vec3_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}]}'/>
+<struct name='mat3_t' type='{_mat3_t=&quot;m00&quot;f&quot;m01&quot;f&quot;m02&quot;f&quot;m10&quot;f&quot;m11&quot;f&quot;m12&quot;f&quot;m20&quot;f&quot;m21&quot;f&quot;m22&quot;f}'/>
+<struct name='mat4_t' type='{_mat4_t=&quot;m00&quot;f&quot;m01&quot;f&quot;m02&quot;f&quot;m03&quot;f&quot;m10&quot;f&quot;m11&quot;f&quot;m12&quot;f&quot;m13&quot;f&quot;m20&quot;f&quot;m21&quot;f&quot;m22&quot;f&quot;m23&quot;f&quot;m30&quot;f&quot;m31&quot;f&quot;m32&quot;f&quot;m33&quot;f}'/>
+<struct name='matrix_stack_t' type='{_matrix_stack_t=&quot;items&quot;^{_mat4_t}&quot;capacity&quot;I&quot;count&quot;I}'/>
+<struct name='quat_t' type='{_quat_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}'/>
+<struct name='rect_t' type='{_rect_t=&quot;x&quot;f&quot;y&quot;f&quot;w&quot;f&quot;h&quot;f}'/>
+<struct name='vec2_t' type='{_vec2_t=&quot;x&quot;f&quot;y&quot;f}'/>
+<struct name='vec3_t' type='{_vec3_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}'/>
+<struct name='vec4_t' type='{_vec4_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}'/>
+<constant name='kMat3_identity' type='{_mat3_t=fffffffff}'/>
+<constant name='kMat3_zero' type='{_mat3_t=fffffffff}'/>
+<constant name='kMat4_identity' type='{_mat4_t=ffffffffffffffff}'/>
+<constant name='kMat4_zero' type='{_mat4_t=ffffffffffffffff}'/>
+<constant name='kVec2_zero' type='{_vec2_t=ff}'/>
+<constant name='kVec3_zero' type='{_vec3_t=fff}'/>
+<constant name='kVec4_zero' type='{_vec4_t=ffff}'/>
+<enum name='GLM_EPSILON' value='1.0E-8'/>
+<enum name='kBezierAxisX' value='0'/>
+<enum name='kBezierAxisY' value='1'/>
+<enum name='kBezierAxisZ' value='2'/>
+<function name='GLMFloatArr_equals' inline='true'>
+<arg type='^f'/>
+<arg type='^f'/>
+<arg type='I'/>
+<retval type='B'/>
+</function>
+<function name='bezier_create' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+</function>
+<function name='bezier_extremes'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='^{_vec3_t=fff}'/>
+<arg type='^{_vec3_t=fff}'/>
+</function>
+<function name='bezier_firstDerivative' inline='true'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='bezier_firstDerivativeRoots'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='i'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='bezier_getCoordForAxis' inline='true'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='f'/>
+<arg type='i'/>
+<retval type='f'/>
+</function>
+<function name='bezier_getLineSegments'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='i'/>
+<arg type='^{_vec3_t=fff}'/>
+<arg type='^f'/>
+<arg type='^f'/>
+<arg type='^f'/>
+</function>
+<function name='bezier_getPoint' inline='true'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='bezier_getPointUsingLineSegments'>
+<arg type='f'/>
+<arg type='i'/>
+<arg type='^{_vec3_t=fff}'/>
+<arg type='^f'/>
+<arg type='^f'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='bezier_getPointWithOffset' inline='true'>
+<arg type='{_bezier_t=[4{_vec3_t=fff}]}'/>
+<arg type='f'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='degToRad' inline='true'>
+<arg type='f'/>
+<retval type='f'/>
+</function>
+<function name='mat3_det' inline='true'>
+<arg type='{_mat3_t=fffffffff}'/>
+<retval type='f'/>
+</function>
+<function name='mat3_inverse' inline='true'>
+<arg type='{_mat3_t=fffffffff}'/>
+<arg type='^B'/>
+<retval type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='mat3_mul' inline='true'>
+<arg type='{_mat3_t=fffffffff}'/>
+<arg type='{_mat3_t=fffffffff}'/>
+<retval type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='mat3_transpose' inline='true'>
+<arg type='{_mat3_t=fffffffff}'/>
+<retval type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='mat4_create_rotation' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_create_scale' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_create_translation' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_det' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='f'/>
+</function>
+<function name='mat4_equals' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='B'/>
+</function>
+<function name='mat4_extract_mat3' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='mat4_frustum'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_inverse' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='^B'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_lookat'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_mul' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_ortho'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_perspective'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_rotate' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_scale' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_to_quat' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='mat4_translate' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='mat4_transpose' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='matrix_stack_create'>
+<arg type='I'/>
+<retval type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+</function>
+<function name='matrix_stack_destroy'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+</function>
+<function name='matrix_stack_get_mat3' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<retval type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='matrix_stack_get_mat4' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='matrix_stack_mul_mat4' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='matrix_stack_pop'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+</function>
+<function name='matrix_stack_push' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+</function>
+<function name='matrix_stack_push_item'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='matrix_stack_rotate' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+</function>
+<function name='matrix_stack_scale' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+</function>
+<function name='matrix_stack_translate' inline='true'>
+<arg type='^{_matrix_stack_t=^{_mat4_t}II}'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+</function>
+<function name='ortho_to_quat' inline='true'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='printMat3'>
+<arg type='{_mat3_t=fffffffff}'/>
+</function>
+<function name='printMat4'>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='printQuat'>
+<arg type='{_quat_t=ffff}'/>
+</function>
+<function name='printVec2'>
+<arg type='{_vec2_t=ff}'/>
+</function>
+<function name='printVec3'>
+<arg type='{_vec3_t=fff}'/>
+</function>
+<function name='printVec4'>
+<arg type='{_vec4_t=ffff}'/>
+</function>
+<function name='quat_computeW' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_createf'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_createv'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='f'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_dotProduct' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='quat_equals' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t=ffff}'/>
+<retval type='B'/>
+</function>
+<function name='quat_inverse' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_mag' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='quat_magSquared' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='quat_multQuat' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_normalize' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_rotatePoint' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='quat_slerp' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t=ffff}'/>
+<arg type='f'/>
+<retval type='{_quat_t=ffff}'/>
+</function>
+<function name='quat_to_mat4' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='quat_to_ortho' inline='true'>
+<arg type='{_quat_t=ffff}'/>
+<retval type='{_mat4_t=ffffffffffffffff}'/>
+</function>
+<function name='radToDeg' inline='true'>
+<arg type='f'/>
+<retval type='f'/>
+</function>
+<function name='rect_area' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='rect_containsPoint' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='B'/>
+</function>
+<function name='rect_containsRect' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_rect_t=ffff}'/>
+<retval type='B'/>
+</function>
+<function name='rect_createWithCorners' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_rect_t=ffff}'/>
+</function>
+<function name='rect_createWithSize' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_rect_t=ffff}'/>
+</function>
+<function name='rect_intersects' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_rect_t=ffff}'/>
+<retval type='B'/>
+</function>
+<function name='rect_intersectsLineSeg' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='B'/>
+</function>
+<function name='rect_maxX' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='rect_maxY' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='rect_merge' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_rect_t=ffff}'/>
+<retval type='{_rect_t=ffff}'/>
+</function>
+<function name='rect_minX' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='rect_minY' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='rect_scale' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_rect_t=ffff}'/>
+</function>
+<function name='rect_translate' inline='true'>
+<arg type='{_rect_t=ffff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_rect_t=ffff}'/>
+</function>
+<function name='vec2_add' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_create' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_dist' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='f'/>
+</function>
+<function name='vec2_div' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_dot' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='f'/>
+</function>
+<function name='vec2_equals' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='B'/>
+</function>
+<function name='vec2_floor' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_mag' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<retval type='f'/>
+</function>
+<function name='vec2_magSquared' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<retval type='f'/>
+</function>
+<function name='vec2_mul' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_negate' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_normalize' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_scalarAdd' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='f'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_scalarDiv' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='f'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_scalarMul' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='f'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_scalarSub' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='f'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec2_sub' inline='true'>
+<arg type='{_vec2_t=ff}'/>
+<arg type='{_vec2_t=ff}'/>
+<retval type='{_vec2_t=ff}'/>
+</function>
+<function name='vec3_add' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_create' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_cross' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_dist' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='f'/>
+</function>
+<function name='vec3_div' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_dot' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='f'/>
+</function>
+<function name='vec3_equals' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='B'/>
+</function>
+<function name='vec3_floor' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_mag' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<retval type='f'/>
+</function>
+<function name='vec3_magSquared' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<retval type='f'/>
+</function>
+<function name='vec3_mul' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_mul_mat3' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_mat3_t=fffffffff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_mul_mat4' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<arg type='B'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_negate' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_normalize' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_scalarAdd' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_scalarDiv' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_scalarMul' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_scalarSub' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='f'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec3_sub' inline='true'>
+<arg type='{_vec3_t=fff}'/>
+<arg type='{_vec3_t=fff}'/>
+<retval type='{_vec3_t=fff}'/>
+</function>
+<function name='vec4_add' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_create' inline='true'>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<arg type='f'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_cross' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_dist' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='vec4_div' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_dot' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='vec4_equals' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='B'/>
+</function>
+<function name='vec4_floor' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_mag' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='vec4_magSquared' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='f'/>
+</function>
+<function name='vec4_mul' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_mul_mat4' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_mat4_t=ffffffffffffffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_negate' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_normalize' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_scalarAdd' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='f'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_scalarDiv' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='f'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_scalarMul' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='f'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_scalarSub' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='f'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+<function name='vec4_sub' inline='true'>
+<arg type='{_vec4_t=ffff}'/>
+<arg type='{_vec4_t=ffff}'/>
+<retval type='{_vec4_t=ffff}'/>
+</function>
+</signatures>

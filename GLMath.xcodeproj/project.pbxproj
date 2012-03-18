@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		C7B6A7331511B299003F797D /* Generate BridgeSupport */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = C7B6A7361511B299003F797D /* Build configuration list for PBXAggregateTarget "Generate BridgeSupport" */;
+			buildPhases = (
+				C7B6A73A1511B2B3003F797D /* Generate Metadata */,
+			);
+			dependencies = (
+			);
+			name = "Generate BridgeSupport";
+			productName = "Framework with BridgeSupport";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		C701C3CC14BBC32100DD9C0C /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
 		C701C3CE14BBC87200DD9C0C /* GLMathExports.c in Sources */ = {isa = PBXBuildFile; fileRef = C701C3CD14BBC87200DD9C0C /* GLMathExports.c */; };
@@ -38,6 +52,7 @@
 		C7622B5F14D1185F0093DDD0 /* GLMathExports.c in Sources */ = {isa = PBXBuildFile; fileRef = C701C3CD14BBC87200DD9C0C /* GLMathExports.c */; };
 		C7622B6014D118640093DDD0 /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
 		C7622B8314D149990093DDD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7622B0214D085B60093DDD0 /* InfoPlist.strings */; };
+		C7B6A76C15120A68003F797D /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = C7B6A76B15120A68003F797D /* BridgeSupport */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +77,7 @@
 		C7622B0114D085B60093DDD0 /* GLMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLMath-Info.plist"; sourceTree = "<group>"; };
 		C7622B0314D085B60093DDD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C7622B0514D085B60093DDD0 /* GLMath-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLMath-Prefix.pch"; sourceTree = "<group>"; };
+		C7B6A76B15120A68003F797D /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BridgeSupport; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +144,7 @@
 		C7622B0014D085B60093DDD0 /* Framework Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C7B6A76B15120A68003F797D /* BridgeSupport */,
 				C7622B0114D085B60093DDD0 /* GLMath-Info.plist */,
 				C7622B0214D085B60093DDD0 /* InfoPlist.strings */,
 				C7622B0514D085B60093DDD0 /* GLMath-Prefix.pch */,
@@ -202,7 +219,6 @@
 				C7622AF314D085B60093DDD0 /* Frameworks */,
 				C7622AF414D085B60093DDD0 /* Headers */,
 				C7622AF514D085B60093DDD0 /* Resources */,
-				C7622B2A14D08D090093DDD0 /* Generate BridgeSupport File */,
 			);
 			buildRules = (
 			);
@@ -235,6 +251,7 @@
 			targets = (
 				C70EA30214AC9780009D29C6 /* Static Library */,
 				C7622AF614D085B60093DDD0 /* Framework */,
+				C7B6A7331511B299003F797D /* Generate BridgeSupport */,
 			);
 		};
 /* End PBXProject section */
@@ -245,25 +262,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7622B8314D149990093DDD0 /* InfoPlist.strings in Resources */,
+				C7B6A76C15120A68003F797D /* BridgeSupport in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C7622B2A14D08D090093DDD0 /* Generate BridgeSupport File */ = {
+		C7B6A73A1511B2B3003F797D /* Generate Metadata */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Generate BridgeSupport File";
+			name = "Generate Metadata";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "mkdir -p $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/\ngen_bridge_metadata -c '-D__SCRIPTINGBRIDGE__ -DGLM_USE_DOUBLE' -f $TARGET_BUILD_DIR/$PROJECT_NAME.framework/ -o $TARGET_BUILD_DIR/$FULL_PRODUCT_NAME/Resources/BridgeSupport/$PRODUCT_NAME.bridgesupport";
+			shellScript = "gen_bridge_metadata -c '-D__SCRIPTINGBRIDGE__' -f $TARGET_BUILD_DIR/$PRODUCT_NAME.framework/ -o $PROJECT_DIR/Framework\\ Resources/BridgeSupport/$PRODUCT_NAME.bridgesupport";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -391,9 +409,9 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Framework Resources/GLMath-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "Framework Resources/GLMath-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_CFLAGS = "-DGLM_USE_DOUBLE";
 				PRODUCT_NAME = GLMath;
 				WRAPPER_EXTENSION = framework;
 			};
@@ -408,11 +426,25 @@
 				GCC_ENABLE_OBJC_GC = supported;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Framework Resources/GLMath-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS_NOT_USED_IN_PRECOMPS = "";
 				INFOPLIST_FILE = "Framework Resources/GLMath-Info.plist";
 				INSTALL_PATH = "@executable_path/../Frameworks";
-				OTHER_CFLAGS = "-DGLM_USE_DOUBLE";
 				PRODUCT_NAME = GLMath;
 				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		C7B6A7341511B299003F797D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = GLMath;
+			};
+			name = Debug;
+		};
+		C7B6A7351511B299003F797D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = GLMath;
 			};
 			name = Release;
 		};
@@ -442,6 +474,15 @@
 			buildConfigurations = (
 				C7622B0A14D085B60093DDD0 /* Debug */,
 				C7622B0B14D085B60093DDD0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7B6A7361511B299003F797D /* Build configuration list for PBXAggregateTarget "Generate BridgeSupport" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7B6A7341511B299003F797D /* Debug */,
+				C7B6A7351511B299003F797D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

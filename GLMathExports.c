@@ -45,6 +45,7 @@ vec4_t _vec4_div(const vec4_t v1, const vec4_t v2) { return vec4_div(v1, v2); }
 GLMFloat _vec4_dot(const vec4_t v1, const vec4_t v2) { return vec4_dot(v1, v2); }
 GLMFloat _vec4_magSquared(const vec4_t v) { return vec4_magSquared(v); }
 GLMFloat _vec4_mag(const vec4_t v) { return vec4_mag(v); }
+vec4_t _vec4_normalize(const vec4_t v) { return vec4_normalize(v); }
 GLMFloat _vec4_dist(const vec4_t v1, const vec4_t v2) { return vec4_dist(v1, v2); }
 vec4_t _vec4_scalarMul(const vec4_t v, GLMFloat s) { return vec4_scalarMul(v, s); }
 vec4_t _vec4_scalarDiv(const vec4_t v, GLMFloat s) { return vec4_scalarDiv(v, s); }

@@ -71,6 +71,7 @@ static __inline__ vec4_t vec4_div(const vec4_t v1, const vec4_t v2) __asm("__vec
 static __inline__ GLMFloat vec4_dot(const vec4_t v1, const vec4_t v2) __asm("__vec4_dot");
 static __inline__ GLMFloat vec4_magSquared(const vec4_t v) __asm("__vec4_magSquared");
 static __inline__ GLMFloat vec4_mag(const vec4_t v) __asm("__vec4_mag");
+static __inline__ vec4_t vec4_normalize(const vec4_t v) __asm("__vec4_normalize");
 static __inline__ GLMFloat vec4_dist(const vec4_t v1, const vec4_t v2) __asm("__vec4_dist");
 static __inline__ vec4_t vec4_scalarMul(const vec4_t v, GLMFloat s) __asm("__vec4_scalarMul");
 static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, GLMFloat s) __asm("__vec4_scalarDiv");

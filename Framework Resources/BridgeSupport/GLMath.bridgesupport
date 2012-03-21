@@ -11,13 +11,13 @@
 <struct name='vec2_t' type='{_vec2_t=&quot;x&quot;f&quot;y&quot;f}'/>
 <struct name='vec3_t' type='{_vec3_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}'/>
 <struct name='vec4_t' type='{_vec4_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}'/>
-<constant name='kMat3_identity' type='{_mat3_t=fffffffff}'/>
-<constant name='kMat3_zero' type='{_mat3_t=fffffffff}'/>
-<constant name='kMat4_identity' type='{_mat4_t=ffffffffffffffff}'/>
-<constant name='kMat4_zero' type='{_mat4_t=ffffffffffffffff}'/>
-<constant name='kVec2_zero' type='{_vec2_t=ff}'/>
-<constant name='kVec3_zero' type='{_vec3_t=fff}'/>
-<constant name='kVec4_zero' type='{_vec4_t=ffff}'/>
+<constant name='GLMMat3_identity' type='{_mat3_t=fffffffff}'/>
+<constant name='GLMMat3_zero' type='{_mat3_t=fffffffff}'/>
+<constant name='GLMMat4_identity' type='{_mat4_t=ffffffffffffffff}'/>
+<constant name='GLMMat4_zero' type='{_mat4_t=ffffffffffffffff}'/>
+<constant name='GLMVec2_zero' type='{_vec2_t=ff}'/>
+<constant name='GLMVec3_zero' type='{_vec3_t=fff}'/>
+<constant name='GLMVec4_zero' type='{_vec4_t=ffff}'/>
 <enum name='GLM_EPSILON' value='1.0E-8'/>
 <enum name='kBezierAxisX' value='0'/>
 <enum name='kBezierAxisY' value='1'/>
@@ -85,6 +85,11 @@
 <retval type='{_vec3_t=fff}'/>
 </function>
 <function name='degToRad' inline='true'>
+<arg type='f'/>
+<retval type='f'/>
+</function>
+<function name='fastPow' inline='true'>
+<arg type='f'/>
 <arg type='f'/>
 <retval type='f'/>
 </function>

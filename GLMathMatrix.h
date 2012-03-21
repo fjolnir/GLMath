@@ -99,11 +99,11 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	__CLPK_integer colsA, rowsA, colsB, rowsB, status;
 	colsA = rowsA = colsB = rowsB = 3;
 	__CLPK_integer pivotIndices[colsA];
-	memcpy(out.f, kMat3_identity.f, sizeof(mat3_t));
+	memcpy(out.f, GLMMat3_identity.f, sizeof(mat3_t));
 	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
-		return kMat3_zero;
+		return GLMMat3_zero;
 	}
 	return out;
 #else
@@ -111,7 +111,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	GLMFloat det = mat3_det(m);
 	if(fabs(det) < 0.0005) {
 		if(success_out != NULL) *success_out = false;
-		return kMat3_zero;
+		return GLMMat3_zero;
 	}
 	out.m00 =    m.m11*m.m22 - m.m12*m.m21   / det;
 	out.m01 = -( m.m01*m.m22 - m.m21*m.m02 ) / det;
@@ -211,12 +211,12 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 	__CLPK_integer colsA, rowsA, colsB, rowsB, status;
 	colsA = rowsA = colsB = rowsB = 4;
 	__CLPK_integer pivotIndices[colsA];
-	memcpy(out.f, kMat4_identity.f, sizeof(mat4_t));
+	memcpy(out.f, GLMMat4_identity.f, sizeof(mat4_t));
 	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
 
-		return kMat4_zero;
+		return GLMMat4_zero;
 	}
 #else
 	GLMFloat det = mat4_det(m);
@@ -224,7 +224,7 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 	int sign;
 	if(fabs(det) < 0.0005) {
 		if(success_out != NULL) *success_out = false;
-		return kMat4_zero;
+		return GLMMat4_zero;
 	}
 	for(int i = 0; i < 4; i++ ) {
 		for(int j = 0; j < 4; j++ ) {

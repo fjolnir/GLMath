@@ -74,7 +74,7 @@ static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item) {
 
 // Pushes an identical copy of the currently topmost item onto the stack (or the identity matrix if no item currently exists)
 static __inline__ void matrix_stack_push(matrix_stack_t *stack) {
-	matrix_stack_push_item(stack, stack->count >= 1 ? stack->items[stack->count-1] : kMat4_identity);
+	matrix_stack_push_item(stack, stack->count >= 1 ? stack->items[stack->count-1] : GLMMat4_identity);
 }
 
 // Pops an item off the stack

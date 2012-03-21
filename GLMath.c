@@ -14,24 +14,24 @@
 
 #include "GLMath.h"
 
-const vec2_t kVec2_zero = { 0.0, 0.0 };
-const vec3_t kVec3_zero = { 0.0, 0.0, 0.0 };
-const vec4_t kVec4_zero = { 0.0, 0.0, 0.0, 0.0 };
+const vec2_t GLMVec2_zero = { 0.0, 0.0 };
+const vec3_t GLMVec3_zero = { 0.0, 0.0, 0.0 };
+const vec4_t GLMVec4_zero = { 0.0, 0.0, 0.0, 0.0 };
 
-const mat3_t kMat3_identity = { 1.0, 0.0, 0.0,
+const mat3_t GLMMat3_identity = { 1.0, 0.0, 0.0,
                                 0.0, 1.0, 0.0,
                                 0.0, 0.0, 1.0 };
 
-const mat3_t kMat3_zero = { 0.0, 0.0, 0.0,
+const mat3_t GLMMat3_zero = { 0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0 };
 
-const mat4_t kMat4_identity = { 1.0, 0.0, 0.0, 0.0,
+const mat4_t GLMMat4_identity = { 1.0, 0.0, 0.0, 0.0,
                                 0.0, 1.0, 0.0, 0.0,
                                 0.0, 0.0, 1.0, 0.0,
                                 0.0, 0.0, 0.0, 1.0 };
 
-const mat4_t kMat4_zero = { 0.0, 0.0, 0.0, 0.0,
+const mat4_t GLMMat4_zero = { 0.0, 0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0, 0.0,
                             0.0, 0.0, 0.0, 0.0 };

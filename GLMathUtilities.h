@@ -29,6 +29,9 @@ extern "C" {
 // Utilities
 static __inline__ GLMFloat degToRad(GLMFloat degrees) __asm("__degToRad");
 static __inline__ GLMFloat radToDeg(GLMFloat radians) __asm("__radToDeg");
+    
+static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y) __asm("__fastPow");
+
 
 mat4_t mat4_perspective(GLMFloat fov_radians, GLMFloat aspect, GLMFloat zNear, GLMFloat zFar);
 mat4_t mat4_frustum(GLMFloat left, GLMFloat right, GLMFloat bottom, GLMFloat top, GLMFloat near, GLMFloat far);
@@ -58,6 +61,15 @@ static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) __asm("__qu
 
 static __inline__ GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI / 180.0); }
 static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 / M_PI); }
+
+static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
+{
+#ifdef GLM_USE_DOUBLE
+    return exp2(y*log2(x));
+#else
+    return exp2f(y*log2f(x));
+#endif
+}
 
 static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {

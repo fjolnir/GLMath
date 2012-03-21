@@ -33,7 +33,7 @@ static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat
 #pragma mark - Implementations
 
 static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) {
-	mat4_t out = kMat4_identity;
+	mat4_t out = GLMMat4_identity;
 	out.m30 = x;
 	out.m31 = y;
 	out.m32 = z;
@@ -54,7 +54,7 @@ static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLM
 }
 
 static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z) {
-	mat4_t out = kMat4_identity;
+	mat4_t out = GLMMat4_identity;
 	out.m00 = x;
 	out.m11 = y;
 	out.m22 = z;

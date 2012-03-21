@@ -162,14 +162,14 @@ typedef enum _bezierAxis bezierAxis_t;
 #pragma mark - Constants
 
 // Zero vectors
-extern const vec2_t kVec2_zero;
-extern const vec3_t kVec3_zero;
-extern const vec4_t kVec4_zero;
+extern const vec2_t GLMVec2_zero;
+extern const vec3_t GLMVec3_zero;
+extern const vec4_t GLMVec4_zero;
 
-extern const mat3_t kMat3_identity;
-extern const mat3_t kMat3_zero;
-extern const mat4_t kMat4_identity;
-extern const mat4_t kMat4_zero;
+extern const mat3_t GLMMat3_identity;
+extern const mat3_t GLMMat3_zero;
+extern const mat4_t GLMMat4_identity;
+extern const mat4_t GLMMat4_zero;
 
 #ifdef __cplusplus
 }

@@ -19,6 +19,7 @@
 #include <GLMath/GLMathVector.h>
 #include <GLMath/GLMathMatrix.h>
 #include <GLMath/GLMathTransforms.h>
+#include <GLMath/GLMathUtilities.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,10 +71,10 @@ static __inline__ GLMFloat bezier_getCoordForAxis(bezier_t curve, GLMFloat t, be
 {
 	// Evaluate the bezier curve equation
 	GLMFloat mt = 1.0 - t;
-	GLMFloat p0 = curve.controlPoints[0].f[axis] * powf(mt, 3.0);
-	GLMFloat p1 = curve.controlPoints[1].f[axis] * (3.0 * powf(mt, 2.0) * t);
-	GLMFloat p2 = curve.controlPoints[2].f[axis] * (3.0 * mt * powf(t, 2.0));
-	GLMFloat p3 = curve.controlPoints[3].f[axis] * powf(t, 3.0);
+	GLMFloat p0 = GLM_FCAST(curve.controlPoints[0])[axis] * powf(mt, 3.0);
+	GLMFloat p1 = GLM_FCAST(curve.controlPoints[1])[axis] * (3.0 * powf(mt, 2.0) * t);
+	GLMFloat p2 = GLM_FCAST(curve.controlPoints[2])[axis] * (3.0 * mt * powf(t, 2.0));
+	GLMFloat p3 = GLM_FCAST(curve.controlPoints[3])[axis] * powf(t, 3.0);
 	return p0 + p1 + p2 + p3;
 }
 
@@ -100,17 +101,17 @@ static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, GLMFloat t)
 static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis)
 {
 	vec2_t out = { -1.0 , -1.0 };
-	GLMFloat a = curve.controlPoints[0].f[axis];
-	GLMFloat b = curve.controlPoints[1].f[axis];
-	GLMFloat c = curve.controlPoints[2].f[axis];
-	GLMFloat d = curve.controlPoints[3].f[axis];
+	GLMFloat a = GLM_FCAST(curve.controlPoints[0])[axis];
+	GLMFloat b = GLM_FCAST(curve.controlPoints[1])[axis];
+	GLMFloat c = GLM_FCAST(curve.controlPoints[2])[axis];
+	GLMFloat d = GLM_FCAST(curve.controlPoints[3])[axis];
 	GLMFloat tl = -a + 2.0*b - c;
 	GLMFloat tr = -sqrtf(-a*(c-d) + b*b - b*(c+d) + c*c);
 	GLMFloat denom = -a + 3.0*b - 3.0*c + d;
 
 	if(denom != 0.0) {
-		out.f[0] = (tl+tr) / denom;
-		out.f[1] = (tl-tr) / denom;
+		out.x = (tl+tr) / denom;
+		out.y = (tl-tr) / denom;
 	}
 	return out;
 }
@@ -127,14 +128,14 @@ static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaxi
 	max.x = GLM_MAX(start.x, end.x);
 	max.y = GLM_MAX(start.y, end.y);
 	max.z = GLM_MAX(start.z, end.z);
-	vec3_t temp;
+    vec3_t temp;
 	for(int axis = 0; axis < 3; ++axis) {
 		vec2_t roots = bezier_firstDerivativeRoots(curve, axis);
 		for(int i = 0; i < 2; ++i) {
-			if(roots.f[i] > 0.0 && roots.f[i] < 1.0) {
-				temp = bezier_getPoint(curve, roots.f[i]);
-				min.f[axis] = GLM_MIN(min.f[axis], temp.f[axis]);
-				max.f[axis] = GLM_MAX(max.f[axis], temp.f[axis]);
+			if(GLM_FCAST(roots)[i] > 0.0 && GLM_FCAST(roots)[i] < 1.0) {
+				temp = bezier_getPoint(curve, GLM_FCAST(roots)[i]);
+				GLM_FCAST(min)[axis] = GLM_MIN(GLM_FCAST(min)[axis], GLM_FCAST(temp)[axis]);
+				GLM_FCAST(max)[axis] = GLM_MAX(GLM_FCAST(max)[axis], GLM_FCAST(temp)[axis]);
 			}
 		}
 	}

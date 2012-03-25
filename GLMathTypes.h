@@ -15,8 +15,14 @@
 #ifndef GL_MATH_TYPES_H
 #define GL_MATH_TYPES_H
 
+#define GLM_FCAST(x) ((GLMFloat *)(&x))
+
 #ifdef __cplusplus
 extern "C" {
+#endif
+
+#ifdef __SCRIPTINGBRIDGE__
+#define __GLM_SIMPLESTRUCTS__
 #endif
 
 #pragma mark - Types
@@ -31,7 +37,7 @@ extern "C" {
 #endif
 
 // Vectors
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _vec2_t {
 	GLMFloat f[2];
 	struct { GLMFloat x; GLMFloat y; };
@@ -44,7 +50,7 @@ typedef union _vec2_t vec2_t;
 typedef struct _vec2_t { GLMFloat x; GLMFloat y; } vec2_t;
 #endif
 
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _vec3_t {
 	GLMFloat f[3];
 	struct { GLMFloat x; GLMFloat y; GLMFloat z; };
@@ -56,7 +62,7 @@ typedef union _vec3_t vec3_t;
 typedef struct _vec3_t { GLMFloat x; GLMFloat y; GLMFloat z; } vec3_t;
 #endif
 
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _vec4_t {
 	GLMFloat f[4];
 	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
@@ -69,7 +75,7 @@ typedef struct _vec4_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } vec4_
 #endif
 
 // Matrices
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _mat3_t {
 	GLMFloat f[9];
 	struct {
@@ -87,7 +93,7 @@ typedef struct _mat3_t {
 } mat3_t;
 #endif
 
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _mat4_t {
 	GLMFloat f[16];
 	struct {
@@ -108,7 +114,7 @@ typedef struct _mat4_t {
 #endif
 
 // Quaternions
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _quat_t {
 	GLMFloat f[4];
 	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
@@ -116,11 +122,11 @@ union _quat_t {
 };
 typedef union _quat_t quat_t;
 #else
-typedef struct _quat_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } quat_t;
+typedef struct _quat_t { vec3_t vec; GLMFloat scalar; } quat_t;
 #endif
 
 // Rectangles (Origin: bottom left)
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _rect_t {
 	GLMFloat f[4];
 	struct { vec2_t o; vec2_t s; };
@@ -141,7 +147,7 @@ struct _matrix_stack_t {
 typedef struct _matrix_stack_t matrix_stack_t;
 
 // Bezier curves
-#ifndef __SCRIPTINGBRIDGE__
+#ifndef __GLM_SIMPLESTRUCTS__
 union _bezier_t {
 	GLMFloat f[12];
 	vec3_t controlPoints[4];

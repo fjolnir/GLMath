@@ -23,6 +23,10 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+    
+#define GLM_MAX(x,y) ( ((x)>(y)) ? (x) : (y) )
+#define GLM_MIN(x,y) ( ((x)<(y)) ? (x) : (y) )
+#define GLM_CLAMP(x, min, max) GLM_MAX(min, GLM_MIN(x, max));
 
 #pragma mark - Prototypes
 
@@ -79,19 +83,19 @@ static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2
 	return true;
 }
 static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) {
-	return GLMFloatArr_equals(v1.f, v2.f, 2);
+	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 2);
 }
 static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) {
-	return GLMFloatArr_equals(v1.f, v2.f, 3);
+	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 3);
 }
 static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) {
-	return GLMFloatArr_equals(v1.f, v2.f, 4);
+	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 4);
 }
 static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) {
-	return GLMFloatArr_equals(m1.f, m2.f, 16);
+	return GLMFloatArr_equals(GLM_FCAST(m1), GLM_FCAST(m2), 16);
 }
 static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) {
-	return GLMFloatArr_equals(q1.f, q2.f, 4);
+	return GLMFloatArr_equals(GLM_FCAST(q1), GLM_FCAST(q2), 4);
 }
 
 #ifdef __cplusplus

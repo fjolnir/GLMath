@@ -30,7 +30,6 @@
 #include <GLMath/GLMathVector.h>
 #include <GLMath/GLMathMatrix.h>
 #include <GLMath/GLMathQuaternion.h>
-#include <GLMath/GLMathRectangle.h>
 #include <GLMath/GLMathBezierCurve.h>
 #include <GLMath/GLMathMatrixStack.h>
 #include <GLMath/GLMathUtilities.h>

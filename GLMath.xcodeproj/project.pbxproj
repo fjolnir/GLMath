@@ -29,7 +29,6 @@
 		C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */; };
 		C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */; };
 		C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */; };
-		C70EA32014AC97BD009D29C6 /* GLMathRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */; };
 		C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */; };
 		C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; };
 		C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; };
@@ -43,7 +42,6 @@
 		C7622B1114D085F20093DDD0 /* GLMathMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1214D085F20093DDD0 /* GLMathMatrixStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1314D085F20093DDD0 /* GLMathQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7622B1414D085F20093DDD0 /* GLMathRectangle.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1514D085F20093DDD0 /* GLMathTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1614D085F20093DDD0 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1714D085F20093DDD0 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,9 +63,8 @@
 		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathMatrix.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrixStack.h; sourceTree = "<group>"; };
 		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathQuaternion.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathRectangle.h; sourceTree = "<group>"; };
 		C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathTransforms.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		C70EA31714AC97BD009D29C6 /* GLMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathTypes.h; sourceTree = "<group>"; };
+		C70EA31714AC97BD009D29C6 /* GLMathTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathTypes.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathUtilities.h; sourceTree = "<group>"; };
 		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathVector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA32514AC97D5009D29C6 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
@@ -129,7 +126,6 @@
 				C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */,
 				C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */,
 				C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */,
-				C70EA31514AC97BD009D29C6 /* GLMathRectangle.h */,
 				C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */,
 				C70EA31714AC97BD009D29C6 /* GLMathTypes.h */,
 				C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */,
@@ -164,7 +160,6 @@
 				C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */,
 				C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */,
 				C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */,
-				C70EA32014AC97BD009D29C6 /* GLMathRectangle.h in Headers */,
 				C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */,
 				C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */,
 				C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */,
@@ -182,7 +177,6 @@
 				C7622B1114D085F20093DDD0 /* GLMathMatrix.h in Headers */,
 				C7622B1214D085F20093DDD0 /* GLMathMatrixStack.h in Headers */,
 				C7622B1314D085F20093DDD0 /* GLMathQuaternion.h in Headers */,
-				C7622B1414D085F20093DDD0 /* GLMathRectangle.h in Headers */,
 				C7622B1514D085F20093DDD0 /* GLMathTransforms.h in Headers */,
 				C7622B1614D085F20093DDD0 /* GLMathTypes.h in Headers */,
 				C7622B1714D085F20093DDD0 /* GLMathUtilities.h in Headers */,

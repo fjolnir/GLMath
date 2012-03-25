@@ -6,7 +6,7 @@
 <struct name='mat3_t' type='{_mat3_t=&quot;m00&quot;f&quot;m01&quot;f&quot;m02&quot;f&quot;m10&quot;f&quot;m11&quot;f&quot;m12&quot;f&quot;m20&quot;f&quot;m21&quot;f&quot;m22&quot;f}'/>
 <struct name='mat4_t' type='{_mat4_t=&quot;m00&quot;f&quot;m01&quot;f&quot;m02&quot;f&quot;m03&quot;f&quot;m10&quot;f&quot;m11&quot;f&quot;m12&quot;f&quot;m13&quot;f&quot;m20&quot;f&quot;m21&quot;f&quot;m22&quot;f&quot;m23&quot;f&quot;m30&quot;f&quot;m31&quot;f&quot;m32&quot;f&quot;m33&quot;f}'/>
 <struct name='matrix_stack_t' type='{_matrix_stack_t=&quot;items&quot;^{_mat4_t}&quot;capacity&quot;I&quot;count&quot;I}'/>
-<struct name='quat_t' type='{_quat_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f&quot;w&quot;f}'/>
+<struct name='quat_t' type='{_quat_t=&quot;vec&quot;{_vec3_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}&quot;scalar&quot;f}'/>
 <struct name='rect_t' type='{_rect_t=&quot;x&quot;f&quot;y&quot;f&quot;w&quot;f&quot;h&quot;f}'/>
 <struct name='vec2_t' type='{_vec2_t=&quot;x&quot;f&quot;y&quot;f}'/>
 <struct name='vec3_t' type='{_vec3_t=&quot;x&quot;f&quot;y&quot;f&quot;z&quot;f}'/>
@@ -207,7 +207,7 @@
 </function>
 <function name='mat4_to_quat' inline='true'>
 <arg type='{_mat4_t=ffffffffffffffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='mat4_translate' inline='true'>
 <arg type='{_mat4_t=ffffffffffffffff}'/>
@@ -270,7 +270,7 @@
 </function>
 <function name='ortho_to_quat' inline='true'>
 <arg type='{_mat4_t=ffffffffffffffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='printMat3'>
 <arg type='{_mat3_t=fffffffff}'/>
@@ -279,7 +279,7 @@
 <arg type='{_mat4_t=ffffffffffffffff}'/>
 </function>
 <function name='printQuat'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='printVec2'>
 <arg type='{_vec2_t=ff}'/>
@@ -291,142 +291,74 @@
 <arg type='{_vec4_t=ffff}'/>
 </function>
 <function name='quat_computeW' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_createf'>
 <arg type='f'/>
 <arg type='f'/>
 <arg type='f'/>
 <arg type='f'/>
-<retval type='{_quat_t=ffff}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_createv'>
 <arg type='{_vec3_t=fff}'/>
 <arg type='f'/>
-<retval type='{_quat_t=ffff}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_dotProduct' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='f'/>
 </function>
 <function name='quat_equals' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='B'/>
 </function>
 <function name='quat_inverse' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_mag' inline='true'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='f'/>
 </function>
 <function name='quat_magSquared' inline='true'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='f'/>
 </function>
 <function name='quat_multQuat' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<arg type='{_quat_t=ffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_normalize' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<retval type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_rotatePoint' inline='true'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <arg type='{_vec4_t=ffff}'/>
 <retval type='{_vec4_t=ffff}'/>
 </function>
 <function name='quat_slerp' inline='true'>
-<arg type='{_quat_t=ffff}'/>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <arg type='f'/>
-<retval type='{_quat_t=ffff}'/>
+<retval type='{_quat_t={_vec3_t=fff}f}'/>
 </function>
 <function name='quat_to_mat4' inline='true'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='{_mat4_t=ffffffffffffffff}'/>
 </function>
 <function name='quat_to_ortho' inline='true'>
-<arg type='{_quat_t=ffff}'/>
+<arg type='{_quat_t={_vec3_t=fff}f}'/>
 <retval type='{_mat4_t=ffffffffffffffff}'/>
 </function>
 <function name='radToDeg' inline='true'>
 <arg type='f'/>
 <retval type='f'/>
-</function>
-<function name='rect_area' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<retval type='f'/>
-</function>
-<function name='rect_containsPoint' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_vec2_t=ff}'/>
-<retval type='B'/>
-</function>
-<function name='rect_containsRect' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_rect_t=ffff}'/>
-<retval type='B'/>
-</function>
-<function name='rect_createWithCorners' inline='true'>
-<arg type='f'/>
-<arg type='f'/>
-<arg type='f'/>
-<arg type='f'/>
-<retval type='{_rect_t=ffff}'/>
-</function>
-<function name='rect_createWithSize' inline='true'>
-<arg type='{_vec2_t=ff}'/>
-<arg type='{_vec2_t=ff}'/>
-<retval type='{_rect_t=ffff}'/>
-</function>
-<function name='rect_intersects' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_rect_t=ffff}'/>
-<retval type='B'/>
-</function>
-<function name='rect_intersectsLineSeg' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_vec2_t=ff}'/>
-<arg type='{_vec2_t=ff}'/>
-<retval type='B'/>
-</function>
-<function name='rect_maxX' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<retval type='f'/>
-</function>
-<function name='rect_maxY' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<retval type='f'/>
-</function>
-<function name='rect_merge' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_rect_t=ffff}'/>
-<retval type='{_rect_t=ffff}'/>
-</function>
-<function name='rect_minX' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<retval type='f'/>
-</function>
-<function name='rect_minY' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<retval type='f'/>
-</function>
-<function name='rect_scale' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_vec2_t=ff}'/>
-<retval type='{_rect_t=ffff}'/>
-</function>
-<function name='rect_translate' inline='true'>
-<arg type='{_rect_t=ffff}'/>
-<arg type='{_vec2_t=ff}'/>
-<retval type='{_rect_t=ffff}'/>
 </function>
 <function name='vec2_add' inline='true'>
 <arg type='{_vec2_t=ff}'/>

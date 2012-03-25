@@ -92,7 +92,7 @@ static __inline__ vec2_t vec2_create(GLMFloat x, GLMFloat y) {
 static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vadd, v1.f, 1, v2.f, 1, out.f, 1, 2);
+	GLM_vdsp(vadd, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return (vec2_t){ v1.x + v2.x, v1.y + v2.y };
@@ -102,7 +102,7 @@ static __inline__ vec2_t vec2_add(const vec2_t v1, const vec2_t v2) {
 static __inline__ vec2_t vec2_sub(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vsub, v2.f, 1, v1.f, 1, out.f, 1, 2);
+	GLM_vdsp(vsub, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return (vec2_t){ v1.x - v2.x, v1.y - v2.y };
@@ -112,7 +112,7 @@ static __inline__ vec2_t vec2_sub(const vec2_t v1, const vec2_t v2) {
 static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vmul, v1.f, 1, v2.f, 1, out.f, 1, 2);
+	GLM_vdsp(vmul, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return (vec2_t){ v1.x * v2.x, v1.y * v2.y };
@@ -122,7 +122,7 @@ static __inline__ vec2_t vec2_mul(const vec2_t v1, const vec2_t v2) {
 static __inline__ vec2_t vec2_div(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vdiv, (GLMFloat *)v2.f, 1, (GLMFloat *)v1.f, 1, out.f, 1, 2);
+	GLM_vdsp(vdiv, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return (vec2_t){ v1.x / v2.x, v1.y / v2.y };
@@ -132,7 +132,7 @@ static __inline__ vec2_t vec2_div(const vec2_t v1, const vec2_t v2) {
 static __inline__ GLMFloat vec2_dot(const vec2_t v1, const vec2_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat out;
-	GLM_vdsp(dotpr, v1.f, 1, v2.f, 1, &out, 2);
+	GLM_vdsp(dotpr, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, &out, 2);
 	return out;
 #else
 	return v1.x * v2.x + v1.y * v2.y;
@@ -142,7 +142,7 @@ static __inline__ GLMFloat vec2_dot(const vec2_t v1, const vec2_t v2) {
 static __inline__ GLMFloat vec2_magSquared(const vec2_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat magnitudes[2];
-	GLM_vdsp(vsq, v.f, 1, magnitudes, 1, 2);
+	GLM_vdsp(vsq, GLM_FCAST(v), 1, magnitudes, 1, 2);
 	return magnitudes[0] + magnitudes[1];
 #else
 	return (v.x * v.x) + (v.y * v.y);
@@ -164,7 +164,7 @@ static __inline__ GLMFloat vec2_dist(const vec2_t v1, const vec2_t v2) {
 static __inline__ vec2_t vec2_scalarMul(const vec2_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vsmul, v.f, 1, &s, out.f, 1, 2);
+	GLM_vdsp(vsmul, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return  (vec2_t){ v.x * s, v.y * s };
@@ -175,7 +175,7 @@ static __inline__ vec2_t vec2_scalarMul(const vec2_t v, GLMFloat s) {
 static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vsdiv, (GLMFloat*)v.f, 1, &s, out.f, 1, 2);
+	GLM_vdsp(vsdiv, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return (vec2_t){ v.x / s, v.y / s };
@@ -185,7 +185,7 @@ static __inline__ vec2_t vec2_scalarDiv(const vec2_t v, GLMFloat s) {
 static __inline__ vec2_t vec2_negate(const vec2_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec2_t out;
-	GLM_vdsp(vneg, (GLMFloat*)v.f, 1, out.f, 1, 2);
+	GLM_vdsp(vneg, GLM_FCAST(v), 1, GLM_FCAST(out), 1, 2);
 	return out;
 #else
 	return vec2_scalarMul(v, -1.0);
@@ -218,7 +218,7 @@ static __inline__ vec3_t vec3_create(GLMFloat x, GLMFloat y, GLMFloat z) {
 static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vadd, v1.f, 1, v2.f, 1, out.f, 1, 3);
+	GLM_vdsp(vadd, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v1.x + v2.x, v1.y + v2.y, v1.z + v2.z };
@@ -228,7 +228,7 @@ static __inline__ vec3_t vec3_add(const vec3_t v1, const vec3_t v2) {
 static __inline__ vec3_t vec3_sub(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vsub, v2.f, 1, v1.f, 1, out.f, 1, 3);
+	GLM_vdsp(vsub, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v1.x - v2.x, v1.y - v2.y, v1.z - v2.z };
@@ -238,7 +238,7 @@ static __inline__ vec3_t vec3_sub(const vec3_t v1, const vec3_t v2) {
 static __inline__ vec3_t vec3_mul(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vmul, v1.f, 1, v2.f, 1, out.f, 1, 3);
+	GLM_vdsp(vmul, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v1.x * v2.x, v1.y * v2.y, v1.z * v2.z };
@@ -248,7 +248,7 @@ static __inline__ vec3_t vec3_mul(const vec3_t v1, const vec3_t v2) {
 static __inline__ vec3_t vec3_div(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vdiv, (GLMFloat *)v2.f, 1, (GLMFloat *)v1.f, 1, out.f, 1, 3);
+	GLM_vdsp(vdiv, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v1.x / v2.x, v1.y / v2.y, v1.z / v2.z };
@@ -258,7 +258,7 @@ static __inline__ vec3_t vec3_div(const vec3_t v1, const vec3_t v2) {
 static __inline__ GLMFloat vec3_dot(const vec3_t v1, const vec3_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat out;
-	GLM_vdsp(dotpr, v1.f, 1, v2.f, 1, &out, 3);
+	GLM_vdsp(dotpr, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, &out, 3);
 	return out;
 #else
 	return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
@@ -268,7 +268,7 @@ static __inline__ GLMFloat vec3_dot(const vec3_t v1, const vec3_t v2) {
 static __inline__ GLMFloat vec3_magSquared(const vec3_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat magnitudes[3];
-	GLM_vdsp(vsq, v.f, 1, magnitudes, 1, 3);
+	GLM_vdsp(vsq, GLM_FCAST(v), 1, magnitudes, 1, 3);
 	return magnitudes[0] + magnitudes[1] + magnitudes[2];
 #else
 	return v.x * v.x + v.y * v.y + v.z * v.z;
@@ -290,7 +290,7 @@ static __inline__ GLMFloat vec3_dist(const vec3_t v1, const vec3_t v2) {
 static __inline__ vec3_t vec3_scalarMul(const vec3_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vsmul, v.f, 1, &s, out.f, 1, 3);
+	GLM_vdsp(vsmul, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v.x * s, v.y * s, v.z * s };
@@ -300,7 +300,7 @@ static __inline__ vec3_t vec3_scalarMul(const vec3_t v, GLMFloat s) {
 static __inline__ vec3_t vec3_scalarDiv(const vec3_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vsdiv, (GLMFloat*)v.f, 1, &s, out.f, 1, 3);
+	GLM_vdsp(vsdiv, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return (vec3_t){ v.x / s, v.y / s, v.z / s };
@@ -326,7 +326,7 @@ static __inline__ vec3_t vec3_cross(const vec3_t v1, const vec3_t v2) {
 static __inline__ vec3_t vec3_negate(const vec3_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(vneg, (GLMFloat*)v.f, 1, out.f, 1, 3);
+	GLM_vdsp(vneg, GLM_FCAST(v), 1, GLM_FCAST(out), 1, 3);
 	return out;
 #else
 	return vec3_scalarMul(v, -1.0);
@@ -349,7 +349,7 @@ static __inline__ vec4_t vec4_create(GLMFloat x, GLMFloat y, GLMFloat z, GLMFloa
 static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vadd, v1.f, 1, v2.f, 1, out.f, 1, 4);
+	GLM_vdsp(vadd, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v1.x + v2.x, v1.y + v2.y, v1.z + v2.z, v1.w + v2.w };
@@ -359,7 +359,7 @@ static __inline__ vec4_t vec4_add(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_sub(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vsub, v2.f, 1, v1.f, 1, out.f, 1, 4);
+	GLM_vdsp(vsub, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v1.x - v2.x, v1.y - v2.y, v1.z - v2.z, v1.w - v2.w };
@@ -369,7 +369,7 @@ static __inline__ vec4_t vec4_sub(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_mul(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vmul, v1.f, 1, v2.f, 1, out.f, 1, 4);
+	GLM_vdsp(vmul, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v1.x * v2.x, v1.y * v2.y, v1.z * v2.z, v1.w * v2.w };
@@ -379,7 +379,7 @@ static __inline__ vec4_t vec4_mul(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_div(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vdiv, (GLMFloat *)v2.f, 1, (GLMFloat *)v1.f, 1, out.f, 1, 4);
+	GLM_vdsp(vdiv, GLM_FCAST(v2), 1, GLM_FCAST(v1), 1, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v1.x / v2.x, v1.y / v2.y, v1.z / v2.z, v1.w / v2.w };
@@ -389,7 +389,7 @@ static __inline__ vec4_t vec4_div(const vec4_t v1, const vec4_t v2) {
 static __inline__ GLMFloat vec4_dot(const vec4_t v1, const vec4_t v2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat out;
-	GLM_vdsp(dotpr, v1.f, 1, v2.f, 1, &out, 4);
+	GLM_vdsp(dotpr, GLM_FCAST(v1), 1, GLM_FCAST(v2), 1, &out, 4);
 	return out;
 #else
 	return (v1.x * v2.x) + (v1.y * v2.y) + (v1.z * v2.z) + (v1.w * v2.w);
@@ -399,7 +399,7 @@ static __inline__ GLMFloat vec4_dot(const vec4_t v1, const vec4_t v2) {
 static __inline__ GLMFloat vec4_magSquared(const vec4_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	GLMFloat magnitudes[4];
-	GLM_vdsp(vsq, v.f, 1, magnitudes, 1, 4);
+	GLM_vdsp(vsq, GLM_FCAST(v), 1, magnitudes, 1, 4);
 	return magnitudes[0] + magnitudes[1] + magnitudes[2] + magnitudes[3];
 #else
 	return (v.x * v.x) + (v.y * v.y) + (v.z * v.z) + (v.w * v.w);
@@ -421,7 +421,7 @@ static __inline__ GLMFloat vec4_dist(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_scalarMul(const vec4_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vsmul, (GLMFloat*)v.f, 1, &s, out.f, 1, 4);
+	GLM_vdsp(vsmul, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v.x * s, v.y * s, v.z * s, v.w * s };
@@ -431,7 +431,7 @@ static __inline__ vec4_t vec4_scalarMul(const vec4_t v, GLMFloat s) {
 static __inline__ vec4_t vec4_scalarDiv(const vec4_t v, GLMFloat s) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vsdiv, (GLMFloat*)v.f, 1, &s, out.f, 1, 4);
+	GLM_vdsp(vsdiv, GLM_FCAST(v), 1, &s, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return (vec4_t){ v.x / s, v.y / s, v.z / s, v.w / s };
@@ -458,7 +458,7 @@ static __inline__ vec4_t vec4_cross(const vec4_t v1, const vec4_t v2) {
 static __inline__ vec4_t vec4_negate(const vec4_t v) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(vneg, (GLMFloat*)v.f, 1, out.f, 1, 4);
+	GLM_vdsp(vneg, GLM_FCAST(v), 1, GLM_FCAST(out), 1, 4);
 	return out;
 #else
 	return vec4_scalarMul(v, -1.0);

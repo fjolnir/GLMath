@@ -124,23 +124,6 @@ vec3_t _bezier_getPointWithOffset(bezier_t curve, GLMFloat t, vec3_t offset) __a
 void _bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, GLMFloat *outLengths, GLMFloat *outDeltas, GLMFloat *outTotalLength) __asm("_bezier_getLineSegments");
 vec3_t _bezier_getPointUsingLineSegments(GLMFloat t, int count, vec3_t *points, GLMFloat *lengths, GLMFloat *deltas, GLMFloat totalLength) __asm("_bezier_getPointUsingLineSegments");
 
-#pragma mark - Rectangles
-
-rect_t _rect_createWithSize(vec2_t origin, vec2_t size) __asm("_rect_createWithSize");
-rect_t _rect_createWithCorners(GLMFloat left, GLMFloat bottom, GLMFloat right, GLMFloat top) __asm("_rect_createWithCorners");
-GLMFloat _rect_maxX(const rect_t rect) __asm("_rect_maxX");
-GLMFloat _rect_minX(const rect_t rect) __asm("_rect_minX");
-GLMFloat _rect_maxY(const rect_t rect) __asm("_rect_maxY");
-GLMFloat _rect_minY(const rect_t rect) __asm("_rect_minY");
-bool _rect_intersects(const rect_t r1, const rect_t r2) __asm("_rect_intersects");
-bool _rect_containsRect(const rect_t r1, const rect_t r2) __asm("_rect_containsRect");
-bool _rect_containsPoint(const rect_t rect, const vec2_t point) __asm("_rect_containsPoint");
-rect_t _rect_merge(const rect_t r1, const rect_t r2) __asm("_rect_merge");
-rect_t _rect_scale(const rect_t rect, const vec2_t scale) __asm("_rect_scale");
-GLMFloat _rect_area(const rect_t rect) __asm("_rect_area");
-bool _rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) __asm("_rect_intersectsLineSeg");
-rect_t _rect_translate(const rect_t aRect, const vec2_t aTranslationVector) __asm("_rect_translate");
-
 #pragma mark - Transforms
 
 mat4_t _mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) __asm("_mat4_create_translation");

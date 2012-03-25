@@ -67,7 +67,7 @@ static void matrix_stack_push_item(matrix_stack_t *stack, mat4_t item) {
 		stack->capacity *= 2;
 		stack->items = realloc(stack->items, stack->capacity);
 	}
-	memcpy(stack->items[stack->count].f, item.f, sizeof(mat4_t));
+	memcpy(&stack->items[stack->count], &item, sizeof(mat4_t));
 
 	++stack->count;
 }

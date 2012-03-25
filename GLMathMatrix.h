@@ -59,7 +59,7 @@ static mat3_t _mat4_sub_mat3(mat4_t m, int i, int j);
 static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
-	GLM_vdsp(mmul, (GLMFloat*)m2.f, 1, (GLMFloat*)m1.f, 1, out.f, 1, 3, 3, 3);
+	GLM_vdsp(mmul, GLM_FCAST(m2), 1, GLM_FCAST(m1), 1, GLM_FCAST(out), 1, 3, 3, 3);
 	return out;
 #else
 	mat3_t out;
@@ -82,7 +82,7 @@ static __inline__ mat3_t mat3_mul(const mat3_t m1, const mat3_t m2) {
 static __inline__ vec3_t vec3_mul_mat3(const vec3_t v, const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec3_t out;
-	GLM_vdsp(mmul, (GLMFloat*)v.f, 1, (GLMFloat*)m.f, 1, out.f, 1, 1, 3, 3);
+	GLM_vdsp(mmul, GLM_FCAST(v), 1, GLM_FCAST(m), 1, GLM_FCAST(out), 1, 1, 3, 3);
 	return out;
 #else
 	return (vec3_t){
@@ -99,8 +99,8 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 	__CLPK_integer colsA, rowsA, colsB, rowsB, status;
 	colsA = rowsA = colsB = rowsB = 3;
 	__CLPK_integer pivotIndices[colsA];
-	memcpy(out.f, GLMMat3_identity.f, sizeof(mat3_t));
-	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
+	memcpy(GLM_FCAST(out), GLM_FCAST(GLMMat3_identity), sizeof(mat3_t));
+	GLM_gesv(&colsA, &colsB, GLM_FCAST(m), &rowsA, pivotIndices, GLM_FCAST(out), &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
 		return GLMMat3_zero;
@@ -130,7 +130,7 @@ static __inline__ mat3_t mat3_inverse(const mat3_t m, bool *success_out) {
 static __inline__ mat3_t mat3_transpose(const mat3_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat3_t out;
-	GLM_vdsp(mtrans, (GLMFloat*)m.f, 1, out.f, 1, 3, 3);
+	GLM_vdsp(mtrans, GLM_FCAST(m), 1, GLM_FCAST(out), 1, 3, 3);
 	return out;
 #else
 	return (mat3_t) { m.m00, m.m10, m.m20,
@@ -158,7 +158,7 @@ static __inline__ GLMFloat mat3_det(const mat3_t m) {
 static __inline__ mat4_t mat4_mul(mat4_t m1, mat4_t m2) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;
-	GLM_vdsp(mmul, (GLMFloat*)m2.f, 1, (GLMFloat*)m1.f, 1, out.f, 1, 4, 4, 4);
+	GLM_vdsp(mmul, GLM_FCAST(m2), 1, GLM_FCAST(m1), 1, GLM_FCAST(out), 1, 4, 4, 4);
 	return out;
 #else
 	mat4_t m;
@@ -194,7 +194,7 @@ static __inline__ vec3_t vec3_mul_mat4(const vec3_t v, const mat4_t m, bool isPo
 static __inline__ vec4_t vec4_mul_mat4(const vec4_t v, const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	vec4_t out;
-	GLM_vdsp(mmul, (GLMFloat*)v.f, 1, (GLMFloat*)m.f, 1, out.f, 1, 1, 4, 4);
+	GLM_vdsp(mmul, GLM_FCAST(v), 1, GLM_FCAST(m), 1, GLM_FCAST(out), 1, 1, 4, 4);
 	return out;
 #else
 	return (vec4_t){ m.m00*v.x + m.m10*v.y + m.m20*v.z + m.m30*v.w,
@@ -211,8 +211,8 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 	__CLPK_integer colsA, rowsA, colsB, rowsB, status;
 	colsA = rowsA = colsB = rowsB = 4;
 	__CLPK_integer pivotIndices[colsA];
-	memcpy(out.f, GLMMat4_identity.f, sizeof(mat4_t));
-	GLM_gesv(&colsA, &colsB, (GLMFloat*)m.f, &rowsA, pivotIndices, out.f, &rowsB, &status);
+	memcpy(GLM_FCAST(out), GLM_FCAST(GLMMat4_identity), sizeof(mat4_t));
+	GLM_gesv(&colsA, &colsB, GLM_FCAST(m), &rowsA, pivotIndices, GLM_FCAST(out), &rowsB, &status);
 	if(status != 0) {
 		if(success_out != NULL) *success_out = false;
 
@@ -230,7 +230,7 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 		for(int j = 0; j < 4; j++ ) {
 			sign = 1 - ( (i +j) % 2 ) * 2;
 			mtemp = _mat4_sub_mat3(m, i, j);
-			out.f[i+j*4] = ( mat3_det(mtemp) * sign ) / det;
+			GLM_FCAST(out)[i+j*4] = ( mat3_det(mtemp) * sign ) / det;
 		}
 	}
 #endif
@@ -240,7 +240,7 @@ static __inline__ mat4_t mat4_inverse(const mat4_t m, bool *success_out) {
 static __inline__ mat4_t mat4_transpose(const mat4_t m) {
 #ifdef USE_ACCELERATE_FRAMEWORK
 	mat4_t out;
-	GLM_vdsp(mtrans, (GLMFloat*)m.f, 1, out.f, 1, 4, 4);
+	GLM_vdsp(mtrans, GLM_FCAST(m), 1, GLM_FCAST(out), 1, 4, 4);
 	return out;
 #else
 	return (mat4_t){ m.m00, m.m10, m.m20,  m.m30,
@@ -257,7 +257,7 @@ static __inline__ GLMFloat mat4_det(mat4_t m)
 	for(int n = 0; n < 4; n++, i *= -1) {
 		subMtx = _mat4_sub_mat3(m, 0, n);
 		det    = mat3_det(subMtx);
-		out += m.f[n] * det * i;
+		out += GLM_FCAST(m)[n] * det * i;
 	}
 	return out;
 }
@@ -274,7 +274,7 @@ static mat3_t _mat4_sub_mat3(mat4_t m, int i, int j) {
 			si = di + ( ( di >= i ) ? 1 : 0 );
 			sj = dj + ( ( dj >= j ) ? 1 : 0 );
 			// copy element
-			out.f[di * 3 + dj] = m.f[si * 4 + sj];
+			GLM_FCAST(out)[di * 3 + dj] = GLM_FCAST(m)[si * 4 + sj];
 		}
 	}
 	return out;

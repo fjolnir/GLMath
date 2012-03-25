@@ -103,23 +103,6 @@ vec3_t _bezier_getPointWithOffset(bezier_t curve, GLMFloat t, vec3_t offset) { r
 void _bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, GLMFloat *outLengths, GLMFloat *outDeltas, GLMFloat *outTotalLength) { bezier_getLineSegments(curve, count, outPoints, outLengths, outDeltas, outTotalLength); }
 vec3_t _bezier_getPointUsingLineSegments(GLMFloat t, int count, vec3_t *points, GLMFloat *lengths, GLMFloat *deltas, GLMFloat totalLength) { return bezier_getPointUsingLineSegments(t, count, points, lengths, deltas, totalLength); }
 
-#pragma mark - Rectangles
-
-rect_t _rect_createWithSize(vec2_t origin, vec2_t size) { return rect_createWithSize(origin, size); }
-rect_t _rect_createWithCorners(GLMFloat left, GLMFloat bottom, GLMFloat right, GLMFloat top) { return rect_createWithCorners(left, bottom, right, top); }
-GLMFloat _rect_maxX(const rect_t rect) { return rect_maxX(rect); }
-GLMFloat _rect_minX(const rect_t rect) { return rect_minX(rect); }
-GLMFloat _rect_maxY(const rect_t rect) { return rect_maxY(rect); }
-GLMFloat _rect_minY(const rect_t rect) { return rect_minY(rect); }
-bool _rect_intersects(const rect_t r1, const rect_t r2) { return rect_intersects(r1, r2); }
-bool _rect_containsRect(const rect_t r1, const rect_t r2) { return rect_containsRect(r1, r2); }
-bool _rect_containsPoint(const rect_t rect, const vec2_t point) { return rect_containsPoint(rect, point); }
-rect_t _rect_merge(const rect_t r1, const rect_t r2) { return rect_merge(r1, r2); }
-rect_t _rect_scale(const rect_t rect, const vec2_t scale) { return rect_scale(rect, scale); }
-GLMFloat _rect_area(const rect_t rect) { return rect_area(rect); }
-bool _rect_intersectsLineSeg(const rect_t rect, const vec2_t a, const vec2_t b) { return rect_intersectsLineSeg(rect, a, b); }
-rect_t _rect_translate(const rect_t aRect, const vec2_t aTranslationVector) { return rect_translate(aRect, aTranslationVector); }
-
 #pragma mark - Transforms
 
 mat4_t _mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) { return mat4_create_translation(x, y, z); }

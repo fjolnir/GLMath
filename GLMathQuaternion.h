@@ -57,10 +57,10 @@ static quat_t quat_createv(vec3_t axis, GLMFloat angle) {
 	normalized = vec3_normalize(axis);
 
 	GLMFloat sin = sinf(angle/2.0);
-	out.x = normalized.x*sin;
-	out.y = normalized.y*sin;
-	out.z = normalized.z*sin;
-	out.w = cosf(angle/2.0);
+	out.vec.x = normalized.x*sin;
+	out.vec.y = normalized.y*sin;
+	out.vec.z = normalized.z*sin;
+	out.scalar = cosf(angle/2.0);
 
 	return out;
 }
@@ -74,13 +74,13 @@ static __inline__ mat4_t quat_to_mat4(const quat_t q) {
 	// q = a*[0 1 0 0] + b*[-1 0 0  0] + c*[ 0  0 0 1] + w*[ 0 0 -1 0]
 	//       [0 0 1 0]     [ 0 0 0 -1]     [-1  0 0 0]     [ 0 1  0 0]
 	//       [0 0 0 1]     [ 0 0 1  0]     [ 0 -1 0 0]     [-1 0  0 0]
-	out.f[0] = out.f[5] = out.f[10] = out.f[15] = q.f[0]; // a
-	out.f[1] = out.f[14]                          = q.f[1]; // b
-	out.f[4] = out.f[11]                          = -1.0*q.f[1]; // b
-	out.f[2] = out.f[7]                           = q.f[2]; // c
-	out.f[8] = out.f[13]                          = -1.0*q.f[2]; // c
-	out.f[3] = out.f[9]                           = q.f[3];
-	out.f[6] = out.f[12] = -1.0*q.f[3];
+	GLM_FCAST(out)[0] = GLM_FCAST(out)[5]  = GLM_FCAST(out)[10] = GLM_FCAST(out)[15] = q.vec.x; // a
+	GLM_FCAST(out)[1] = GLM_FCAST(out)[14] = q.vec.y; // b
+	GLM_FCAST(out)[4] = GLM_FCAST(out)[11] = -1.0*q.vec.y; // b
+	GLM_FCAST(out)[2] = GLM_FCAST(out)[7]  = q.vec.z; // c
+	GLM_FCAST(out)[8] = GLM_FCAST(out)[13] = -1.0*q.vec.z; // c
+	GLM_FCAST(out)[3] = GLM_FCAST(out)[9]  = q.scalar;
+	GLM_FCAST(out)[6] = GLM_FCAST(out)[12] = -1.0*q.scalar;
 
 	out.m13 = out.m23 = 0.0;
 	out.m30 = out.m31 = out.m32 = 0.0;
@@ -91,70 +91,70 @@ static __inline__ mat4_t quat_to_mat4(const quat_t q) {
 static __inline__ quat_t mat4_to_quat(const mat4_t m) {
 	// To convert back to a quat we just need to copy the first 3 items
 	quat_t out = {0.0};
-	memcpy(out.f, m.f, sizeof(quat_t));
+	memcpy(GLM_FCAST(out), GLM_FCAST(m), sizeof(quat_t));
 	return out;
 }
 
 // Generates the orthogonal matrix representation(rotation matrix) of a quaternion
 static __inline__ mat4_t quat_to_ortho(const quat_t q) {
-	GLMFloat xx = q.f[0]*q.f[0];
-	GLMFloat xy = q.f[0]*q.f[1];
-	GLMFloat xz = q.f[0]*q.f[2];
-	GLMFloat xw = q.f[0]*q.f[3];
-	GLMFloat yy = q.f[1]*q.f[1];
-	GLMFloat yz = q.f[1]*q.f[2];
-	GLMFloat yw = q.f[1]*q.f[3];
-	GLMFloat zz = q.f[2]*q.f[2];
-	GLMFloat zw = q.f[2]*q.f[3];
+	GLMFloat xx = q.vec.x*q.vec.x;
+	GLMFloat xy = q.vec.x*q.vec.y;
+	GLMFloat xz = q.vec.x*q.vec.z;
+	GLMFloat xw = q.vec.x*q.scalar;
+	GLMFloat yy = q.vec.y*q.vec.y;
+	GLMFloat yz = q.vec.y*q.vec.z;
+	GLMFloat yw = q.vec.y*q.scalar;
+	GLMFloat zz = q.vec.z*q.vec.z;
+	GLMFloat zw = q.vec.z*q.scalar;
 
 	mat4_t out;
-	out.f[0]  = 1.0 - 2.0*( yy + zz );
-	out.f[4]  = 2.0 * ( xy - zw );
-	out.f[8]  = 2.0 * ( xz + yw );
-	out.f[1]  = 2.0 * ( xy + zw );
-	out.f[5]  = 1 - 2.0 * ( xx + zz );
-	out.f[9]  = 2.0 * ( yz - xw );
-	out.f[2]  = 2.0 * ( xz - yw );
-	out.f[6]  = 2.0 * ( yz + xw );
-	out.f[10] = 1.0 - 2.0*( xx + yy );
+	GLM_FCAST(out)[0]  = 1.0 - 2.0*( yy + zz );
+	GLM_FCAST(out)[4]  = 2.0 * ( xy - zw );
+	GLM_FCAST(out)[8]  = 2.0 * ( xz + yw );
+	GLM_FCAST(out)[1]  = 2.0 * ( xy + zw );
+	GLM_FCAST(out)[5]  = 1 - 2.0 * ( xx + zz );
+	GLM_FCAST(out)[9]  = 2.0 * ( yz - xw );
+	GLM_FCAST(out)[2]  = 2.0 * ( xz - yw );
+	GLM_FCAST(out)[6]  = 2.0 * ( yz + xw );
+	GLM_FCAST(out)[10] = 1.0 - 2.0*( xx + yy );
 
-	out.f[3] = out.f[7] = out.f[11] = out.f[12] = out.f[13] = out.f[14] = 0.0;
-	out.f[15] = 1.0;
+	GLM_FCAST(out)[3] = GLM_FCAST(out)[7] = GLM_FCAST(out)[11] = GLM_FCAST(out)[12] = GLM_FCAST(out)[13] = GLM_FCAST(out)[14] = 0.0;
+	GLM_FCAST(out)[15] = 1.0;
 
 	return out;
 }
 
 static __inline__ quat_t ortho_to_quat(const mat4_t m) {
 	quat_t out;
-	GLMFloat trace = 1 + m.f[0] + m.f[5] + m.f[10];
+	GLMFloat trace = 1 + m.m00 + m.m11 + m.m22;
 	GLMFloat s;
 	// If the trace is too close to 0 we'll get serious distortion
 	if(trace > 0.000001) {
 		s = sqrtf(trace)*2.0;
-		out.f[0] = (m.f[9] - m.f[6]) / s;
-		out.f[1] = (m.f[2] - m.f[8]) / s;
-		out.f[2] = (m.f[4] - m.f[1]) / s;
-		out.f[3] = s / 4.0;
+		out.vec.x  = (GLM_FCAST(m)[9] - GLM_FCAST(m)[6]) / s;
+		out.vec.y  = (GLM_FCAST(m)[2] - GLM_FCAST(m)[8]) / s;
+		out.vec.z  = (GLM_FCAST(m)[4] - GLM_FCAST(m)[1]) / s;
+		out.scalar = s / 4.0;
 	}
 	// If the trace is 0 then find which diagonal element has the greatest value
-	else if(m.f[0] > m.f[5] && m.f[0] > m.f[10]) { // Col 0
-		s = sqrtf(1.0 + m.f[0] - m.f[5] - m.f[10])*2.0;
-		out.f[0] = s / 4.0;
-		out.f[1] = (m.f[4] - m.f[1]) / s;
-		out.f[2] = (m.f[2] - m.f[8]) / s;
-		out.f[3] = (m.f[9] - m.f[6]) / s;
-	} else if(m.f[5] > m.f[10]) { // Col 1
-		s = sqrtf(1.0 + m.f[5] - m.f[0] - m.f[10])*2.0;
-		out.f[0] = (m.f[4] - m.f[1]) / s;
-		out.f[1] = s / 4.0;
-		out.f[2] = (m.f[9] - m.f[6]) / s;
-		out.f[3] = (m.f[2] - m.f[8]) / s;
+	else if(GLM_FCAST(m)[0] > GLM_FCAST(m)[5] && GLM_FCAST(m)[0] > GLM_FCAST(m)[10]) { // Col 0
+		s = sqrtf(1.0 + GLM_FCAST(m)[0] - GLM_FCAST(m)[5] - GLM_FCAST(m)[10])*2.0;
+		out.vec.x  = s / 4.0;
+		out.vec.y  = (GLM_FCAST(m)[4] - GLM_FCAST(m)[1]) / s;
+		out.vec.z  = (GLM_FCAST(m)[2] - GLM_FCAST(m)[8]) / s;
+		out.scalar = (GLM_FCAST(m)[9] - GLM_FCAST(m)[6]) / s;
+	} else if(GLM_FCAST(m)[5] > GLM_FCAST(m)[10]) { // Col 1
+		s = sqrtf(1.0 + GLM_FCAST(m)[5] - GLM_FCAST(m)[0] - GLM_FCAST(m)[10])*2.0;
+		out.vec.x  = (GLM_FCAST(m)[4] - GLM_FCAST(m)[1]) / s;
+		out.vec.y  = s / 4.0;
+		out.vec.z  = (GLM_FCAST(m)[9] - GLM_FCAST(m)[6]) / s;
+		out.scalar = (GLM_FCAST(m)[2] - GLM_FCAST(m)[8]) / s;
 	} else { // Col 2
-		s = sqrtf(1.0 + m.f[10] - m.f[0] - m.f[5])*2.0;
-		out.f[0] = (m.f[2] - m.f[8]) / s;
-		out.f[1] = (m.f[9] - m.f[6]) / s;
-		out.f[2] = s / 4.0;
-		out.f[3] = (m.f[4] - m.f[1]) / s;
+		s = sqrtf(1.0 + GLM_FCAST(m)[10] - GLM_FCAST(m)[0] - GLM_FCAST(m)[5])*2.0;
+		out.vec.x  = (GLM_FCAST(m)[2] - GLM_FCAST(m)[8]) / s;
+		out.vec.y  = (GLM_FCAST(m)[9] - GLM_FCAST(m)[6]) / s;
+		out.vec.z  = s / 4.0;
+		out.scalar = (GLM_FCAST(m)[4] - GLM_FCAST(m)[1]) / s;
 	}
 
 	return out;
@@ -169,22 +169,21 @@ static __inline__ GLMFloat quat_mag(const quat_t q) {
 }
 
 static __inline__ quat_t quat_computeW(quat_t q) {
-	quat_t out;
-	memcpy(out.f, q.f, sizeof(quat_t));
+	quat_t out = q;
 
-	GLMFloat t = 1.0 - quat_magSquared(*(const quat_t*)&out);
+	GLMFloat t = 1.0 - quat_magSquared(out);
 
 	if(t < 0.0)
-		out.f[3] = 0.0;
+		out.scalar = 0.0;
 	else
-		out.f[3] = -1*sqrtf(t);
+		out.scalar = -1*sqrtf(t);
 
 	return out;
 }
 
 static __inline__ quat_t quat_normalize(quat_t q) {
 	vec4_t out;
-	memcpy(out.f, q.f, sizeof(quat_t));
+	memcpy(GLM_FCAST(out), GLM_FCAST(q), sizeof(quat_t));
 
 	GLMFloat mag = quat_mag(*(const quat_t*)&out);
 	// Normalize if the magnitude is > 0
@@ -198,10 +197,10 @@ static __inline__ quat_t quat_normalize(quat_t q) {
 static __inline__ quat_t quat_multQuat(const quat_t q1, const quat_t q2) {
 	quat_t out;
 	vec3_t va = vec3_cross(q1.vec, q2.vec);
-	vec3_t vb = vec3_scalarMul(q1.vec, q2.w);
-	vec3_t vc = vec3_scalarMul(q2.vec, q1.w);
+	vec3_t vb = vec3_scalarMul(q1.vec, q2.scalar);
+	vec3_t vc = vec3_scalarMul(q2.vec, q1.scalar);
 	
-	out.w = q1.w * q2.w - vec3_dot(q1.vec, q2.vec);
+	out.scalar = q1.scalar * q2.scalar - vec3_dot(q1.vec, q2.vec);
 	out.vec = vec3_add(va, vec3_add(vb, vc));
 	return quat_normalize(out);
 }
@@ -220,20 +219,17 @@ static __inline__ quat_t quat_inverse(const quat_t q) {
 	// Multiply the vector by -1 and leave the angle alone
 	vec4_t out;
 	out = vec4_scalarMul(*(vec4_t *)&q, -1.0);
-	out.f[3] = q.f[3];
+    out.w = q.scalar;
 	return *(quat_t *)&out;
 }
 
 static __inline__ quat_t quat_slerp(const quat_t q1, const quat_t q2, GLMFloat t) {
-	quat_t out;
 	// Return edge points without interpolating if the value is out of range
-	if (t <= 0.0) {
-		memcpy(out.f, q1.f, sizeof(quat_t));
-		return out;
-	} else if (t >= 1.0) {
-		memcpy(out.f, q2.f, sizeof(quat_t));
-		return out;
-	}
+	if(t <= 0.0)
+		return q1;
+	else if(t >= 1.0)
+		return q2;
+
 	// Compute the cosine of the angle between the quaternions
 	GLMFloat cosOmega = quat_dotProduct(q1, q2);
 	// If the dot product is <0 then we use -q2 otherwise q2
@@ -262,10 +258,9 @@ static __inline__ quat_t quat_slerp(const quat_t q1, const quat_t q2, GLMFloat t
 		k1 = sin((1.0 - t) * omega) * sinOmegaInverse;
 		k2 = sin(t * omega) * sinOmegaInverse;
 	}
-	out.f[0] = (k1 * q1.f[0]) + (k2 * q2Prepared.x);
-	out.f[1] = (k1 * q1.f[1]) + (k2 * q2Prepared.y);
-	out.f[2] = (k1 * q1.f[2]) + (k2 * q2Prepared.z);
-	out.f[3] = (k1 * q1.f[3]) + (k2 * q2Prepared.w);
+	quat_t out;
+    out.vec = vec3_add(vec3_scalarMul(q1.vec, k1), vec3_scalarMul(q2Prepared.vec, k2));
+    out.scalar = (k1 * q1.scalar) + (k2 * q2Prepared.scalar);
 
 	return out;
 }

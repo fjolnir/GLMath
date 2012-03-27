@@ -125,19 +125,6 @@ typedef union _quat_t quat_t;
 typedef struct _quat_t { vec3_t vec; GLMFloat scalar; } quat_t;
 #endif
 
-// Rectangles (Origin: bottom left)
-#ifndef __GLM_SIMPLESTRUCTS__
-union _rect_t {
-	GLMFloat f[4];
-	struct { vec2_t o; vec2_t s; };
-	struct { vec2_t origin; vec2_t size; };
-	struct { GLMFloat x; GLMFloat y; GLMFloat w; GLMFloat h; };
-};
-typedef union _rect_t rect_t;
-#else
-typedef struct _rect_t { GLMFloat x; GLMFloat y; GLMFloat w; GLMFloat h; } rect_t;
-#endif
-
 // Matrix stacks
 struct _matrix_stack_t {
 	mat4_t *items;

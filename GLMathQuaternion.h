@@ -39,6 +39,7 @@ static __inline__ quat_t quat_computeW(quat_t q) __asm("__quat_computeW");
 static __inline__ quat_t quat_normalize(quat_t q) __asm("__quat_normalize");
 static __inline__ quat_t quat_multQuat(const quat_t qA, const quat_t qB) __asm("__quat_multQuat");
 static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) __asm("__quat_rotatePoint");
+static __inline__ vec4_t quat_rotateVec3(const quat_t q, const vec3_t v) __asm("__quat_rotateVec3");
 static __inline__ quat_t quat_inverse(const quat_t q) __asm("__quat_inverse");
 static __inline__ GLMFloat quat_dotProduct(const quat_t qA, const quat_t qB) __asm("__quat_dotProduct");
 static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, GLMFloat t) __asm("__quat_slerp");
@@ -53,13 +54,7 @@ static quat_t quat_createf(GLMFloat x, GLMFloat y, GLMFloat z, GLMFloat angle) {
 
 static quat_t quat_createv(vec3_t axis, GLMFloat angle) {
 	quat_t out;
-	vec3_t normalized;
-	normalized = vec3_normalize(axis);
-
-	GLMFloat sin = sinf(angle/2.0);
-	out.vec.x = normalized.x*sin;
-	out.vec.y = normalized.y*sin;
-	out.vec.z = normalized.z*sin;
+    out.vec = vec3_scalarMul(vec3_normalize(axis), sinf(angle/2.0));
 	out.scalar = cosf(angle/2.0);
 
 	return out;
@@ -209,6 +204,12 @@ static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) {
 	mat4_t rotationMatrix;
 	rotationMatrix = quat_to_ortho(q);
 	return vec4_mul_mat4(v, rotationMatrix);
+}
+
+static __inline__ vec4_t quat_rotateVec3(const quat_t q, const vec3_t v)
+{
+    vec4_t temp = (vec4_t){v.x,v.y,v.z,1};
+    return quat_rotatePoint(q, temp);
 }
 
 static __inline__ GLMFloat quat_dotProduct(const quat_t q1, const quat_t q2) {

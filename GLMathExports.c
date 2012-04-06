@@ -86,6 +86,7 @@ quat_t _quat_computeW(quat_t q) { return quat_computeW(q); }
 quat_t _quat_normalize(quat_t q) { return quat_normalize(q); }
 quat_t _quat_multQuat(const quat_t qA, const quat_t qB) { return quat_multQuat(qA, qB); }
 vec4_t _quat_rotatePoint(const quat_t q, const vec4_t v) { return quat_rotatePoint(q, v); }
+vec4_t _quat_rotateVec3(const quat_t q, const vec3_t v) { return quat_rotateVec3(q, v); }
 quat_t _quat_inverse(const quat_t q) { return quat_inverse(q); }
 GLMFloat _quat_dotProduct(const quat_t qA, const quat_t qB) { return quat_dotProduct(qA, qB); }
 quat_t _quat_slerp(const quat_t qA, const quat_t qB, GLMFloat t) { return quat_slerp(qA, qB, t); }

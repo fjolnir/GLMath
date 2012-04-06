@@ -107,6 +107,7 @@ quat_t _quat_computeW(quat_t q) __asm("_quat_computeW");
 quat_t _quat_normalize(quat_t q) __asm("_quat_normalize");
 quat_t _quat_multQuat(const quat_t qA, const quat_t qB) __asm("_quat_multQuat");
 vec4_t _quat_rotatePoint(const quat_t q, const vec4_t v) __asm("_quat_rotatePoint");
+vec4_t _quat_rotateVec3(const quat_t q, const vec3_t v) __asm("_quat_rotateVec3");
 quat_t _quat_inverse(const quat_t q) __asm("_quat_inverse");
 GLMFloat _quat_dotProduct(const quat_t qA, const quat_t qB) __asm("_quat_dotProduct");
 quat_t _quat_slerp(const quat_t qA, const quat_t qB, GLMFloat t) __asm("_quat_slerp");

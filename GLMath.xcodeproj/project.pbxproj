@@ -59,7 +59,7 @@
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = GLMath.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
-		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathBezierCurve.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathBezierCurve.h; sourceTree = "<group>"; };
 		C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathMatrix.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathMatrixStack.h; sourceTree = "<group>"; };
 		C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathQuaternion.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };

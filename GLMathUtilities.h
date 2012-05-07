@@ -75,6 +75,13 @@ static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
 #endif
 }
 
+#ifdef ANDROID
+static __inline__ GLMFloat log2f(GLMFloat f)
+{
+	return logf(f) * (GLMFloat) (1.0 / M_LN2);
+}
+#endif
+
 static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {
 		if(a1[i] != a2[i])

@@ -76,10 +76,11 @@ static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
 }
 
 #ifdef ANDROID
-static __inline__ GLMFloat log2f(GLMFloat f)
+static __inline__ GLMFloat log2(GLMFloat f)
 {
-	return logf(f) * (GLMFloat) (1.0 / M_LN2);
+	return log(f) * (GLMFloat) (1.0 / M_LN2);
 }
+#define log2f log2
 #endif
 
 static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {

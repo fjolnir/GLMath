@@ -66,6 +66,14 @@ static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) __asm("__qu
 static __inline__ GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI / 180.0); }
 static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 / M_PI); }
 
+#ifdef ANDROID
+static __inline__ GLMFloat log2(GLMFloat f)
+{
+	return log(f) * (GLMFloat) (1.0 / M_LN2);
+}
+#define log2f log2
+#endif
+
 static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
 {
 #ifdef GLM_USE_DOUBLE
@@ -74,14 +82,6 @@ static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
     return exp2f(y*log2f(x));
 #endif
 }
-
-#ifdef ANDROID
-static __inline__ GLMFloat log2(GLMFloat f)
-{
-	return log(f) * (GLMFloat) (1.0 / M_LN2);
-}
-#define log2f log2
-#endif
 
 static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
 	for(int i = 0; i < len; ++i) {

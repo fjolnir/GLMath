@@ -67,11 +67,10 @@ static __inline__ GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI /
 static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 / M_PI); }
 
 #ifdef ANDROID
-static __inline__ GLMFloat log2(GLMFloat f)
+static __inline__ GLMFloat log2f(GLMFloat f)
 {
-	return log(f) * (GLMFloat) (1.0 / M_LN2);
+	return logf(f) * (GLMFloat) (1.0 / M_LN2);
 }
-#define log2f log2
 #endif
 
 static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)

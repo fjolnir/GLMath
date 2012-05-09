@@ -23,12 +23,12 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_translation");
-static __inline__ mat4_t mat4_translate(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_translate");
-static __inline__ mat4_t mat4_create_rotation(GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_rotation");
-static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_rotate");
-static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_create_scale");
-static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) __asm("__mat4_scale");
+static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z);
+static __inline__ mat4_t mat4_translate(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z);
+static __inline__ mat4_t mat4_create_rotation(GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z);
+static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z);
+static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z);
+static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z);
 
 #pragma mark - Implementations
 

@@ -22,17 +22,16 @@
 
 /* Begin PBXBuildFile section */
 		C701C3CC14BBC32100DD9C0C /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
-		C701C3CE14BBC87200DD9C0C /* GLMathExports.c in Sources */ = {isa = PBXBuildFile; fileRef = C701C3CD14BBC87200DD9C0C /* GLMathExports.c */; };
 		C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */ = {isa = PBXBuildFile; fileRef = C70EA30F14AC97BD009D29C6 /* GLMath.c */; };
-		C70EA31B14AC97BD009D29C6 /* GLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31014AC97BD009D29C6 /* GLMath.h */; };
-		C70EA31C14AC97BD009D29C6 /* GLMathBezierCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */; };
-		C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */; };
-		C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */; };
-		C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */; };
-		C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */; };
-		C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; };
-		C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; };
-		C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; };
+		C70EA31B14AC97BD009D29C6 /* GLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31014AC97BD009D29C6 /* GLMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA31C14AC97BD009D29C6 /* GLMathBezierCurve.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA31D14AC97BD009D29C6 /* GLMathMatrix.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA31E14AC97BD009D29C6 /* GLMathMatrixStack.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA31F14AC97BD009D29C6 /* GLMathQuaternion.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA32114AC97BD009D29C6 /* GLMathTransforms.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C73160AE14ACF14800A966CE /* GLMathUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = C73160AD14ACF14800A966CE /* GLMathUtilities.c */; };
 		C7622AF014D080850093DDD0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7622AEF14D080850093DDD0 /* Accelerate.framework */; };
 		C7622B0C14D085D90093DDD0 /* GLMath.c in Sources */ = {isa = PBXBuildFile; fileRef = C70EA30F14AC97BD009D29C6 /* GLMath.c */; };
@@ -47,7 +46,6 @@
 		C7622B1714D085F20093DDD0 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1814D085F20093DDD0 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1A14D086010093DDD0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7622AEF14D080850093DDD0 /* Accelerate.framework */; };
-		C7622B5F14D1185F0093DDD0 /* GLMathExports.c in Sources */ = {isa = PBXBuildFile; fileRef = C701C3CD14BBC87200DD9C0C /* GLMathExports.c */; };
 		C7622B6014D118640093DDD0 /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
 		C7622B8314D149990093DDD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7622B0214D085B60093DDD0 /* InfoPlist.strings */; };
 		C7B6A76C15120A68003F797D /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = C7B6A76B15120A68003F797D /* BridgeSupport */; };
@@ -55,7 +53,6 @@
 
 /* Begin PBXFileReference section */
 		C701C3CB14BBC32100DD9C0C /* GLMathExports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathExports.h; sourceTree = "<group>"; };
-		C701C3CD14BBC87200DD9C0C /* GLMathExports.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathExports.c; sourceTree = "<group>"; };
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = GLMath.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
@@ -132,7 +129,6 @@
 				C73160AD14ACF14800A966CE /* GLMathUtilities.c */,
 				C70EA31914AC97BD009D29C6 /* GLMathVector.h */,
 				C701C3CB14BBC32100DD9C0C /* GLMathExports.h */,
-				C701C3CD14BBC87200DD9C0C /* GLMathExports.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -287,7 +283,6 @@
 			files = (
 				C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */,
 				C73160AE14ACF14800A966CE /* GLMathUtilities.c in Sources */,
-				C701C3CE14BBC87200DD9C0C /* GLMathExports.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7622B0E14D085E00093DDD0 /* GLMathUtilities.c in Sources */,
-				C7622B5F14D1185F0093DDD0 /* GLMathExports.c in Sources */,
 				C7622B0C14D085D90093DDD0 /* GLMath.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,7 +313,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -338,8 +331,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -347,7 +338,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -361,7 +351,6 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
@@ -369,9 +358,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				EXPORTED_SYMBOLS_FILE = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = glmath;
+				SDKROOT = iphoneos5.1;
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-pedantic",
@@ -386,9 +375,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				EXPORTED_SYMBOLS_FILE = "";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = glmath;
+				SDKROOT = iphoneos5.1;
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-pedantic",

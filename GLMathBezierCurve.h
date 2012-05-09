@@ -28,15 +28,15 @@ extern "C" {
 
 #pragma mark - Prototypes
 
-static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4) __asm("__bezier_create");
-static __inline__ vec3_t bezier_getPoint(bezier_t curve, GLMFloat t) __asm("__bezier_getPoint");
-static __inline__ GLMFloat bezier_getCoordForAxis(bezier_t curve, GLMFloat t, bezierAxis_t axis) __asm("__bezier_getCoordForAxis");
-static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, GLMFloat t) __asm("__bezier_firstDerivative");
-static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis) __asm("__bezier_firstDerivativeRoots");
-static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums) __asm("__bezier_extremes");
-static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, GLMFloat t, vec3_t offset) __asm("__bezier_getPointWithOffset");
-static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, GLMFloat *outLengths, GLMFloat *outDeltas, GLMFloat *outTotalLength) __asm("__bezier_getLineSegments");
-static vec3_t bezier_getPointUsingLineSegments(GLMFloat t, int count, vec3_t *points, GLMFloat *lengths, GLMFloat *deltas, GLMFloat totalLength) __asm("__bezier_getPointUsingLineSegments");
+static __inline__ bezier_t bezier_create(vec3_t c1, vec3_t c2, vec3_t c3, vec3_t c4);
+static __inline__ vec3_t bezier_getPoint(bezier_t curve, GLMFloat t);
+static __inline__ GLMFloat bezier_getCoordForAxis(bezier_t curve, GLMFloat t, bezierAxis_t axis);
+static __inline__ vec3_t bezier_firstDerivative(bezier_t curve, GLMFloat t);
+static vec2_t bezier_firstDerivativeRoots(bezier_t curve, bezierAxis_t axis);
+static void bezier_extremes(bezier_t curve, vec3_t *outMinimums, vec3_t *outMaximums);
+static __inline__ vec3_t bezier_getPointWithOffset(bezier_t curve, GLMFloat t, vec3_t offset);
+static void bezier_getLineSegments(bezier_t curve, int count, vec3_t *outPoints, GLMFloat *outLengths, GLMFloat *outDeltas, GLMFloat *outTotalLength);
+static vec3_t bezier_getPointUsingLineSegments(GLMFloat t, int count, vec3_t *points, GLMFloat *lengths, GLMFloat *deltas, GLMFloat totalLength);
 
 #pragma mark - Implementations
 

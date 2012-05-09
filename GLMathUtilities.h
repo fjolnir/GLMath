@@ -31,10 +31,10 @@ extern "C" {
 #pragma mark - Prototypes
 
 // Utilities
-static __inline__ GLMFloat degToRad(GLMFloat degrees) __asm("__degToRad");
-static __inline__ GLMFloat radToDeg(GLMFloat radians) __asm("__radToDeg");
+static __inline__ GLMFloat degToRad(GLMFloat degrees);
+static __inline__ GLMFloat radToDeg(GLMFloat radians);
     
-static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y) __asm("__fastPow");
+static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y);
 
 
 mat4_t mat4_perspective(GLMFloat fov_radians, GLMFloat aspect, GLMFloat zNear, GLMFloat zFar);
@@ -53,12 +53,12 @@ void printMat3(mat3_t mat);
 void printMat4(mat4_t mat);
 void printQuat(quat_t quat);
 
-static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) __asm("__GLMFloatArr_equals");
-static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) __asm("__vec2_equals");
-static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) __asm("__vec3_equals");
-static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) __asm("__vec4_equals");
-static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) __asm("__mat4_equals");
-static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) __asm("__quat_equals");
+static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len);
+static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2);
+static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2);
+static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2);
+static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2);
+static __inline__ bool quat_equals(const quat_t q1, const quat_t q2);
 
 
 #pragma mark Implementations

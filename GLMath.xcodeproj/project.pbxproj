@@ -32,8 +32,8 @@
 		C70EA32214AC97BD009D29C6 /* GLMathTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31714AC97BD009D29C6 /* GLMathTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C70EA32314AC97BD009D29C6 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C70EA32414AC97BD009D29C6 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C71E0B6B155A40AF00CB6F37 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7622AEF14D080850093DDD0 /* Accelerate.framework */; };
 		C73160AE14ACF14800A966CE /* GLMathUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = C73160AD14ACF14800A966CE /* GLMathUtilities.c */; };
-		C7622AF014D080850093DDD0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7622AEF14D080850093DDD0 /* Accelerate.framework */; };
 		C7622B0C14D085D90093DDD0 /* GLMath.c in Sources */ = {isa = PBXBuildFile; fileRef = C70EA30F14AC97BD009D29C6 /* GLMath.c */; };
 		C7622B0E14D085E00093DDD0 /* GLMathUtilities.c in Sources */ = {isa = PBXBuildFile; fileRef = C73160AD14ACF14800A966CE /* GLMathUtilities.c */; };
 		C7622B0F14D085F20093DDD0 /* GLMath.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31014AC97BD009D29C6 /* GLMath.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -66,6 +66,7 @@
 		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathVector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA32514AC97D5009D29C6 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		C73160AD14ACF14800A966CE /* GLMathUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathUtilities.c; sourceTree = "<group>"; };
+		C73EFCA5155A476C00FD64CA /* libc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libc.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libc.dylib; sourceTree = DEVELOPER_DIR; };
 		C7622AEF14D080850093DDD0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C7622AF714D085B60093DDD0 /* GLMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GLMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7622B0114D085B60093DDD0 /* GLMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLMath-Info.plist"; sourceTree = "<group>"; };
@@ -79,7 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C7622AF014D080850093DDD0 /* Accelerate.framework in Frameworks */,
+				C71E0B6B155A40AF00CB6F37 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +98,7 @@
 		C70EA2F814AC9780009D29C6 = {
 			isa = PBXGroup;
 			children = (
+				C73EFCA5155A476C00FD64CA /* libc.dylib */,
 				C70EA30D14AC97B7009D29C6 /* Source */,
 				C7622B0014D085B60093DDD0 /* Framework Resources */,
 				C70EA30414AC9780009D29C6 /* Products */,
@@ -316,7 +318,6 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -341,7 +342,6 @@
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_FAST_MATH = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;
 				GCC_UNROLL_LOOPS = YES;
@@ -360,7 +360,8 @@
 				EXECUTABLE_PREFIX = lib;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = glmath;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-pedantic",
@@ -377,7 +378,8 @@
 				EXECUTABLE_PREFIX = lib;
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = glmath;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
 					"-pedantic",
@@ -391,6 +393,7 @@
 		C7622B0A14D085B60093DDD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -408,6 +411,7 @@
 		C7622B0B14D085B60093DDD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;

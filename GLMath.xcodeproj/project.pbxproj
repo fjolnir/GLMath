@@ -66,7 +66,6 @@
 		C70EA31914AC97BD009D29C6 /* GLMathVector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = GLMathVector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		C70EA32514AC97D5009D29C6 /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.md; sourceTree = "<group>"; };
 		C73160AD14ACF14800A966CE /* GLMathUtilities.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathUtilities.c; sourceTree = "<group>"; };
-		C73EFCA5155A476C00FD64CA /* libc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libc.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk/usr/lib/libc.dylib; sourceTree = DEVELOPER_DIR; };
 		C7622AEF14D080850093DDD0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		C7622AF714D085B60093DDD0 /* GLMath.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GLMath.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7622B0114D085B60093DDD0 /* GLMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLMath-Info.plist"; sourceTree = "<group>"; };
@@ -98,7 +97,6 @@
 		C70EA2F814AC9780009D29C6 = {
 			isa = PBXGroup;
 			children = (
-				C73EFCA5155A476C00FD64CA /* libc.dylib */,
 				C70EA30D14AC97B7009D29C6 /* Source */,
 				C7622B0014D085B60093DDD0 /* Framework Resources */,
 				C70EA30414AC9780009D29C6 /* Products */,

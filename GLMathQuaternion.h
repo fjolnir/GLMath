@@ -39,7 +39,7 @@ static __inline__ quat_t quat_computeW(quat_t q);
 static __inline__ quat_t quat_normalize(quat_t q);
 static __inline__ quat_t quat_multQuat(const quat_t qA, const quat_t qB);
 static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v);
-static __inline__ vec4_t quat_rotateVec3(const quat_t q, const vec3_t v);
+static __inline__ vec3_t quat_rotateVec3(const quat_t q, const vec3_t v);
 static __inline__ quat_t quat_inverse(const quat_t q);
 static __inline__ GLMFloat quat_dotProduct(const quat_t qA, const quat_t qB);
 static __inline__ quat_t quat_slerp(const quat_t qA, const quat_t qB, GLMFloat t);
@@ -206,10 +206,10 @@ static __inline__ vec4_t quat_rotatePoint(const quat_t q, const vec4_t v) {
 	return vec4_mul_mat4(v, rotationMatrix);
 }
 
-static __inline__ vec4_t quat_rotateVec3(const quat_t q, const vec3_t v)
+static __inline__ vec3_t quat_rotateVec3(const quat_t q, const vec3_t v)
 {
     vec4_t temp = (vec4_t){v.x,v.y,v.z,1};
-    return quat_rotatePoint(q, temp);
+    return quat_rotatePoint(q, temp).xyz;
 }
 
 static __inline__ GLMFloat quat_dotProduct(const quat_t q1, const quat_t q2) {

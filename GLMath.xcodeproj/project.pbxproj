@@ -356,7 +356,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
@@ -374,7 +374,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
-				OTHER_CFLAGS = "";
+				OTHER_CFLAGS = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";

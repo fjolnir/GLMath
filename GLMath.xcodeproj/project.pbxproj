@@ -356,16 +356,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				OTHER_CFLAGS = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-pedantic",
 					"-Wno-missing-braces",
-					"-Wno-gnu",
 					"-Wno-unused-function",
+					"-Wno-shorten-64-to-32",
 				);
 			};
 			name = Debug;
@@ -374,16 +374,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				EXECUTABLE_PREFIX = lib;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				OTHER_CFLAGS = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-pedantic",
 					"-Wno-missing-braces",
-					"-Wno-gnu",
 					"-Wno-unused-function",
+					"-Wno-shorten-64-to-32",
 				);
 			};
 			name = Release;

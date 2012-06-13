@@ -229,7 +229,7 @@
 		C70EA2FA14AC9780009D29C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = C70EA2FD14AC9780009D29C6 /* Build configuration list for PBXProject "GLMath" */;
 			compatibilityVersion = "Xcode 3.2";

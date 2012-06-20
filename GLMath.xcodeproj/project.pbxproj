@@ -359,16 +359,18 @@
 		C70EA30814AC9780009D29C6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_PREFIX = lib;
-				OTHER_CFLAGS = "-fno-reg-struct-return";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				OTHER_CFLAGS = "";
+				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-pedantic",
 					"-Wno-missing-braces",
-					"-Wno-gnu",
 					"-Wno-unused-function",
 				);
 			};
@@ -377,16 +379,18 @@
 		C70EA30914AC9780009D29C6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_PREFIX = lib;
-				OTHER_CFLAGS = "-fno-reg-struct-return";
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
+				OTHER_CFLAGS = "";
+				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
-					"-pedantic",
 					"-Wno-missing-braces",
-					"-Wno-gnu",
 					"-Wno-unused-function",
 				);
 			};

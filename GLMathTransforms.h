@@ -33,37 +33,37 @@ static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat
 #pragma mark - Implementations
 
 static __inline__ mat4_t mat4_create_translation(GLMFloat x, GLMFloat y, GLMFloat z) {
-	mat4_t out = GLMMat4_identity;
-	out.m30 = x;
-	out.m31 = y;
-	out.m32 = z;
+    mat4_t out = GLMMat4_identity;
+    out.m30 = x;
+    out.m31 = y;
+    out.m32 = z;
 
-	return out;
+    return out;
 }
 
 static __inline__ mat4_t mat4_translate(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) {
-	return mat4_mul(mat, mat4_create_translation(x, y, z));
+    return mat4_mul(mat, mat4_create_translation(x, y, z));
 }
 
 static __inline__ mat4_t mat4_create_rotation(GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) {
-	return quat_to_ortho(quat_createf(x, y, z, angle));
+    return quat_to_ortho(quat_createf(x, y, z, angle));
 }
 
 static __inline__ mat4_t mat4_rotate(mat4_t mat, GLMFloat angle, GLMFloat x, GLMFloat y, GLMFloat z) {
-	return mat4_mul(mat, mat4_create_rotation(angle, x, y, z));
+    return mat4_mul(mat, mat4_create_rotation(angle, x, y, z));
 }
 
 static __inline__ mat4_t mat4_create_scale(GLMFloat x, GLMFloat y, GLMFloat z) {
-	mat4_t out = GLMMat4_identity;
-	out.m00 = x;
-	out.m11 = y;
-	out.m22 = z;
+    mat4_t out = GLMMat4_identity;
+    out.m00 = x;
+    out.m11 = y;
+    out.m22 = z;
 
-	return out;
+    return out;
 }
 
 static __inline__ mat4_t mat4_scale(mat4_t mat, GLMFloat x, GLMFloat y, GLMFloat z) {
-	return mat4_mul(mat, mat4_create_scale(x, y, z));
+    return mat4_mul(mat, mat4_create_scale(x, y, z));
 }
 
 #ifdef __cplusplus

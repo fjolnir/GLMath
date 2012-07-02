@@ -39,10 +39,10 @@ extern "C" {
 // Vectors
 #ifndef __GLM_SIMPLESTRUCTS__
 union _vec2_t {
-	GLMFloat f[2];
-	struct { GLMFloat x; GLMFloat y; };
-	struct { GLMFloat w; GLMFloat h; };
-	struct { GLMFloat u; GLMFloat v; };
+    GLMFloat f[2];
+    struct { GLMFloat x; GLMFloat y; };
+    struct { GLMFloat w; GLMFloat h; };
+    struct { GLMFloat u; GLMFloat v; };
 
 };
 typedef union _vec2_t vec2_t;
@@ -52,10 +52,10 @@ typedef struct _vec2_t { GLMFloat x; GLMFloat y; } vec2_t;
 
 #ifndef __GLM_SIMPLESTRUCTS__
 union _vec3_t {
-	GLMFloat f[3];
-	struct { GLMFloat x; GLMFloat y; GLMFloat z; };
-	struct { GLMFloat r; GLMFloat g; GLMFloat b; };
-	struct { vec2_t xy; GLMFloat andY; };
+    GLMFloat f[3];
+    struct { GLMFloat x; GLMFloat y; GLMFloat z; };
+    struct { GLMFloat r; GLMFloat g; GLMFloat b; };
+    struct { vec2_t xy; GLMFloat andY; };
 };
 typedef union _vec3_t vec3_t;
 #else
@@ -64,10 +64,10 @@ typedef struct _vec3_t { GLMFloat x; GLMFloat y; GLMFloat z; } vec3_t;
 
 #ifndef __GLM_SIMPLESTRUCTS__
 union _vec4_t {
-	GLMFloat f[4];
-	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
-	struct { GLMFloat r; GLMFloat g; GLMFloat b; GLMFloat a; };
-	struct { vec3_t xyz; GLMFloat andW; };
+    GLMFloat f[4];
+    struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
+    struct { GLMFloat r; GLMFloat g; GLMFloat b; GLMFloat a; };
+    struct { vec3_t xyz; GLMFloat andW; };
 };
 typedef union _vec4_t vec4_t;
 #else
@@ -77,48 +77,48 @@ typedef struct _vec4_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } vec4_
 // Matrices
 #ifndef __GLM_SIMPLESTRUCTS__
 union _mat3_t {
-	GLMFloat f[9];
-	struct {
-		GLMFloat m00, m01, m02;
-		GLMFloat m10, m11, m12;
-		GLMFloat m20, m21, m22;
-	};
+    GLMFloat f[9];
+    struct {
+        GLMFloat m00, m01, m02;
+        GLMFloat m10, m11, m12;
+        GLMFloat m20, m21, m22;
+    };
 };
 typedef union _mat3_t mat3_t;
 #else
 typedef struct _mat3_t {
-	GLMFloat m00, m01, m02;
-	GLMFloat m10, m11, m12;
-	GLMFloat m20, m21, m22;
+    GLMFloat m00, m01, m02;
+    GLMFloat m10, m11, m12;
+    GLMFloat m20, m21, m22;
 } mat3_t;
 #endif
 
 #ifndef __GLM_SIMPLESTRUCTS__
 union _mat4_t {
-	GLMFloat f[16];
-	struct {
-		GLMFloat m00, m01, m02, m03;
-		GLMFloat m10, m11, m12, m13;
-		GLMFloat m20, m21, m22, m23;
-		GLMFloat m30, m31, m32, m33;
-	};
+    GLMFloat f[16];
+    struct {
+        GLMFloat m00, m01, m02, m03;
+        GLMFloat m10, m11, m12, m13;
+        GLMFloat m20, m21, m22, m23;
+        GLMFloat m30, m31, m32, m33;
+    };
 };
 typedef union _mat4_t mat4_t;
 #else
 typedef struct _mat4_t {
-	GLMFloat m00, m01, m02, m03;
-	GLMFloat m10, m11, m12, m13;
-	GLMFloat m20, m21, m22, m23;
-	GLMFloat m30, m31, m32, m33;
+    GLMFloat m00, m01, m02, m03;
+    GLMFloat m10, m11, m12, m13;
+    GLMFloat m20, m21, m22, m23;
+    GLMFloat m30, m31, m32, m33;
 } mat4_t;
 #endif
 
 // Quaternions
 #ifndef __GLM_SIMPLESTRUCTS__
 union _quat_t {
-	GLMFloat f[4];
-	struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
-	struct { vec3_t vec; GLMFloat scalar; };
+    GLMFloat f[4];
+    struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
+    struct { vec3_t vec; GLMFloat scalar; };
 };
 typedef union _quat_t quat_t;
 #else
@@ -127,18 +127,18 @@ typedef struct _quat_t { vec3_t vec; GLMFloat scalar; } quat_t;
 
 // Matrix stacks
 struct _matrix_stack_t {
-	mat4_t *items;
-	unsigned int capacity;
-	unsigned int count;
+    mat4_t *items;
+    unsigned int capacity;
+    unsigned int count;
 };
 typedef struct _matrix_stack_t matrix_stack_t;
 
 // Bezier curves
 #ifndef __GLM_SIMPLESTRUCTS__
 union _bezier_t {
-	GLMFloat f[12];
-	vec3_t controlPoints[4];
-	vec3_t cp[4];
+    GLMFloat f[12];
+    vec3_t controlPoints[4];
+    vec3_t cp[4];
 };
 typedef union _bezier_t bezier_t;
 #else
@@ -146,9 +146,9 @@ typedef struct _bezier_t { vec3_t controlPoints[4]; } bezier_t;
 #endif
 
 enum _bezierAxis {
-	kBezierAxisX = 0,
-	kBezierAxisY,
-	kBezierAxisZ
+    kBezierAxisX = 0,
+    kBezierAxisY,
+    kBezierAxisZ
 };
 typedef enum _bezierAxis bezierAxis_t;
 

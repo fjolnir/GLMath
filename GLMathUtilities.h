@@ -69,7 +69,7 @@ static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 
 #ifdef ANDROID
 static __inline__ GLMFloat log2f(GLMFloat f)
 {
-	return logf(f) * (GLMFloat) (1.0 / M_LN2);
+    return logf(f) * (GLMFloat) (1.0 / M_LN2);
 }
 #endif
 
@@ -83,26 +83,26 @@ static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
 }
 
 static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
-	for(int i = 0; i < len; ++i) {
-		if(a1[i] != a2[i])
-			return false;
-	}
-	return true;
+    for(int i = 0; i < len; ++i) {
+        if(a1[i] != a2[i])
+            return false;
+    }
+    return true;
 }
 static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) {
-	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 2);
+    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 2);
 }
 static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) {
-	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 3);
+    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 3);
 }
 static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) {
-	return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 4);
+    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 4);
 }
 static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) {
-	return GLMFloatArr_equals(GLM_FCAST(m1), GLM_FCAST(m2), 16);
+    return GLMFloatArr_equals(GLM_FCAST(m1), GLM_FCAST(m2), 16);
 }
 static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) {
-	return GLMFloatArr_equals(GLM_FCAST(q1), GLM_FCAST(q2), 4);
+    return GLMFloatArr_equals(GLM_FCAST(q1), GLM_FCAST(q2), 4);
 }
 
 #ifdef __cplusplus

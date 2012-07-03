@@ -471,6 +471,12 @@ static __inline__ vec4_t vec4_floor(vec4_t v)
     return out;
 }
 
+static __inline__ vec4_t vec4_premultiplyAlpha(vec4_t v)
+{
+    vec4_t out = { v.x * v.w, v.y * v.w, v.z * v.w, v.w };
+    return out;
+}
+
 #ifdef __cplusplus
 }
 #endif

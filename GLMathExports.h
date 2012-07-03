@@ -71,6 +71,7 @@ EXPOSE(vec4_scalarSub);
 EXPOSE(vec4_cross);
 EXPOSE(vec4_negate);
 EXPOSE(vec4_floor);
+EXPOSE(vec4_premultiplyAlpha);
 EXPOSE(mat3_mul);
 EXPOSE(vec3_mul_mat3);
 EXPOSE(mat3_inverse);

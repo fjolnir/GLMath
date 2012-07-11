@@ -367,6 +367,7 @@
 				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",
@@ -387,6 +388,7 @@
 				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
 				PRODUCT_NAME = glmath;
 				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "macosx iphonesimulator iphoneos";
 				WARNING_CFLAGS = (
 					"-Wall",

@@ -24,6 +24,10 @@
 #define USE_ACCELERATE_FRAMEWORK
 #endif
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include <GLMath/GLMathTypes.h>
 #include <GLMath/GLMathVector.h>
 #include <GLMath/GLMathMatrix.h>

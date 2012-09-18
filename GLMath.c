@@ -13,7 +13,6 @@
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
 #include "GLMath.h"
-#include "GLMathExports.h"
 
 const vec2_t GLMVec2_zero = { 0.0, 0.0 };
 const vec3_t GLMVec3_zero = { 0.0, 0.0, 0.0 };

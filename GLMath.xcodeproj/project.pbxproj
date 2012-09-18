@@ -45,8 +45,28 @@
 		C7622B1714D085F20093DDD0 /* GLMathUtilities.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1814D085F20093DDD0 /* GLMathVector.h in Headers */ = {isa = PBXBuildFile; fileRef = C70EA31914AC97BD009D29C6 /* GLMathVector.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7622B1A14D086010093DDD0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7622AEF14D080850093DDD0 /* Accelerate.framework */; };
-		C7622B6014D118640093DDD0 /* GLMathExports.h in Headers */ = {isa = PBXBuildFile; fileRef = C701C3CB14BBC32100DD9C0C /* GLMathExports.h */; };
 		C7622B8314D149990093DDD0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C7622B0214D085B60093DDD0 /* InfoPlist.strings */; };
+		C763A27D15EE70DB009B2C6C /* GLMathVector.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A27C15EE70DB009B2C6C /* GLMathVector.c */; };
+		C763A27E15EE70DB009B2C6C /* GLMathVector.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A27C15EE70DB009B2C6C /* GLMathVector.c */; };
+		C763A28015EE717F009B2C6C /* GLMathMatrix.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A27F15EE717F009B2C6C /* GLMathMatrix.c */; };
+		C763A28115EE717F009B2C6C /* GLMathMatrix.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A27F15EE717F009B2C6C /* GLMathMatrix.c */; };
+		C763A28315EE7233009B2C6C /* GLMathBezierCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */; };
+		C763A28415EE7233009B2C6C /* GLMathBezierCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */; };
+		C763A28615EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */; };
+		C763A28715EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */; };
+		C763A28915EE738D009B2C6C /* GLMathTransforms.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28815EE738D009B2C6C /* GLMathTransforms.c */; };
+		C763A28A15EE738D009B2C6C /* GLMathTransforms.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28815EE738D009B2C6C /* GLMathTransforms.c */; };
+		C763A28C15EE7442009B2C6C /* GLMathQuaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */; };
+		C763A28D15EE7442009B2C6C /* GLMathQuaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */; };
+		C763A28F15EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28E15EE74B6009B2C6C /* GLMathMatrixStack.c */; };
+		C763A29015EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28E15EE74B6009B2C6C /* GLMathMatrixStack.c */; };
+		C763A29115EE7631009B2C6C /* GLMathBezierCurve.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29215EE7633009B2C6C /* GLMathMatrix.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A27F15EE717F009B2C6C /* GLMathMatrix.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29315EE763C009B2C6C /* GLMathMatrixStack.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A28E15EE74B6009B2C6C /* GLMathMatrixStack.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29415EE763E009B2C6C /* GLMathQuaternion.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29515EE7640009B2C6C /* GLMathTransforms.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A28815EE738D009B2C6C /* GLMathTransforms.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29615EE7644009B2C6C /* GLMathUtilitiesInline.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */; settings = {ATTRIBUTES = (Public, ); }; };
+		C763A29715EE7646009B2C6C /* GLMathVector.c in Headers */ = {isa = PBXBuildFile; fileRef = C763A27C15EE70DB009B2C6C /* GLMathVector.c */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7B6A76C15120A68003F797D /* BridgeSupport in Resources */ = {isa = PBXBuildFile; fileRef = C7B6A76B15120A68003F797D /* BridgeSupport */; };
 /* End PBXBuildFile section */
 
@@ -73,7 +93,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C701C3CB14BBC32100DD9C0C /* GLMathExports.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMathExports.h; sourceTree = "<group>"; };
 		C70EA30314AC9780009D29C6 /* libglmath.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libglmath.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C70EA30F14AC97BD009D29C6 /* GLMath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; lineEnding = 0; path = GLMath.c; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.c; };
 		C70EA31014AC97BD009D29C6 /* GLMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLMath.h; sourceTree = "<group>"; };
@@ -92,6 +111,13 @@
 		C7622B0114D085B60093DDD0 /* GLMath-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GLMath-Info.plist"; sourceTree = "<group>"; };
 		C7622B0314D085B60093DDD0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C7622B0514D085B60093DDD0 /* GLMath-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GLMath-Prefix.pch"; sourceTree = "<group>"; };
+		C763A27C15EE70DB009B2C6C /* GLMathVector.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathVector.c; sourceTree = "<group>"; };
+		C763A27F15EE717F009B2C6C /* GLMathMatrix.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathMatrix.c; sourceTree = "<group>"; };
+		C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathBezierCurve.c; sourceTree = "<group>"; };
+		C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathUtilitiesInline.c; sourceTree = "<group>"; };
+		C763A28815EE738D009B2C6C /* GLMathTransforms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathTransforms.c; sourceTree = "<group>"; };
+		C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathQuaternion.c; sourceTree = "<group>"; };
+		C763A28E15EE74B6009B2C6C /* GLMathMatrixStack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = GLMathMatrixStack.c; sourceTree = "<group>"; };
 		C7B6A76B15120A68003F797D /* BridgeSupport */ = {isa = PBXFileReference; lastKnownFileType = folder; path = BridgeSupport; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -141,15 +167,21 @@
 				C70EA31014AC97BD009D29C6 /* GLMath.h */,
 				C70EA30F14AC97BD009D29C6 /* GLMath.c */,
 				C70EA31114AC97BD009D29C6 /* GLMathBezierCurve.h */,
+				C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */,
 				C70EA31214AC97BD009D29C6 /* GLMathMatrix.h */,
+				C763A27F15EE717F009B2C6C /* GLMathMatrix.c */,
 				C70EA31314AC97BD009D29C6 /* GLMathMatrixStack.h */,
+				C763A28E15EE74B6009B2C6C /* GLMathMatrixStack.c */,
 				C70EA31414AC97BD009D29C6 /* GLMathQuaternion.h */,
+				C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */,
 				C70EA31614AC97BD009D29C6 /* GLMathTransforms.h */,
+				C763A28815EE738D009B2C6C /* GLMathTransforms.c */,
 				C70EA31714AC97BD009D29C6 /* GLMathTypes.h */,
 				C70EA31814AC97BD009D29C6 /* GLMathUtilities.h */,
 				C73160AD14ACF14800A966CE /* GLMathUtilities.c */,
+				C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */,
 				C70EA31914AC97BD009D29C6 /* GLMathVector.h */,
-				C701C3CB14BBC32100DD9C0C /* GLMathExports.h */,
+				C763A27C15EE70DB009B2C6C /* GLMathVector.c */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -181,7 +213,13 @@
 				C7622B1614D085F20093DDD0 /* GLMathTypes.h in Headers */,
 				C7622B1714D085F20093DDD0 /* GLMathUtilities.h in Headers */,
 				C7622B1814D085F20093DDD0 /* GLMathVector.h in Headers */,
-				C7622B6014D118640093DDD0 /* GLMathExports.h in Headers */,
+				C763A29215EE7633009B2C6C /* GLMathMatrix.c in Headers */,
+				C763A29415EE763E009B2C6C /* GLMathQuaternion.c in Headers */,
+				C763A29515EE7640009B2C6C /* GLMathTransforms.c in Headers */,
+				C763A29315EE763C009B2C6C /* GLMathMatrixStack.c in Headers */,
+				C763A29615EE7644009B2C6C /* GLMathUtilitiesInline.c in Headers */,
+				C763A29715EE7646009B2C6C /* GLMathVector.c in Headers */,
+				C763A29115EE7631009B2C6C /* GLMathBezierCurve.c in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +325,13 @@
 			files = (
 				C70EA31A14AC97BD009D29C6 /* GLMath.c in Sources */,
 				C73160AE14ACF14800A966CE /* GLMathUtilities.c in Sources */,
+				C763A27D15EE70DB009B2C6C /* GLMathVector.c in Sources */,
+				C763A28015EE717F009B2C6C /* GLMathMatrix.c in Sources */,
+				C763A28315EE7233009B2C6C /* GLMathBezierCurve.c in Sources */,
+				C763A28615EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */,
+				C763A28915EE738D009B2C6C /* GLMathTransforms.c in Sources */,
+				C763A28C15EE7442009B2C6C /* GLMathQuaternion.c in Sources */,
+				C763A28F15EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +341,13 @@
 			files = (
 				C7622B0E14D085E00093DDD0 /* GLMathUtilities.c in Sources */,
 				C7622B0C14D085D90093DDD0 /* GLMath.c in Sources */,
+				C763A27E15EE70DB009B2C6C /* GLMathVector.c in Sources */,
+				C763A28115EE717F009B2C6C /* GLMathMatrix.c in Sources */,
+				C763A28415EE7233009B2C6C /* GLMathBezierCurve.c in Sources */,
+				C763A28715EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */,
+				C763A28A15EE738D009B2C6C /* GLMathTransforms.c in Sources */,
+				C763A28D15EE7442009B2C6C /* GLMathQuaternion.c in Sources */,
+				C763A29015EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

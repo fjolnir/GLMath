@@ -21,7 +21,7 @@
 #define GL_MATH_H
 
 #ifdef __APPLE__
-#define USE_ACCELERATE_FRAMEWORK
+#define GLM_USE_ACCELERATE_FRAMEWORK
 #endif
 
 #ifdef __cplusplus

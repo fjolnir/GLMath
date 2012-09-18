@@ -1,5 +1,7 @@
 #include "GLMathUtilities.h"
 #include "GLMathVector.h"
+#include <stdio.h>
+#include <math.h>
 
 // Generates a perspective viewing matrix
 mat4_t mat4_perspective(GLMFloat fovy, GLMFloat aspect, GLMFloat zNear, GLMFloat zFar)
@@ -40,9 +42,10 @@ mat4_t mat4_lookat(GLMFloat eyeX, GLMFloat eyeY, GLMFloat eyeZ,
     vec3_t n = vec3_normalize(vec3_add(ev, vec3_negate(cv)));
     vec3_t u = vec3_normalize(vec3_cross(uv, n));
     vec3_t v = vec3_cross(n, u);
-    return (mat4_t){ u.f[0], v.f[0], n.f[0], 0.0,
-        u.f[1], v.f[1], n.f[1], 0.0,
-        u.f[2], v.f[2], n.f[2], 0.0,
+    
+    return (mat4_t){ u.x, v.x, n.x, 0.0,
+        u.y, v.y, n.y, 0.0,
+        u.z, v.z, n.z, 0.0,
         vec3_dot(vec3_negate(u), ev),
         vec3_dot(vec3_negate(v), ev),
         vec3_dot(vec3_negate(n), ev),
@@ -66,13 +69,13 @@ mat4_t mat4_ortho(GLMFloat left, GLMFloat right, GLMFloat bottom, GLMFloat top, 
 
 
 void printVec2(vec2_t vec) {
-    printf("Vec2: [%.2f, %.2f]\n", vec.f[0], vec.f[1]);
+    printf("Vec2: [%.2f, %.2f]\n", vec.x, vec.y);
 }
 void printVec3(vec3_t vec) {
-    printf("Vec3: [%.2f, %.2f, %.2f]\n", vec.f[0], vec.f[1], vec.f[2]);
+    printf("Vec3: [%.2f, %.2f, %.2f]\n", vec.x, vec.y, vec.z);
 }
 void printVec4(vec4_t vec) {
-    printf("Vec4: [%.2f, %.2f, %.2f, %.2f]\n", vec.f[0], vec.f[1], vec.f[2], vec.f[3]);
+    printf("Vec4: [%.2f, %.2f, %.2f, %.2f]\n", vec.x, vec.y, vec.z, vec.w);
 }
 void printMat3(mat3_t mat) {
     printf("Mat3: [%.2f, %.2f, %.2f]\n", mat.m00, mat.m01, mat.m02);
@@ -86,5 +89,5 @@ void printMat4(mat4_t mat) {
     printf("      [%.2f, %.2f, %.2f, %.2f]\n", mat.m30, mat.m31, mat.m32, mat.m33);
 }
 void printQuat(quat_t quat) {
-    printf("Quat: [%.2f, %.2f, %.2f, %.2f]\n", quat.f[0], quat.f[1], quat.f[2], quat.f[3]);
+    printf("Quat: [%.2f, %.2f, %.2f, %.2f]\n", quat.vec.x, quat.vec.y, quat.vec.z, quat.scalar);
 }

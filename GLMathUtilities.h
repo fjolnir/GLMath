@@ -16,9 +16,7 @@
 #define GL_MATH_UTILS_H
 
 #include <GLMath/GLMathTypes.h>
-#include <stdio.h>
 #include <stdbool.h>
-#include <math.h>
 
 #ifdef __cplusplus
 extern "C" {
@@ -28,13 +26,11 @@ extern "C" {
 #define GLM_MIN(x,y) ( ((x)<(y)) ? (x) : (y) )
 #define GLM_CLAMP(x, min, max) GLM_MAX(min, GLM_MIN(x, max));
 
-#pragma mark - Prototypes
-
 // Utilities
-static __inline__ GLMFloat degToRad(GLMFloat degrees);
-static __inline__ GLMFloat radToDeg(GLMFloat radians);
+GLM_INLINE GLMFloat degToRad(GLMFloat degrees);
+GLM_INLINE GLMFloat radToDeg(GLMFloat radians);
     
-static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y);
+GLM_INLINE GLMFloat fastPow(GLMFloat x,GLMFloat y);
 
 
 mat4_t mat4_perspective(GLMFloat fov_radians, GLMFloat aspect, GLMFloat zNear, GLMFloat zFar);
@@ -53,58 +49,16 @@ void printMat3(mat3_t mat);
 void printMat4(mat4_t mat);
 void printQuat(quat_t quat);
 
-static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len);
-static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2);
-static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2);
-static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2);
-static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2);
-static __inline__ bool quat_equals(const quat_t q1, const quat_t q2);
+GLM_INLINE bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len);
+GLM_INLINE bool vec2_equals(const vec2_t v1, const vec2_t v2);
+GLM_INLINE bool vec3_equals(const vec3_t v1, const vec3_t v2);
+GLM_INLINE bool vec4_equals(const vec4_t v1, const vec4_t v2);
+GLM_INLINE bool mat4_equals(const mat4_t m1, const mat4_t m2);
+GLM_INLINE bool quat_equals(const quat_t q1, const quat_t q2);
 
-
-#pragma mark Implementations
-
-static __inline__ GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI / 180.0); }
-static __inline__ GLMFloat radToDeg(GLMFloat radians) { return radians * (180.0 / M_PI); }
-
-#ifdef ANDROID
-static __inline__ GLMFloat log2f(GLMFloat f)
-{
-    return logf(f) * (GLMFloat) (1.0 / M_LN2);
-}
+#ifdef GLM_USE_INLINE
+#include <GLMath/GLMathUtilitiesInline.c>
 #endif
-
-static __inline__ GLMFloat fastPow(GLMFloat x,GLMFloat y)
-{
-#ifdef GLM_USE_DOUBLE
-    return exp2(y*log2(x));
-#else
-    return exp2f(y*log2f(x));
-#endif
-}
-
-static __inline__ bool GLMFloatArr_equals(const GLMFloat *a1, const GLMFloat *a2, unsigned int len) {
-    for(int i = 0; i < len; ++i) {
-        if(a1[i] != a2[i])
-            return false;
-    }
-    return true;
-}
-static __inline__ bool vec2_equals(const vec2_t v1, const vec2_t v2) {
-    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 2);
-}
-static __inline__ bool vec3_equals(const vec3_t v1, const vec3_t v2) {
-    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 3);
-}
-static __inline__ bool vec4_equals(const vec4_t v1, const vec4_t v2) {
-    return GLMFloatArr_equals(GLM_FCAST(v1), GLM_FCAST(v2), 4);
-}
-static __inline__ bool mat4_equals(const mat4_t m1, const mat4_t m2) {
-    return GLMFloatArr_equals(GLM_FCAST(m1), GLM_FCAST(m2), 16);
-}
-static __inline__ bool quat_equals(const quat_t q1, const quat_t q2) {
-    return GLMFloatArr_equals(GLM_FCAST(q1), GLM_FCAST(q2), 4);
-}
-
 #ifdef __cplusplus
 }
 #endif

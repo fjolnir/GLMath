@@ -15,6 +15,12 @@
 #ifndef GL_MATH_TYPES_H
 #define GL_MATH_TYPES_H
 
+#ifdef GLM_USE_INLINE
+    #define GLM_INLINE static __inline__
+#else
+    #define GLM_INLINE
+#endif
+
 #define GLM_FCAST(x) ((GLMFloat *)(&x))
 
 #ifdef __cplusplus
@@ -22,7 +28,7 @@ extern "C" {
 #endif
 
 #ifdef __SCRIPTINGBRIDGE__
-#define __GLM_SIMPLESTRUCTS__
+#define GLM_UNIONS
 #endif
 
 #pragma mark - Types
@@ -37,7 +43,7 @@ extern "C" {
 #endif
 
 // Vectors
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _vec2_t {
     GLMFloat f[2];
     struct { GLMFloat x; GLMFloat y; };
@@ -50,7 +56,7 @@ typedef union _vec2_t vec2_t;
 typedef struct _vec2_t { GLMFloat x; GLMFloat y; } vec2_t;
 #endif
 
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _vec3_t {
     GLMFloat f[3];
     struct { GLMFloat x; GLMFloat y; GLMFloat z; };
@@ -62,7 +68,7 @@ typedef union _vec3_t vec3_t;
 typedef struct _vec3_t { GLMFloat x; GLMFloat y; GLMFloat z; } vec3_t;
 #endif
 
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _vec4_t {
     GLMFloat f[4];
     struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
@@ -75,7 +81,7 @@ typedef struct _vec4_t { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; } vec4_
 #endif
 
 // Matrices
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _mat3_t {
     GLMFloat f[9];
     struct {
@@ -93,7 +99,7 @@ typedef struct _mat3_t {
 } mat3_t;
 #endif
 
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _mat4_t {
     GLMFloat f[16];
     struct {
@@ -114,7 +120,7 @@ typedef struct _mat4_t {
 #endif
 
 // Quaternions
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _quat_t {
     GLMFloat f[4];
     struct { GLMFloat x; GLMFloat y; GLMFloat z; GLMFloat w; };
@@ -134,7 +140,7 @@ struct _matrix_stack_t {
 typedef struct _matrix_stack_t matrix_stack_t;
 
 // Bezier curves
-#ifndef __GLM_SIMPLESTRUCTS__
+#ifdef GLM_UNIONS
 union _bezier_t {
     GLMFloat f[12];
     vec3_t controlPoints[4];

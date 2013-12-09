@@ -52,8 +52,6 @@
 		C763A28115EE717F009B2C6C /* GLMathMatrix.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A27F15EE717F009B2C6C /* GLMathMatrix.c */; };
 		C763A28315EE7233009B2C6C /* GLMathBezierCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */; };
 		C763A28415EE7233009B2C6C /* GLMathBezierCurve.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28215EE7233009B2C6C /* GLMathBezierCurve.c */; };
-		C763A28615EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */; };
-		C763A28715EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28515EE732E009B2C6C /* GLMathUtilitiesInline.c */; };
 		C763A28915EE738D009B2C6C /* GLMathTransforms.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28815EE738D009B2C6C /* GLMathTransforms.c */; };
 		C763A28A15EE738D009B2C6C /* GLMathTransforms.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28815EE738D009B2C6C /* GLMathTransforms.c */; };
 		C763A28C15EE7442009B2C6C /* GLMathQuaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = C763A28B15EE7442009B2C6C /* GLMathQuaternion.c */; };
@@ -267,7 +265,7 @@
 		C70EA2FA14AC9780009D29C6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0450;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = C70EA2FD14AC9780009D29C6 /* Build configuration list for PBXProject "GLMath" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -328,7 +326,6 @@
 				C763A27D15EE70DB009B2C6C /* GLMathVector.c in Sources */,
 				C763A28015EE717F009B2C6C /* GLMathMatrix.c in Sources */,
 				C763A28315EE7233009B2C6C /* GLMathBezierCurve.c in Sources */,
-				C763A28615EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */,
 				C763A28915EE738D009B2C6C /* GLMathTransforms.c in Sources */,
 				C763A28C15EE7442009B2C6C /* GLMathQuaternion.c in Sources */,
 				C763A28F15EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */,
@@ -344,7 +341,6 @@
 				C763A27E15EE70DB009B2C6C /* GLMathVector.c in Sources */,
 				C763A28115EE717F009B2C6C /* GLMathMatrix.c in Sources */,
 				C763A28415EE7233009B2C6C /* GLMathBezierCurve.c in Sources */,
-				C763A28715EE732E009B2C6C /* GLMathUtilitiesInline.c in Sources */,
 				C763A28A15EE738D009B2C6C /* GLMathTransforms.c in Sources */,
 				C763A28D15EE7442009B2C6C /* GLMathQuaternion.c in Sources */,
 				C763A29015EE74B6009B2C6C /* GLMathMatrixStack.c in Sources */,
@@ -414,7 +410,6 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_PREFIX = lib;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				OTHER_CFLAGS = "";
 				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
@@ -436,7 +431,6 @@
 				CLANG_CXX_LIBRARY = "compiler-default";
 				EXECUTABLE_PREFIX = lib;
 				GCC_THUMB_SUPPORT = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				OTHER_CFLAGS = "";
 				"OTHER_CFLAGS[sdk=iphonesimulator*]" = "-fno-reg-struct-return";
@@ -455,7 +449,6 @@
 		C7622B0A14D085B60093DDD0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;
@@ -473,7 +466,6 @@
 		C7622B0B14D085B60093DDD0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				DYLIB_COMPATIBILITY_VERSION = 1.0;
 				DYLIB_CURRENT_VERSION = 1.0;
 				FRAMEWORK_VERSION = A;

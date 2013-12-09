@@ -12,7 +12,6 @@
 // ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
 // OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
-#include <GLMathUtilities.h>
 #include <math.h>
 
 GLM_INLINE GLMFloat degToRad(GLMFloat degrees) { return degrees * (M_PI / 180.0); }
